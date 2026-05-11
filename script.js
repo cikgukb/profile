@@ -226,7 +226,23 @@ const categoryLabels = {
 
 let activeCategory = 'Semua';
 let searchTerm = '';
-let currentLang = localStorage.getItem('siteLang') === 'en' ? 'en' : 'ms';
+let currentLang = getSavedLanguage();
+
+function getSavedLanguage() {
+    try {
+        return localStorage.getItem('siteLang') === 'en' ? 'en' : 'ms';
+    } catch (error) {
+        return 'ms';
+    }
+}
+
+function saveLanguage(lang) {
+    try {
+        localStorage.setItem('siteLang', lang);
+    } catch (error) {
+        // The language toggle still works when storage is unavailable on file:// pages.
+    }
+}
 
 function t(key) {
     return translations[currentLang]?.[key] || translations.ms[key] || key;
@@ -248,7 +264,7 @@ function categoryLabel(category) {
 
 function applyLanguage(lang) {
     currentLang = lang === 'en' ? 'en' : 'ms';
-    localStorage.setItem('siteLang', currentLang);
+    saveLanguage(currentLang);
     document.documentElement.lang = currentLang;
 
     document.querySelectorAll('[data-i18n]').forEach(element => {
