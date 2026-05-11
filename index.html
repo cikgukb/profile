@@ -21,15 +21,19 @@
         <div class="container nav-container">
             <a href="#home" class="logo">cikgukb<span class="dot">.</span></a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#expertise">Expertise</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#book">Buku</a></li>
-                <li><a href="#videos">Video</a></li>
-                <li><a href="#catalog">Katalog GitHub</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                <li><a href="#about" data-i18n="nav.about">About</a></li>
+                <li><a href="#expertise" data-i18n="nav.expertise">Expertise</a></li>
+                <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+                <li><a href="#book" data-i18n="nav.book">Buku</a></li>
+                <li><a href="#videos" data-i18n="nav.video">Video</a></li>
+                <li><a href="#catalog" data-i18n="nav.catalog">Katalog GitHub</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
             </ul>
+            <div class="language-toggle" aria-label="Tukar bahasa">
+                <button type="button" class="lang-btn active" data-lang="ms">BM</button>
+                <button type="button" class="lang-btn" data-lang="en">EN</button>
+            </div>
             <button class="hamburger" type="button" aria-label="Buka menu" aria-expanded="false">
                 <span></span>
                 <span></span>
@@ -42,29 +46,29 @@
         <div class="container hero-container">
             <div class="hero-content">
                 <span class="badge">HRD Corp Accredited Certified Trainer</span>
-                <h1>Hi, I'm <span class="highlight">Kamarul Bahareen</span></h1>
-                <p class="hero-text">
+                <h1 data-i18n="hero.title">Hi, I'm <span class="highlight">Kamarul Bahareen</span></h1>
+                <p class="hero-text" data-i18n="hero.text">
                     Trainer Marketing Consultant, Marketing & Visual Specialist, penulis buku dan pembina sistem digital
                     untuk usahawan. Saya gabungkan latihan, strategi pemasaran, multimedia dan AI tools untuk bantu SME
                     bergerak lebih laju.
                 </p>
                 <div class="hero-btns">
-                    <a href="#contact" class="btn-primary">Let's Talk</a>
+                    <a href="#contact" class="btn-primary" data-i18n="hero.cta">Let's Talk</a>
                     <a href="assets/resume/kamarul-bahareen-trainer-profile-2025.pdf" class="btn-secondary" target="_blank"
-                        rel="noopener">Download Resume</a>
+                        rel="noopener" data-i18n="hero.resume">Download Resume</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
                         <span class="stat-number">20+</span>
-                        <span class="stat-desc">Years Experience</span>
+                        <span class="stat-desc" data-i18n="stats.experience">Years Experience</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number">38</span>
-                        <span class="stat-desc">GitHub Builds</span>
+                        <span class="stat-desc" data-i18n="stats.builds">GitHub Builds</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number">12</span>
-                        <span class="stat-desc">Video Works</span>
+                        <span class="stat-desc" data-i18n="stats.videos">Video Works</span>
                     </div>
                 </div>
             </div>
@@ -83,29 +87,29 @@
                     <img src="assets/profile-welcoming.jpg" alt="Kamarul Bahareen welcoming pose">
                 </div>
                 <div class="about-content">
-                    <span class="section-kicker">Profile Details</span>
-                    <h2 class="section-title">About Me</h2>
-                    <p>
+                    <span class="section-kicker" data-i18n="about.kicker">Profile Details</span>
+                    <h2 class="section-title" data-i18n="about.title">About Me</h2>
+                    <p data-i18n="about.p1">
                         Saya ialah <strong>Kamarul Bahareen Bin Kamarudin</strong>, Trainer Marketing Consultant di
                         <strong>KB Beyond Creative Sdn Bhd</strong>. Kerja saya berpusat pada latihan pemasaran digital,
                         multimedia, content creation, AI marketing dan pembangunan sistem ringkas yang membantu
                         usahawan bertindak dengan lebih jelas.
                     </p>
-                    <p>
+                    <p data-i18n="about.p2">
                         Latar belakang saya bermula daripada bidang teknikal dan sistem, kemudian berkembang kepada
                         sales, digital marketing, fotografi, videografi, WordPress design dan penggunaan AI seperti
                         ChatGPT, Midjourney dan GenAI untuk pemasaran moden.
                     </p>
                     <div class="profile-list">
-                        <span><strong>Current:</strong> Trainer Marketing Consultant, KB Beyond Creative Sdn Bhd</span>
-                        <span><strong>Certified:</strong> HRD Corp Accredited Certified Trainer #7703</span>
+                        <span data-i18n="about.current"><strong>Current:</strong> Trainer Marketing Consultant, KB Beyond Creative Sdn Bhd</span>
+                        <span data-i18n="about.certified"><strong>Certified:</strong> HRD Corp Accredited Certified Trainer #7703</span>
                         <span><strong>HRDC Trainer ID:</strong> 27899</span>
-                        <span><strong>Education:</strong> Diploma in Computer Science, Universiti Teknologi Malaysia</span>
+                        <span data-i18n="about.education"><strong>Education:</strong> Diploma in Computer Science, Universiti Teknologi Malaysia</span>
                     </div>
                     <div class="about-actions">
                         <a href="assets/resume/kamarul-bahareen-trainer-profile-2025.pdf" class="btn-primary"
-                            target="_blank" rel="noopener">View Resume</a>
-                        <a href="#catalog" class="btn-secondary">Lihat Hasil Kerja</a>
+                            target="_blank" rel="noopener" data-i18n="about.resume">View Resume</a>
+                        <a href="#catalog" class="btn-secondary" data-i18n="about.work">Lihat Hasil Kerja</a>
                     </div>
                 </div>
             </div>
@@ -114,40 +118,40 @@
         <section id="expertise" class="expertise">
             <div class="container">
                 <div class="section-header text-center">
-                    <span class="section-kicker">Capabilities</span>
-                    <h2 class="section-title">My Expertise</h2>
-                    <p>Combining technical skill, training experience and creative execution.</p>
+                    <span class="section-kicker" data-i18n="expertise.kicker">Capabilities</span>
+                    <h2 class="section-title" data-i18n="expertise.title">My Expertise</h2>
+                    <p data-i18n="expertise.subtitle">Combining technical skill, training experience and creative execution.</p>
                 </div>
                 <div class="expertise-grid">
                     <article class="expertise-card">
                         <i class="fa-solid fa-chart-line"></i>
-                        <h3>Digital Marketing</h3>
-                        <p>Facebook, Google Ads, TikTok marketing, SEO and data-driven campaign planning.</p>
+                        <h3 data-i18n="expertise.digital.title">Digital Marketing</h3>
+                        <p data-i18n="expertise.digital.p">Facebook, Google Ads, TikTok marketing, SEO and data-driven campaign planning.</p>
                     </article>
                     <article class="expertise-card">
                         <i class="fa-solid fa-wand-magic-sparkles"></i>
-                        <h3>Generative AI</h3>
-                        <p>ChatGPT, Midjourney, GenAI, AI copywriting, prompt systems and marketing automation.</p>
+                        <h3 data-i18n="expertise.ai.title">Generative AI</h3>
+                        <p data-i18n="expertise.ai.p">ChatGPT, Midjourney, GenAI, AI copywriting, prompt systems and marketing automation.</p>
                     </article>
                     <article class="expertise-card">
                         <i class="fa-solid fa-chalkboard-user"></i>
-                        <h3>Training</h3>
-                        <p>HRD Corp accredited training for AI marketing, branding, digital business and SME growth.</p>
+                        <h3 data-i18n="expertise.training.title">Training</h3>
+                        <p data-i18n="expertise.training.p">HRD Corp accredited training for AI marketing, branding, digital business and SME growth.</p>
                     </article>
                     <article class="expertise-card">
                         <i class="fa-solid fa-camera-retro"></i>
-                        <h3>Photography & Video</h3>
-                        <p>Product photography, video content marketing, live streaming and creative direction.</p>
+                        <h3 data-i18n="expertise.visual.title">Photography & Video</h3>
+                        <p data-i18n="expertise.visual.p">Product photography, video content marketing, live streaming and creative direction.</p>
                     </article>
                     <article class="expertise-card">
                         <i class="fa-solid fa-laptop-code"></i>
-                        <h3>Web & Tools</h3>
-                        <p>WordPress design, HTML/CSS/JS tools, landing pages and lightweight business systems.</p>
+                        <h3 data-i18n="expertise.web.title">Web & Tools</h3>
+                        <p data-i18n="expertise.web.p">WordPress design, HTML/CSS/JS tools, landing pages and lightweight business systems.</p>
                     </article>
                     <article class="expertise-card">
                         <i class="fa-solid fa-box-open"></i>
-                        <h3>Packaging & Export Prep</h3>
-                        <p>Pembungkusan inovatif, penjenamaan kreatif, perlabelan logistik dan persediaan eksport.</p>
+                        <h3 data-i18n="expertise.packaging.title">Packaging & Export Prep</h3>
+                        <p data-i18n="expertise.packaging.p">Pembungkusan inovatif, penjenamaan kreatif, perlabelan logistik dan persediaan eksport.</p>
                     </article>
                 </div>
             </div>
@@ -156,9 +160,9 @@
         <section id="experience" class="experience">
             <div class="container">
                 <div class="section-header text-center">
-                    <span class="section-kicker">Career Journey</span>
-                    <h2 class="section-title">Professional Experience</h2>
-                    <p>Over two decades across technology, sales leadership, marketing and training.</p>
+                    <span class="section-kicker" data-i18n="experience.kicker">Career Journey</span>
+                    <h2 class="section-title" data-i18n="experience.title">Professional Experience</h2>
+                    <p data-i18n="experience.subtitle">Over two decades across technology, sales leadership, marketing and training.</p>
                 </div>
                 <div class="timeline">
                     <article class="timeline-item">
@@ -166,7 +170,7 @@
                         <div class="timeline-content">
                             <h3>Trainer Marketing Consultant</h3>
                             <h4>KB Beyond Creative Sdn Bhd</h4>
-                            <p>Delivering practical training and consulting in digital marketing, multimedia content,
+                            <p data-i18n="experience.current.p">Delivering practical training and consulting in digital marketing, multimedia content,
                                 AI marketing and business digitalization for entrepreneurs.</p>
                         </div>
                     </article>
@@ -175,7 +179,7 @@
                         <div class="timeline-content">
                             <h3>Agency Supervisor</h3>
                             <h4>CIMB Wealth Advisor</h4>
-                            <p>Led sales activity, agency development and team performance.</p>
+                            <p data-i18n="experience.agency.p">Led sales activity, agency development and team performance.</p>
                         </div>
                     </article>
                     <article class="timeline-item">
@@ -183,7 +187,7 @@
                         <div class="timeline-content">
                             <h3>Backup Engineer</h3>
                             <h4>Shell IT International</h4>
-                            <p>Managed backup, recovery and data storage technology operations.</p>
+                            <p data-i18n="experience.backup.p">Managed backup, recovery and data storage technology operations.</p>
                         </div>
                     </article>
                     <article class="timeline-item">
@@ -191,7 +195,7 @@
                         <div class="timeline-content">
                             <h3>System Engineer</h3>
                             <h4>Gems Integrated Data Solution</h4>
-                            <p>Handled IT infrastructure, system support and technical implementation.</p>
+                            <p data-i18n="experience.system.p">Handled IT infrastructure, system support and technical implementation.</p>
                         </div>
                     </article>
                     <article class="timeline-item">
@@ -199,7 +203,7 @@
                         <div class="timeline-content">
                             <h3>Technical Executive</h3>
                             <h4>Perodua Manufacturing</h4>
-                            <p>Started professional career in technical execution and manufacturing support.</p>
+                            <p data-i18n="experience.technical.p">Started professional career in technical execution and manufacturing support.</p>
                         </div>
                     </article>
                 </div>
@@ -212,26 +216,26 @@
                     <img src="assets/books/chatgpt4business-book.jpeg" alt="Buku ChatGPT4Business">
                 </div>
                 <div class="book-content">
-                    <span class="section-kicker">Buku Terbitan</span>
+                    <span class="section-kicker" data-i18n="book.kicker">Buku Terbitan</span>
                     <h2 class="section-title">Buku ChatGPT4Business</h2>
-                    <p>
+                    <p data-i18n="book.text">
                         Buku fizikal untuk usahawan yang mahu menggunakan ChatGPT sebagai pembantu bisnes harian.
                         Kandungannya membantu pembaca membina prompt untuk BMC, proposal perniagaan, copywriting dan
                         tugasan pemasaran lain.
                     </p>
                     <div class="book-highlights">
-                        <span><i class="fa-solid fa-check"></i> Panduan prompt untuk kegunaan perniagaan</span>
-                        <span><i class="fa-solid fa-check"></i> Contoh arahan untuk BMC, proposal dan copywriting</span>
-                        <span><i class="fa-solid fa-check"></i> QR code video kelas ChatGPT untuk pengalaman lebih mendalam</span>
-                        <span><i class="fa-solid fa-check"></i> Sentuh penggunaan AI untuk lagu, imej, video dan konten kreatif</span>
+                        <span><i class="fa-solid fa-check"></i> <span data-i18n="book.point1">Panduan prompt untuk kegunaan perniagaan</span></span>
+                        <span><i class="fa-solid fa-check"></i> <span data-i18n="book.point2">Contoh arahan untuk BMC, proposal dan copywriting</span></span>
+                        <span><i class="fa-solid fa-check"></i> <span data-i18n="book.point3">QR code video kelas ChatGPT untuk pengalaman lebih mendalam</span></span>
+                        <span><i class="fa-solid fa-check"></i> <span data-i18n="book.point4">Sentuh penggunaan AI untuk lagu, imej, video dan konten kreatif</span></span>
                     </div>
                     <div class="book-price">
-                        <span>Info laman produk</span>
+                        <span data-i18n="book.priceLabel">Info laman produk</span>
                         <strong>RM30</strong>
-                        <small>Harga promosi daripada RM49, tertakluk kepada perubahan di laman penjual.</small>
+                        <small data-i18n="book.priceNote">Harga promosi daripada RM49, tertakluk kepada perubahan di laman penjual.</small>
                     </div>
                     <a href="https://coachzul.com/shop/buku-chatgpt4business/?bz_aff_ref=sYHZQf0uiO&ref=5&track_code=sYHZQf0uiO&aff=kaybee"
-                        target="_blank" rel="noopener" class="btn-primary">Tempah Buku</a>
+                        target="_blank" rel="noopener" class="btn-primary" data-i18n="book.cta">Tempah Buku</a>
                 </div>
             </div>
         </section>
@@ -239,9 +243,9 @@
         <section id="videos" class="video-gallery">
             <div class="container">
                 <div class="section-header text-center">
-                    <span class="section-kicker">Video Works</span>
-                    <h2 class="section-title">Koleksi Video</h2>
-                    <p>Hasil suntingan, pengarahan dan eksperimen video kreatif.</p>
+                    <span class="section-kicker" data-i18n="videos.kicker">Video Works</span>
+                    <h2 class="section-title" data-i18n="videos.title">Koleksi Video</h2>
+                    <p data-i18n="videos.subtitle">Hasil suntingan, pengarahan dan eksperimen video kreatif.</p>
                 </div>
                 <div class="video-grid">
                     <article class="video-card">
@@ -252,7 +256,7 @@
                         <div class="video-content">
                             <h3>Jus Master Refreshment</h3>
                             <a href="https://www.facebook.com/share/v/17Q3HEBzWQ/" target="_blank" rel="noopener"
-                                class="video-link">Tonton di Facebook <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </article>
                     <article class="video-card">
@@ -263,7 +267,7 @@
                         <div class="video-content">
                             <h3>Kisah Brader Kei</h3>
                             <a href="https://www.facebook.com/share/v/18Ef6KhNS4/" target="_blank" rel="noopener"
-                                class="video-link">Tonton di Facebook <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </article>
                     <article class="video-card">
@@ -274,7 +278,7 @@
                         <div class="video-content">
                             <h3>Solusi Gastrik AGP</h3>
                             <a href="https://www.facebook.com/share/v/1EC9CLq6tf/" target="_blank" rel="noopener"
-                                class="video-link">Tonton di Facebook <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </article>
                     <article class="video-card">
@@ -285,7 +289,7 @@
                         <div class="video-content">
                             <h3>Rawatan Gastrik Berkesan</h3>
                             <a href="https://www.facebook.com/share/v/17zkFWQdNF/" target="_blank" rel="noopener"
-                                class="video-link">Tonton di Facebook <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </article>
                     <article class="video-card">
@@ -296,7 +300,7 @@
                         <div class="video-content">
                             <h3>Prayer at Eiffel Tower</h3>
                             <a href="https://www.facebook.com/share/v/1C5cVWMHK6/" target="_blank" rel="noopener"
-                                class="video-link">Tonton di Facebook <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </article>
                     <article class="video-card">
@@ -307,7 +311,7 @@
                         <div class="video-content">
                             <h3>Commercial Content Trial</h3>
                             <a href="https://www.facebook.com/share/v/1BubNUsnUs/" target="_blank" rel="noopener"
-                                class="video-link">Tonton di Facebook <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </article>
                     <article class="video-card">
@@ -318,7 +322,7 @@
                         <div class="video-content">
                             <h3>Serunding Daging Pouch</h3>
                             <a href="https://www.facebook.com/share/r/1Ao2AxM4qf/" target="_blank" rel="noopener"
-                                class="video-link">Tonton di Facebook <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </article>
                     <article class="video-card">
@@ -329,7 +333,7 @@
                         <div class="video-content">
                             <h3>Peluang Jana Pendapatan</h3>
                             <a href="https://www.facebook.com/share/r/16P2APWYeS/" target="_blank" rel="noopener"
-                                class="video-link">Tonton di Facebook <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </article>
                     <article class="video-card">
@@ -340,7 +344,7 @@
                         <div class="video-content">
                             <h3>Kesedaran Alam Sekitar</h3>
                             <a href="https://www.facebook.com/share/v/1Ahs9L9JaH/" target="_blank" rel="noopener"
-                                class="video-link">Tonton di Facebook <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </article>
                     <article class="video-card">
@@ -351,7 +355,7 @@
                         <div class="video-content">
                             <h3>AI Character Consistency</h3>
                             <a href="https://www.facebook.com/share/v/1838JSKp38/" target="_blank" rel="noopener"
-                                class="video-link">Tonton di Facebook <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </article>
                     <article class="video-card">
@@ -362,7 +366,7 @@
                         <div class="video-content">
                             <h3>AI Music Video Trial</h3>
                             <a href="https://www.facebook.com/share/v/1B6JvHX21E/" target="_blank" rel="noopener"
-                                class="video-link">Tonton di Facebook <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </article>
                     <article class="video-card">
@@ -373,7 +377,7 @@
                         <div class="video-content">
                             <h3>Serunding Daging HajiWan</h3>
                             <a href="https://www.facebook.com/share/r/1DD9k8CMGL/" target="_blank" rel="noopener"
-                                class="video-link">Tonton di Facebook <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </article>
                 </div>
@@ -383,14 +387,14 @@
         <section id="catalog" class="catalog-section">
             <div class="container">
                 <div class="section-header text-center">
-                    <span class="section-kicker">Karya Digital</span>
-                    <h2 class="section-title">Koleksi Tools & Sistem</h2>
-                    <p>hasil kerja cikgukb</p>
+                    <span class="section-kicker" data-i18n="catalog.kicker">Karya Digital</span>
+                    <h2 class="section-title" data-i18n="catalog.title">Koleksi Tools & Sistem</h2>
+                    <p data-i18n="catalog.subtitle">hasil kerja cikgukb</p>
                 </div>
                 <div class="catalog-toolbar" aria-label="Penapis katalog">
                     <label class="search-box" for="projectSearch">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input id="projectSearch" type="search" placeholder="Cari projek, kategori atau bahasa">
+                        <input id="projectSearch" type="search" placeholder="Cari projek, kategori atau bahasa" data-i18n-placeholder="catalog.search">
                     </label>
                     <div id="categoryFilters" class="filter-row" role="list" aria-label="Kategori projek"></div>
                 </div>
@@ -402,10 +406,10 @@
         <section id="cta" class="cta">
             <div class="container cta-container">
                 <div class="cta-content">
-                    <span class="section-kicker">Let's Build</span>
-                    <h2>Ready to scale your business?</h2>
-                    <p>Let's combine training, creativity, technology and strategy to move your business forward.</p>
-                    <a href="https://wa.me/60133815817" target="_blank" rel="noopener" class="btn-primary btn-large">Get In Touch</a>
+                    <span class="section-kicker" data-i18n="cta.kicker">Let's Build</span>
+                    <h2 data-i18n="cta.title">Ready to scale your business?</h2>
+                    <p data-i18n="cta.text">Let's combine training, creativity, technology and strategy to move your business forward.</p>
+                    <a href="https://wa.me/60133815817" target="_blank" rel="noopener" class="btn-primary btn-large" data-i18n="cta.button">Get In Touch</a>
                 </div>
                 <div class="cta-image">
                     <img src="assets/profile-fun.png" alt="Kamarul Bahareen excited pose">
@@ -418,7 +422,7 @@
         <div class="container footer-container">
             <div class="footer-col">
                 <h3>Kamarul Bahareen</h3>
-                <p>Trainer Marketing Consultant, Marketing & Visual Specialist based in Malaysia.</p>
+                <p data-i18n="footer.bio">Trainer Marketing Consultant, Marketing & Visual Specialist based in Malaysia.</p>
                 <div class="social-links">
                     <a href="https://github.com/cikgukb" target="_blank" rel="noopener" aria-label="GitHub">
                         <i class="fa-brands fa-github"></i>
@@ -429,7 +433,7 @@
                 </div>
             </div>
             <div class="footer-col">
-                <h3>Contact Info</h3>
+                <h3 data-i18n="footer.contact">Contact Info</h3>
                 <ul class="contact-list">
                     <li><i class="fa-solid fa-envelope"></i> kbcimb@gmail.com</li>
                     <li><i class="fa-solid fa-phone"></i> 013-3815817</li>
@@ -437,18 +441,18 @@
                 </ul>
             </div>
             <div class="footer-col">
-                <h3>Quick Links</h3>
+                <h3 data-i18n="footer.quick">Quick Links</h3>
                 <ul class="footer-nav">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#expertise">Expertise</a></li>
-                    <li><a href="#book">Buku</a></li>
-                    <li><a href="#videos">Video</a></li>
-                    <li><a href="#catalog">Katalog GitHub</a></li>
+                    <li><a href="#about" data-i18n="nav.about">About</a></li>
+                    <li><a href="#expertise" data-i18n="nav.expertise">Expertise</a></li>
+                    <li><a href="#book" data-i18n="nav.book">Buku</a></li>
+                    <li><a href="#videos" data-i18n="nav.video">Video</a></li>
+                    <li><a href="#catalog" data-i18n="nav.catalog">Katalog GitHub</a></li>
                 </ul>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2026 Kamarul Bahareen. All rights reserved.</p>
+            <p data-i18n="footer.copy">&copy; 2026 Kamarul Bahareen. All rights reserved.</p>
         </div>
     </footer>
 
