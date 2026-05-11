@@ -1,21 +1,30 @@
-# Kamarul Bahareen - Portfolio Website
+# CikguKB Portfolio Website
 
-This is a personal landing page/portfolio website for Kamarul Bahareen, built with HTML, CSS, and JavaScript.
+Static portfolio website for Kamarul Bahareen Bin Kamarudin.
 
-## How to View
-Simply open the `index.html` file in your web browser.
+## Purpose
 
-## Features
-- **Responsive Design**: Works on mobile, tablet, and desktop.
-- **Modern UI**: Clean layout with glassmorphism effects and smooth animations.
-- **Sections**:
-  - Hero (Introduction)
-  - About Me
-  - Expertise (Skills)
-  - Experience (Timeline)
-  - Contact Info
+This site presents CikguKB as a Trainer Marketing Consultant, Marketing & Visual Specialist, HRD Corp Accredited Certified Trainer, author, project builder, and creative video producer.
 
-## Customization
-- **Images**: Images are located in the `assets` folder.
-- **Styles**: All styles are in `style.css`.
-- **Content**: Edit `index.html` to update text.
+## Main Sections
+
+- Profile and biodata
+- Expertise
+- Career journey
+- Featured work
+- Book publication
+- Video collection
+- GitHub project catalog
+- Contact
+
+## Files
+
+- `index.html` - page structure
+- `style.css` - responsive visual design
+- `script.js` - mobile menu and GitHub catalog search/filter
+- `assets/` - profile images, portfolio thumbnails, video thumbnails, book image, and resume PDF
+- `CNAME` - custom domain configuration for `cikgukb.my`
+
+## View Locally
+
+Open `index.html` in a browser.
