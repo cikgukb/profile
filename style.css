@@ -99,6 +99,34 @@ a {
     color: var(--brand-dark);
 }
 
+.language-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    padding: 3px;
+}
+
+.lang-btn {
+    min-width: 38px;
+    min-height: 30px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.lang-btn.active {
+    background: var(--brand);
+    color: #fff;
+}
+
 .hamburger {
     display: none;
     width: 44px;
@@ -896,6 +924,10 @@ section {
         display: block;
         padding: 13px 0;
         font-size: 0.94rem;
+    }
+
+    .language-toggle {
+        margin-left: auto;
     }
 
     .hero-container,
