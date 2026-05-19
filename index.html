@@ -13,7 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=20260511-bw">
+    <link rel="stylesheet" href="style.css?v=20260519-promptbuilder-hotfix">
 </head>
 
 <body>
@@ -27,6 +27,7 @@
                 <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
                 <li><a href="#book" data-i18n="nav.book">Buku</a></li>
                 <li><a href="#videos" data-i18n="nav.video">Video</a></li>
+                <li><a href="#prompt-builder" data-i18n="nav.builder">Prompt Builder</a></li>
                 <li><a href="#catalog" data-i18n="nav.catalog">Katalog GitHub</a></li>
                 <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
             </ul>
@@ -54,6 +55,7 @@
                 </p>
                 <div class="hero-btns">
                     <a href="#contact" class="btn-primary" data-i18n="hero.cta">Let's Talk</a>
+                    <a href="#prompt-builder" class="btn-secondary" data-i18n="hero.builder">Buka Prompt Builder</a>
                     <a href="assets/resume/kamarul-bahareen-trainer-profile-2025.pdf" class="btn-secondary" target="_blank"
                         rel="noopener" data-i18n="hero.resume">Download Resume</a>
                 </div>
@@ -111,6 +113,49 @@
                             target="_blank" rel="noopener" data-i18n="about.resume">View Resume</a>
                         <a href="#catalog" class="btn-secondary" data-i18n="about.work">Lihat Hasil Kerja</a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="prompt-builder" class="prompt-builder-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-kicker" data-i18n="builder.kicker">AI Video Prompt Builder</span>
+                    <h2 class="section-title" data-i18n="builder.title">Basic & Pro Prompt Builder</h2>
+                    <p data-i18n="builder.subtitle">Isi borang ringkas, kemudian terus dapat prompt universal yang boleh guna di kebanyakan platform AI video.</p>
+                </div>
+                <div class="prompt-info">
+                    <p data-i18n="builder.info">Isi borang di bawah dan klik “Jana Prompt”. Hasil prompt akan muncul terus di kotak Basic dan Pro.</p>
+                </div>
+                <form id="promptForm" class="prompt-form">
+                    <div class="prompt-grid">
+                        <label><span data-i18n="builder.goal">Tujuan video</span><input name="goal" required placeholder="Iklan produk skincare"></label>
+                        <label><span data-i18n="builder.subject">Subjek utama</span><input name="subject" required placeholder="Usahawan wanita Melayu"></label>
+                        <label><span data-i18n="builder.action">Aksi utama</span><input name="action" required placeholder="terangkan manfaat produk"></label>
+                        <label><span data-i18n="builder.scene">Lokasi & suasana</span><input name="scene" required placeholder="bilik mandi moden, golden hour"></label>
+                        <label><span data-i18n="builder.style">Gaya visual</span><input name="style" required placeholder="cinematic realistic"></label>
+                        <label><span data-i18n="builder.camera">Gerakan kamera</span><input name="camera" required placeholder="medium close-up, slow dolly-in"></label>
+                        <label><span data-i18n="builder.lighting">Pencahayaan</span><input name="lighting" required placeholder="soft warm lighting"></label>
+                        <label><span data-i18n="builder.mood">Mood & warna</span><input name="mood" required placeholder="confident, friendly, warm tone"></label>
+                        <label><span data-i18n="builder.duration">Durasi</span><input name="duration" required placeholder="8 seconds"></label>
+                        <label><span data-i18n="builder.dialogue">Dialog/teks (optional)</span><input name="dialogue" placeholder="Kulit sihat bermula hari ini"></label>
+                    </div>
+                    <div class="prompt-actions">
+                        <button type="submit" class="btn-primary" data-i18n="builder.generate">Jana Prompt</button>
+                        <button type="button" id="resetPrompt" class="btn-secondary" data-i18n="builder.reset">Reset</button>
+                    </div>
+                </form>
+                <div class="prompt-output">
+                    <article>
+                        <h3 data-i18n="builder.basic">Basic Prompt</h3>
+                        <textarea id="basicPrompt" readonly data-i18n-placeholder="builder.emptyBasic" placeholder="Belum ada output. Klik Jana Prompt untuk lihat Basic Prompt."></textarea>
+                        <button type="button" class="btn-view copy-btn" data-target="basicPrompt" data-i18n="builder.copy">Copy</button>
+                    </article>
+                    <article>
+                        <h3 data-i18n="builder.pro">Pro Prompt</h3>
+                        <textarea id="proPrompt" readonly data-i18n-placeholder="builder.emptyPro" placeholder="Belum ada output. Klik Jana Prompt untuk lihat Pro Prompt."></textarea>
+                        <button type="button" class="btn-view copy-btn" data-target="proPrompt" data-i18n="builder.copy">Copy</button>
+                    </article>
                 </div>
             </div>
         </section>
@@ -456,7 +501,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=20260511-langfix"></script>
+    <script src="script.js?v=20260519-promptbuilder-hotfix"></script>
 </body>
 
 </html>

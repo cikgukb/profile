@@ -255,6 +255,80 @@ a {
     margin-top: 36px;
 }
 
+.prompt-builder-section {
+    padding: 88px 0;
+    background: #fff;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.prompt-form {
+    margin-top: 28px;
+}
+
+.prompt-info {
+    margin-top: 14px;
+    border: 1px dashed var(--line);
+    background: #fafafa;
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+
+.prompt-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.prompt-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: 700;
+    font-size: 0.88rem;
+}
+
+.prompt-grid input {
+    min-height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font: inherit;
+}
+
+.prompt-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.prompt-output {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.prompt-output article {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px;
+    background: var(--surface);
+}
+
+.prompt-output textarea {
+    width: 100%;
+    min-height: 180px;
+    margin: 8px 0 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px;
+    font: inherit;
+}
+
 .stat-item {
     border-top: 2px solid var(--ink);
     padding-top: 12px;
@@ -958,6 +1032,11 @@ section {
     }
 
     .catalog-toolbar {
+        grid-template-columns: 1fr;
+    }
+
+    .prompt-grid,
+    .prompt-output {
         grid-template-columns: 1fr;
     }
 

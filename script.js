@@ -58,11 +58,13 @@ const translations = {
         'nav.experience': 'Pengalaman',
         'nav.book': 'Buku',
         'nav.video': 'Video',
+        'nav.builder': 'Prompt Builder',
         'nav.catalog': 'Katalog Projek',
         'nav.contact': 'Hubungi',
         'hero.title': 'Hai, saya <span class="highlight">Kamarul Bahareen</span>',
         'hero.text': 'Trainer Marketing Consultant, Marketing & Visual Specialist, penulis buku dan pembina sistem digital untuk usahawan. Saya gabungkan latihan, strategi pemasaran, multimedia dan AI tools untuk bantu SME bergerak lebih laju.',
         'hero.cta': 'Hubungi Saya',
+        'hero.builder': 'Buka Prompt Builder',
         'hero.resume': 'Muat Turun Resume',
         'stats.experience': 'Tahun Pengalaman',
         'stats.builds': 'Projek GitHub',
@@ -116,6 +118,27 @@ const translations = {
         'catalog.title': 'Koleksi Tools & Sistem',
         'catalog.subtitle': 'hasil kerja cikgukb',
         'catalog.search': 'Cari projek, kategori atau bahasa',
+        'builder.kicker': 'AI Video Prompt Builder',
+        'builder.title': 'Prompt Builder Basic & Pro',
+        'builder.subtitle': 'Isi maklumat ringkas dan jana prompt universal untuk kebanyakan platform AI video.',
+        'builder.info': 'Isi borang di bawah dan klik “Jana Prompt”. Hasil prompt akan muncul terus di kotak Basic dan Pro.',
+        'builder.goal': 'Tujuan video',
+        'builder.subject': 'Subjek utama',
+        'builder.action': 'Aksi utama',
+        'builder.scene': 'Lokasi & suasana',
+        'builder.style': 'Gaya visual',
+        'builder.camera': 'Gerakan kamera',
+        'builder.lighting': 'Pencahayaan',
+        'builder.mood': 'Mood & warna',
+        'builder.duration': 'Durasi',
+        'builder.dialogue': 'Dialog/teks (optional)',
+        'builder.generate': 'Jana Prompt',
+        'builder.reset': 'Reset',
+        'builder.basic': 'Basic Prompt',
+        'builder.pro': 'Pro Prompt',
+        'builder.copy': 'Copy',
+        'builder.emptyBasic': 'Belum ada output. Klik Jana Prompt untuk lihat Basic Prompt.',
+        'builder.emptyPro': 'Belum ada output. Klik Jana Prompt untuk lihat Pro Prompt.',
         'cta.kicker': 'Jom Bina',
         'cta.title': 'Sedia untuk kembangkan bisnes anda?',
         'cta.text': 'Mari gabungkan latihan, kreativiti, teknologi dan strategi untuk gerakkan bisnes anda ke depan.',
@@ -132,11 +155,13 @@ const translations = {
         'nav.experience': 'Experience',
         'nav.book': 'Book',
         'nav.video': 'Videos',
+        'nav.builder': 'Prompt Builder',
         'nav.catalog': 'Project Catalog',
         'nav.contact': 'Contact',
         'hero.title': 'Hi, I\'m <span class="highlight">Kamarul Bahareen</span>',
         'hero.text': 'Trainer Marketing Consultant, Marketing & Visual Specialist, author and digital systems builder for entrepreneurs. I combine training, marketing strategy, multimedia and AI tools to help SMEs move faster.',
         'hero.cta': 'Let\'s Talk',
+        'hero.builder': 'Open Prompt Builder',
         'hero.resume': 'Download Resume',
         'stats.experience': 'Years Experience',
         'stats.builds': 'GitHub Builds',
@@ -190,6 +215,27 @@ const translations = {
         'catalog.title': 'Tools & Systems Collection',
         'catalog.subtitle': 'cikgukb work archive',
         'catalog.search': 'Search project, category or language',
+        'builder.kicker': 'AI Video Prompt Builder',
+        'builder.title': 'Basic & Pro Prompt Builder',
+        'builder.subtitle': 'Fill in the simple form and generate universal prompts for most AI video platforms.',
+        'builder.info': 'Complete the form below and click “Generate Prompt”. Your prompt will appear in the Basic and Pro boxes.',
+        'builder.goal': 'Video goal',
+        'builder.subject': 'Main subject',
+        'builder.action': 'Main action',
+        'builder.scene': 'Scene & location',
+        'builder.style': 'Visual style',
+        'builder.camera': 'Camera movement',
+        'builder.lighting': 'Lighting',
+        'builder.mood': 'Mood & color',
+        'builder.duration': 'Duration',
+        'builder.dialogue': 'Dialogue/text (optional)',
+        'builder.generate': 'Generate Prompt',
+        'builder.reset': 'Reset',
+        'builder.basic': 'Basic Prompt',
+        'builder.pro': 'Pro Prompt',
+        'builder.copy': 'Copy',
+        'builder.emptyBasic': 'No output yet. Click Generate Prompt to see the Basic Prompt.',
+        'builder.emptyPro': 'No output yet. Click Generate Prompt to see the Pro Prompt.',
         'cta.kicker': 'Let\'s Build',
         'cta.title': 'Ready to scale your business?',
         'cta.text': 'Let\'s combine training, creativity, technology and strategy to move your business forward.',
@@ -387,6 +433,68 @@ function initMobileMenu() {
     });
 }
 
+function buildPrompts(payload) {
+    const dialogueLine = payload.dialogue ? ` Dialogue/text: "${payload.dialogue}".` : '';
+    const basic = `Create a ${payload.duration} AI video for ${payload.goal}. Subject: ${payload.subject}. Action: ${payload.action}. Scene: ${payload.scene}. Style: ${payload.style}. Camera: ${payload.camera}. Lighting: ${payload.lighting}. Mood: ${payload.mood}.${dialogueLine} High quality, clean details. Negative prompt: blurry face, distorted hands, watermark, text artifacts, flicker.`;
+    const pro = `Cinematic ${payload.duration} commercial video for ${payload.goal}. Main subject: ${payload.subject}. The subject ${payload.action} in ${payload.scene}. Visual direction: ${payload.style}, premium composition, natural motion, realistic textures. Camera language: ${payload.camera}, smooth motion, strong depth and foreground/background separation. Lighting design: ${payload.lighting}. Emotional tone and grade: ${payload.mood}.${dialogueLine} Output settings: ultra-detailed, 4k look, high dynamic range, coherent continuity across frames. Negative prompt: low-res, blur, noise, overexposure, underexposure, deformed anatomy, extra fingers, warped face, watermark, subtitles glitch, logo artifacts, jitter, flicker.`;
+    return { basic, pro };
+}
+
+function initPromptBuilder() {
+    const form = document.getElementById('promptForm');
+    const resetBtn = document.getElementById('resetPrompt');
+    const basicOutput = document.getElementById('basicPrompt');
+    const proOutput = document.getElementById('proPrompt');
+    if (!form || !basicOutput || !proOutput) return;
+
+    form.addEventListener('submit', event => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData.entries());
+        const prompts = buildPrompts(payload);
+        basicOutput.value = prompts.basic;
+        proOutput.value = prompts.pro;
+        localStorage.setItem('videoPromptDraft', JSON.stringify(payload));
+    });
+
+    resetBtn?.addEventListener('click', () => {
+        form.reset();
+        basicOutput.value = '';
+        proOutput.value = '';
+        localStorage.removeItem('videoPromptDraft');
+    });
+
+    try {
+        const saved = localStorage.getItem('videoPromptDraft');
+        if (saved) {
+            const payload = JSON.parse(saved);
+            Object.entries(payload).forEach(([key, value]) => {
+                const field = form.elements.namedItem(key);
+                if (field) field.value = value;
+            });
+        }
+    } catch (error) {
+        // Ignore localStorage parsing issues.
+    }
+
+    document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', async () => {
+            const target = document.getElementById(button.dataset.target);
+            if (!target?.value) return;
+            try {
+                await navigator.clipboard.writeText(target.value);
+                button.textContent = currentLang === 'en' ? 'Copied!' : 'Dah Copy!';
+                setTimeout(() => {
+                    button.textContent = t('builder.copy');
+                }, 1200);
+            } catch (error) {
+                target.select();
+                document.execCommand('copy');
+            }
+        });
+    });
+}
+
 function initActiveLinks() {
     const sections = [...document.querySelectorAll('header[id], section[id], footer[id]')];
     const links = [...document.querySelectorAll('.nav-links a')];
@@ -409,5 +517,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initActiveLinks();
     initLanguageToggle();
     initSearch();
+    initPromptBuilder();
     applyLanguage(currentLang);
 });
