@@ -405,8 +405,7 @@ section {
 
 .expertise-card,
 .portfolio-card,
-.video-card,
-.project-card {
+.video-card {
     border: 1px solid var(--line);
     border-radius: var(--radius);
     background: var(--surface);
@@ -426,16 +425,14 @@ section {
 
 .expertise-card h3,
 .portfolio-card h3,
-.video-card h3,
-.project-card h3 {
+.video-card h3 {
     font-family: 'Outfit', Arial, sans-serif;
     line-height: 1.18;
 }
 
 .expertise-card p,
 .portfolio-card p,
-.video-card p,
-.project-card p {
+.video-card p {
     color: var(--muted);
     margin-top: 8px;
     font-size: 0.95rem;
@@ -725,8 +722,80 @@ section {
 }
 
 .project-card {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
     display: grid;
     grid-template-rows: auto 1fr;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    border-color: var(--brand);
+}
+
+.project-card h3 {
+    font-family: 'Outfit', Arial, sans-serif;
+    line-height: 1.18;
+}
+
+.project-card p {
+    color: var(--muted);
+    margin-top: 8px;
+    font-size: 0.95rem;
+}
+
+.project-title-link {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.project-title-link:hover {
+    color: var(--brand-dark);
+}
+
+/* Pseudo-element to make the entire card area clickable */
+.project-title-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* Ensure interactive elements and tag/status items sit above the overlay link */
+.project-links,
+.project-kicker,
+.project-status {
+    position: relative;
+    z-index: 2;
+}
+
+.project-links a {
+    position: relative;
+    z-index: 2;
+}
+
+.project-visual img {
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-visual img {
+    transform: scale(1.05);
+}
+
+.project-initial {
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-initial {
+    transform: scale(1.08);
 }
 
 .project-visual {
