@@ -199,6 +199,80 @@ const translations = {
         'footer.contact': 'Contact Info',
         'footer.quick': 'Quick Links',
         'footer.copy': '&copy; 2026 Kamarul Bahareen. All rights reserved.'
+    },
+    zh: {
+        'nav.home': '首页',
+        'nav.about': '关于我',
+        'nav.expertise': '专业领域',
+        'nav.experience': '工作经历',
+        'nav.book': '著作',
+        'nav.video': '视频',
+        'nav.catalog': '项目目录',
+        'nav.contact': '联系',
+        'hero.title': '您好，我是 <span class="highlight">Kamarul Bahareen</span>',
+        'hero.text': '营销顾问培训师、营销与视觉专家、图书作者及数字化系统开发者。我结合培训、营销战略、多媒体以及 AI 工具，帮助中小企业快速发展。',
+        'hero.cta': '联系我',
+        'hero.resume': '下载简历',
+        'stats.experience': '年以上工作经验',
+        'stats.builds': 'GitHub 项目数',
+        'stats.videos': '视频作品数',
+        'about.kicker': '个人详情',
+        'about.title': '关于我',
+        'about.p1': '我是 <strong>Kamarul Bahareen Bin Kamarudin</strong>，<strong>KB Beyond Creative Sdn Bhd</strong> 的营销顾问培训师。我的工作重心在于数字营销培训、多媒体、内容创作、AI 营销以及帮助企业家清晰行动的简易系统开发。',
+        'about.p2': '我拥有技术与系统背景，随后拓展至销售、数字营销、摄影、摄像、WordPress 设计以及用于现代营销的 ChatGPT、Midjourney 和 GenAI 等 AI 工具。',
+        'about.current': '<strong>当前职位：</strong> KB Beyond Creative Sdn Bhd 营销顾问培训师',
+        'about.certified': '<strong>专业资质：</strong> HRD Corp 认证培训师 #7703',
+        'about.education': '<strong>教育背景：</strong> 马来西亚工艺大学 (UTM) 计算机科学文凭',
+        'about.resume': '查看简历',
+        'about.work': '查看作品',
+        'expertise.kicker': '专业能力',
+        'expertise.title': '我的专长',
+        'expertise.subtitle': '融合技术能力、培训经验与创意执行。',
+        'expertise.digital.title': '数字营销',
+        'expertise.digital.p': 'Facebook、Google Ads、TikTok 营销、SEO 及数据驱动的活动策划。',
+        'expertise.ai.title': '生成式 AI',
+        'expertise.ai.p': 'ChatGPT、Midjourney、GenAI、AI 撰稿、提示词系统及营销自动化。',
+        'expertise.training.title': '培训与指导',
+        'expertise.training.p': 'HRD Corp 授权的 AI 营销、品牌建设、数字业务和中小企业增长培训。',
+        'expertise.visual.title': '摄影与摄像',
+        'expertise.visual.p': '产品摄影、视频内容营销、直播与创意指导。',
+        'expertise.web.title': '网页与工具',
+        'expertise.web.p': 'WordPress 设计、HTML/CSS/JS 工具、落地页与轻量级业务系统。',
+        'expertise.packaging.title': '包装与出口准备',
+        'expertise.packaging.p': '创新包装、创意品牌、物流标签与出口准备。',
+        'experience.kicker': '职业历程',
+        'experience.title': '工作经历',
+        'experience.subtitle': '在技术、销售领导力、营销和培训领域拥有超过二十年的经验。',
+        'experience.current.p': '为企业家提供数字营销、多媒体内容、AI 营销和企业数字化方面的实用培训与咨询。',
+        'experience.agency.p': '领导销售活动、代理机构发展以及团队业绩。',
+        'experience.backup.p': '管理备份、恢复及数据存储技术运营。',
+        'experience.system.p': '负责 IT 基础设施、系统支持和技术实施。',
+        'experience.technical.p': '在技术执行与制造支持方面开启职业生涯。',
+        'book.kicker': '已出版图书',
+        'book.text': '一本面向希望将 ChatGPT 作为日常商业助手的企业家的实体书。内容帮助读者为商业画布 (BMC)、商业提案、文案撰写和其他营销任务构建提示词。',
+        'book.point1': '商业用途提示词指南',
+        'book.point2': '关于商业画布 (BMC)、提案及文案的指令示例',
+        'book.point3': '提供 ChatGPT 课堂视频的二维码，以获得更深入的体验',
+        'book.point4': '涉及在歌曲、图像、视频和创意内容中应用 AI',
+        'book.priceLabel': '产品页面信息',
+        'book.priceNote': '促销价格从 RM49 降至 RM30，具体以卖家页面变动为准。',
+        'book.cta': '预订图书',
+        'videos.kicker': '视频作品',
+        'videos.title': '视频合集',
+        'videos.subtitle': '视频剪辑、导演及创意视频实验成果。',
+        'videos.watch': '在 Facebook 观看',
+        'catalog.kicker': '数字作品',
+        'catalog.title': '工具与系统合集',
+        'catalog.subtitle': 'cikgukb 作品存档',
+        'catalog.search': '搜索项目、类别或语言',
+        'cta.kicker': '携手构建',
+        'cta.title': '准备好扩展您的业务了吗？',
+        'cta.text': '让我们结合培训、创意、技术和战略，推动您的业务向前迈进。',
+        'cta.button': '联系我',
+        'footer.bio': '驻马来西亚的营销顾问培训师及营销与视觉专家。',
+        'footer.contact': '联系信息',
+        'footer.quick': '快速链接',
+        'footer.copy': '&copy; 2026 Kamarul Bahareen. 保留所有权利。'
     }
 };
 
@@ -222,6 +296,16 @@ const categoryLabels = {
         'Website & Client': 'Websites & Clients',
         'Interactive Apps': 'Interactive Apps',
         'Games & Simulators': 'Games & Simulators'
+    },
+    zh: {
+        'Semua': '全部',
+        'AI & Prompt': 'AI 与提示词',
+        'Marketing & Sales': '营销与销售',
+        'Automation': '自动化',
+        'Operations': '运营与操作',
+        'Website & Client': '网站与客户项目',
+        'Interactive Apps': '互动应用',
+        'Games & Simulators': '游戏与模拟器'
     }
 };
 
@@ -231,7 +315,9 @@ let currentLang = getSavedLanguage();
 
 function getSavedLanguage() {
     try {
-        return localStorage.getItem('siteLang') === 'en' ? 'en' : 'ms';
+        const saved = localStorage.getItem('siteLang');
+        if (saved === 'en' || saved === 'zh') return saved;
+        return 'ms';
     } catch (error) {
         return 'ms';
     }
@@ -264,7 +350,7 @@ function categoryLabel(category) {
 }
 
 function applyLanguage(lang) {
-    currentLang = lang === 'en' ? 'en' : 'ms';
+    currentLang = (lang === 'en' || lang === 'zh') ? lang : 'ms';
     saveLanguage(currentLang);
     document.documentElement.lang = currentLang;
 
@@ -323,16 +409,27 @@ function renderProjects() {
     if (!grid || !resultCount) return;
 
     const visibleProjects = projects.filter(matchesProject);
-    resultCount.textContent = currentLang === 'en'
-        ? `${visibleProjects.length} projects shown`
-        : `${visibleProjects.length} projek dipaparkan`;
+    if (currentLang === 'en') {
+        resultCount.textContent = `${visibleProjects.length} projects shown`;
+    } else if (currentLang === 'zh') {
+        resultCount.textContent = `已显示 ${visibleProjects.length} 个项目`;
+    } else {
+        resultCount.textContent = `${visibleProjects.length} projek dipaparkan`;
+    }
 
     grid.innerHTML = visibleProjects.map(project => {
         const visual = project.image
             ? `<img src="${project.image}" alt="Preview ${project.title}">`
             : `<span class="project-initial">${projectInitial(project.title)}</span>`;
+        
+        let demoText = 'Demo';
+        if (currentLang === 'en') {
+            demoText = 'Live Demo';
+        } else if (currentLang === 'zh') {
+            demoText = '在线演示';
+        }
         const demoLink = project.demo
-            ? `<a href="${project.demo}" target="_blank" rel="noopener" class="demo-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${currentLang === 'en' ? 'Live Demo' : 'Demo'}</a>`
+            ? `<a href="${project.demo}" target="_blank" rel="noopener" class="demo-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${demoText}</a>`
             : '';
 
         return `
