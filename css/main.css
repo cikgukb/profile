@@ -113,6 +113,10 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 
 .mini-title { color: var(--ink-3); margin-bottom: var(--s-4); }
 
+/* kicker on dark sections needs the light blue */
+.framework .kicker, .training .kicker, .contact .kicker { color: #8FA6E8; }
+.framework .kicker::before, .training .kicker::before, .contact .kicker::before { background: #8FA6E8; }
+
 /* blueprint grid backdrop (dark sections) */
 .blueprint-grid {
     position: absolute; inset: 0; pointer-events: none;
@@ -303,7 +307,10 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 
 /* ---------- 03 SOLUSI ---------- */
 .solutions { background: var(--paper-2); }
-.sol-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
+/* 5 kad: baris 1 = 3 kad (span 2), baris 2 = 2 kad (span 3) */
+.sol-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--s-5); }
+.sol-card { grid-column: span 2; }
+.sol-card:nth-child(4), .sol-card:nth-child(5) { grid-column: span 3; }
 .sol-card {
     background: var(--white); border: 1px solid var(--line);
     padding: var(--s-6); border-radius: var(--radius-lg);
@@ -314,7 +321,6 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 .sol-num { color: var(--blue); }
 .sol-card h3 { font-size: var(--text-h3); }
 .sol-card p { color: var(--ink-2); font-size: var(--text-sm); }
-.sol-grid .sol-card:nth-last-child(-n+2) { grid-column: span 1; }
 
 /* ---------- 04 PROJEK ---------- */
 .featured-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-6); margin-bottom: var(--s-8); }
@@ -528,7 +534,8 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 
 /* ---------- FOOTER ---------- */
 .footer { background: #0E1116; color: #B8BDC4; padding-top: var(--s-7); }
-.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: var(--s-6); padding-bottom: var(--s-6); }
+.footer-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1fr); gap: var(--s-6); padding-bottom: var(--s-6); }
+.footer-col a { overflow-wrap: anywhere; }
 .footer .logo { color: var(--paper); margin-bottom: var(--s-3); }
 .footer-brand p { font-size: var(--text-sm); max-width: 34ch; }
 .footer-col ul { display: flex; flex-direction: column; gap: var(--s-2); }
@@ -573,8 +580,9 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 .case-links { display: flex; flex-wrap: wrap; gap: var(--s-4); margin-top: var(--s-5); align-items: center; }
 
 /* ---------- 7. MOTION ---------- */
-.reveal { opacity: 0; transform: translateY(26px); transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
-.reveal.in { opacity: 1; transform: none; }
+/* keadaan tersembunyi hanya apabila JS aktif (kelas .js pada <html>) */
+.js .reveal { opacity: 0; transform: translateY(26px); transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
+.js .reveal.in { opacity: 1; transform: none; }
 
 .frame-lines .draw { stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 1.6s var(--ease) 0.3s forwards; }
 @keyframes draw { to { stroke-dashoffset: 0; } }
@@ -602,6 +610,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
     .fw-grid { grid-template-columns: repeat(2, 1fr); }
     .fw-step::after { display: none; }
     .sol-grid { grid-template-columns: repeat(2, 1fr); }
+    .sol-card, .sol-card:nth-child(4), .sol-card:nth-child(5) { grid-column: span 1; }
     .archive-grid { grid-template-columns: repeat(2, 1fr); }
     .cred-strip { grid-template-columns: repeat(3, 1fr); row-gap: var(--s-5); }
 }
@@ -626,6 +635,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 
     .about-grid, .train-grid, .book-grid, .contact-grid { grid-template-columns: 1fr; }
     .featured-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: var(--s-5); }
     .book-media { max-width: 440px; }
     .contact-figure { display: none; }
     .section { padding-block: var(--s-8); }
