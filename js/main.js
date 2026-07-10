@@ -61,7 +61,6 @@
 
     /* ---------- ikon SVG ---------- */
     const ICON_EXT = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    const ICON_GH = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.8a10.2 10.2 0 0 0-3.2 19.9c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.3-.3-4.7-1.1-4.7-5a4 4 0 0 1 1-2.8 3.7 3.7 0 0 1 .1-2.7s.9-.3 2.8 1a9.7 9.7 0 0 1 5.1 0c2-1.3 2.8-1 2.8-1 .5 1.3.2 2.4.1 2.7a4 4 0 0 1 1 2.8c0 3.9-2.4 4.7-4.7 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10.2 10.2 0 0 0 12 1.8Z"/></svg>';
 
     /* ---------- projek pilihan ---------- */
     function statusLabel(status) {
@@ -94,7 +93,6 @@
                 '<div class="feat-links">' +
                 '<button type="button" class="case-btn" data-case="' + i + '">' + t('proj.case') + '</button>' +
                 demo +
-                '<a href="' + esc(p.repo) + '" target="_blank" rel="noopener">' + t('proj.repo') + ' ' + ICON_GH + '</a>' +
                 '</div></div></article>';
         }).join('');
 
@@ -133,7 +131,6 @@
             caseSection(t('case.value'), '<p>' + esc(loc(cs.value)) + '</p>') +
             caseSection(t('case.status'), '<p>' + esc(loc(cs.statusNote)) + '</p>') +
             '<div class="case-links">' + demo +
-            '<a class="btn btn-line" href="' + esc(p.repo) + '" target="_blank" rel="noopener">' + t('proj.repo') + '</a>' +
             '<a class="text-link" href="#hubungi" data-close-goto>' + t('case.cta') + '</a></div>';
 
         lastFocus = document.activeElement;
@@ -216,9 +213,8 @@
                 '<span class="tech-tag">' + esc(p.tech) + '</span></div>' +
                 '<h4>' + esc(p.name) + '</h4>' +
                 '<p>' + esc(loc(p.desc)) + '</p>' +
-                '<div class="arch-links">' + demo +
-                '<a href="' + esc(p.repo) + '" target="_blank" rel="noopener">GitHub ' + ICON_GH + '</a>' +
-                '</div></div></article>';
+                (demo ? '<div class="arch-links">' + demo + '</div>' : '') +
+                '</div></article>';
         }).join('');
     }
 
