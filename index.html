@@ -4,460 +4,575 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamarul Bahareen | CikguKB Portfolio</title>
+    <title>Kamarul Bahareen (Cikgu KB) — Arkitek Marketing Solutions</title>
     <meta name="description"
-        content="Portfolio Kamarul Bahareen Bin Kamarudin, Trainer Marketing Consultant, Marketing & Visual Specialist, HRD Corp Accredited Certified Trainer, penulis buku, pembina tools, dan penerbit video kreatif.">
+        content="Kamarul Bahareen (Cikgu KB) — Arkitek Marketing Solutions. Membantu organisasi dan usahawan merancang strategi, membina sistem digital dan menggunakan AI untuk menggerakkan pemasaran dengan lebih tersusun.">
+    <meta name="author" content="Kamarul Bahareen Bin Kamarudin">
+    <link rel="canonical" href="https://cikgukb.my/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cikgu KB — Arkitek Marketing Solutions">
+    <meta property="og:title" content="Kamarul Bahareen (Cikgu KB) — Arkitek Marketing Solutions">
+    <meta property="og:description"
+        content="Merancang strategi. Membina sistem. Menggerakkan pemasaran. Latihan AI, konsultasi pemasaran dan pembangunan sistem digital untuk organisasi dan usahawan Malaysia.">
+    <meta property="og:url" content="https://cikgukb.my/">
+    <meta property="og:image" content="https://cikgukb.my/assets/og/og-cover.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="ms_MY">
+    <meta property="og:locale:alternate" content="en_MY">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kamarul Bahareen (Cikgu KB) — Arkitek Marketing Solutions">
+    <meta name="twitter:description"
+        content="Merancang strategi. Membina sistem. Menggerakkan pemasaran. Latihan AI, konsultasi pemasaran dan pembangunan sistem digital.">
+    <meta name="twitter:image" content="https://cikgukb.my/assets/og/og-cover.jpg">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+    <meta name="theme-color" content="#14181D">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=20260511-bw">
+
+    <link rel="preload" as="image" href="assets/img/portrait-hero.webp" type="image/webp">
+    <link rel="stylesheet" href="css/main.css?v=20260710">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Person",
+                "@id": "https://cikgukb.my/#person",
+                "name": "Kamarul Bahareen Bin Kamarudin",
+                "alternateName": "Cikgu KB",
+                "url": "https://cikgukb.my/",
+                "image": "https://cikgukb.my/assets/img/portrait-hero.jpg",
+                "jobTitle": "Trainer Marketing Consultant",
+                "description": "Arkitek Marketing Solutions — merancang strategi pemasaran, membina sistem digital dan melatih pasukan menggunakan AI.",
+                "worksFor": { "@type": "Organization", "name": "KB Beyond Creative Sdn Bhd" },
+                "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universiti Teknologi Malaysia" },
+                "knowsAbout": ["Digital Marketing", "AI Marketing", "Marketing Automation", "Corporate Training", "Web Application Development"],
+                "email": "mailto:kbcimb@gmail.com",
+                "telephone": "+60133815817",
+                "nationality": "Malaysia",
+                "sameAs": ["https://github.com/cikgukb"]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://cikgukb.my/#website",
+                "url": "https://cikgukb.my/",
+                "name": "Cikgu KB — Arkitek Marketing Solutions",
+                "inLanguage": ["ms", "en"],
+                "publisher": { "@id": "https://cikgukb.my/#person" }
+            },
+            {
+                "@type": "Service",
+                "serviceType": "Marketing strategy, AI & automation solutions, digital product development, corporate training",
+                "provider": { "@id": "https://cikgukb.my/#person" },
+                "areaServed": { "@type": "Country", "name": "Malaysia" },
+                "availableLanguage": ["Malay", "English"]
+            },
+            {
+                "@type": "Book",
+                "name": "GPT 4 Business (ChatGPT4Business)",
+                "author": [
+                    { "@id": "https://cikgukb.my/#person" },
+                    { "@type": "Person", "name": "Coach Zul" }
+                ],
+                "inLanguage": "ms",
+                "bookFormat": "https://schema.org/Hardcover",
+                "url": "https://coachzul.com/shop/buku-chatgpt4business/"
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#home" class="logo">cikgukb<span class="dot">.</span></a>
-            <ul class="nav-links">
-                <li><a href="#home" data-i18n="nav.home">Home</a></li>
-                <li><a href="#about" data-i18n="nav.about">About</a></li>
-                <li><a href="#expertise" data-i18n="nav.expertise">Expertise</a></li>
-                <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
-                <li><a href="#book" data-i18n="nav.book">Buku</a></li>
-                <li><a href="#videos" data-i18n="nav.video">Video</a></li>
-                <li><a href="#catalog" data-i18n="nav.catalog">Katalog GitHub</a></li>
-                <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    <a class="skip-link" href="#tentang">Terus ke kandungan</a>
+
+    <!-- ===================== NAV ===================== -->
+    <nav class="navbar" aria-label="Navigasi utama">
+        <div class="container nav-inner">
+            <a href="#utama" class="logo" aria-label="cikgukb.my — kembali ke atas">
+                <span class="logo-mark" aria-hidden="true"></span>cikgukb<span class="logo-dot">.my</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#tentang" data-i18n="nav.about">Tentang</a></li>
+                <li><a href="#rangka" data-i18n="nav.framework">Rangka Kerja</a></li>
+                <li><a href="#solusi" data-i18n="nav.solutions">Solusi</a></li>
+                <li><a href="#projek" data-i18n="nav.projects">Projek</a></li>
+                <li><a href="#latihan" data-i18n="nav.training">Latihan</a></li>
+                <li><a href="#buku" data-i18n="nav.book">Buku & Media</a></li>
+                <li><a href="#hubungi" class="nav-cta" data-i18n="nav.contact">Hubungi</a></li>
             </ul>
-            <div class="language-toggle" aria-label="Tukar bahasa">
-                <button type="button" class="lang-btn active" data-lang="ms">BM</button>
-                <button type="button" class="lang-btn" data-lang="en">EN</button>
-                <button type="button" class="lang-btn" data-lang="zh">中文</button>
+            <div class="nav-right">
+                <div class="lang-toggle" role="group" aria-label="Bahasa">
+                    <button type="button" class="lang-btn active" data-lang="ms" aria-pressed="true">BM</button>
+                    <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+                </div>
+                <button class="hamburger" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="navLinks">
+                    <span></span><span></span>
+                </button>
             </div>
-            <button class="hamburger" type="button" aria-label="Buka menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </nav>
 
-    <header id="home" class="hero">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <span class="badge">HRD Corp Accredited Certified Trainer</span>
-                <h1 data-i18n="hero.title">Hi, I'm <span class="highlight">Kamarul Bahareen</span></h1>
-                <p class="hero-text" data-i18n="hero.text">
-                    Trainer Marketing Consultant, Marketing & Visual Specialist, penulis buku dan pembina sistem digital
-                    untuk usahawan. Saya gabungkan latihan, strategi pemasaran, multimedia dan AI tools untuk bantu SME
-                    bergerak lebih laju.
-                </p>
-                <div class="hero-btns">
-                    <a href="#contact" class="btn-primary" data-i18n="hero.cta">Let's Talk</a>
-                    <a href="assets/resume/kamarul-bahareen-trainer-profile-2025.pdf" class="btn-secondary" target="_blank"
-                        rel="noopener" data-i18n="hero.resume">Download Resume</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">20+</span>
-                        <span class="stat-desc" data-i18n="stats.experience">Years Experience</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">38</span>
-                        <span class="stat-desc" data-i18n="stats.builds">GitHub Builds</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">12</span>
-                        <span class="stat-desc" data-i18n="stats.videos">Video Works</span>
-                    </div>
+    <!-- ===================== HERO ===================== -->
+    <header id="utama" class="hero">
+        <div class="blueprint-grid" aria-hidden="true"></div>
+        <div class="container hero-inner">
+            <div class="hero-copy">
+                <p class="hero-kicker mono" data-i18n="hero.kicker">Kamarul Bahareen · Cikgu KB</p>
+                <p class="hero-role" data-i18n="hero.role">Arkitek Marketing Solutions</p>
+                <h1 class="hero-title" data-i18n="hero.title">Merancang strategi. Membina sistem. <em>Menggerakkan pemasaran.</em></h1>
+                <p class="hero-lead" data-i18n="hero.lead">Saya membantu organisasi dan usahawan merancang strategi pemasaran,
+                    membina sistem digital dan menggunakan AI dengan cara yang tersusun — daripada pelan di atas kertas
+                    sehingga pasukan yang mampu menggerakkannya.</p>
+                <div class="hero-actions">
+                    <a href="#hubungi" class="btn btn-solid" data-i18n="hero.cta1">Bincangkan Projek</a>
+                    <a href="#projek" class="btn btn-line" data-i18n="hero.cta2">Lihat Hasil Kerja</a>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="image-wrapper">
-                    <img src="assets/profile-main.jpg" alt="Kamarul Bahareen">
+            <figure class="hero-figure">
+                <div class="hero-frame">
+                    <svg class="frame-lines" viewBox="0 0 320 420" aria-hidden="true" fill="none">
+                        <path class="draw" d="M8 40 V8 H40" stroke="currentColor" stroke-width="2"/>
+                        <path class="draw" d="M280 412 H312 V380" stroke="currentColor" stroke-width="2"/>
+                        <path class="draw" d="M8 300 V412 H120" stroke="currentColor" stroke-width="1" opacity=".35"/>
+                        <path class="draw" d="M312 40 V120" stroke="currentColor" stroke-width="1" opacity=".35"/>
+                    </svg>
+                    <img src="assets/img/portrait-hero.webp"
+                         srcset="assets/img/portrait-hero-sm.webp 480w, assets/img/portrait-hero.webp 760w"
+                         sizes="(max-width: 720px) 78vw, 380px"
+                         width="760" height="998" alt="Kamarul Bahareen — Cikgu KB" fetchpriority="high">
                 </div>
+                <figcaption class="mono" data-i18n="hero.imgcaption">Trainer Marketing Consultant · KB Beyond Creative Sdn Bhd</figcaption>
+            </figure>
+        </div>
+
+        <div class="container cred-strip" role="list" aria-label="Petunjuk kredibiliti">
+            <div class="cred-item" role="listitem">
+                <span class="cred-num" data-count="20" data-suffix="+">20+</span>
+                <span class="cred-label" data-i18n="cred.years">Tahun pengalaman profesional</span>
+            </div>
+            <div class="cred-item" role="listitem">
+                <span class="cred-num" data-count="12" data-suffix="+">12+</span>
+                <span class="cred-label" data-i18n="cred.training">Tahun latihan & konsultasi</span>
+            </div>
+            <div class="cred-item" role="listitem">
+                <span class="cred-num" data-count="40" data-suffix="+">40+</span>
+                <span class="cred-label" data-i18n="cred.builds">Projek awam di GitHub</span>
+            </div>
+            <div class="cred-item" role="listitem">
+                <span class="cred-num cred-badge">HRD Corp</span>
+                <span class="cred-label" data-i18n="cred.hrdc">HRD Corp Accredited Trainer</span>
+            </div>
+            <div class="cred-item" role="listitem">
+                <span class="cred-num cred-badge">1 <span aria-hidden="true">Buku</span></span>
+                <span class="cred-label" data-i18n="cred.book">Buku diterbitkan — GPT 4 Business</span>
             </div>
         </div>
     </header>
 
     <main>
-        <section id="about" class="about">
-            <div class="container about-container">
-                <div class="about-image">
-                    <img src="assets/profile-welcoming.jpg" alt="Kamarul Bahareen welcoming pose">
-                </div>
-                <div class="about-content">
-                    <span class="section-kicker" data-i18n="about.kicker">Profile Details</span>
-                    <h2 class="section-title" data-i18n="about.title">About Me</h2>
-                    <p data-i18n="about.p1">
-                        Saya ialah <strong>Kamarul Bahareen Bin Kamarudin</strong>, Trainer Marketing Consultant di
-                        <strong>KB Beyond Creative Sdn Bhd</strong>. Kerja saya berpusat pada latihan pemasaran digital,
-                        multimedia, content creation, AI marketing dan pembangunan sistem ringkas yang membantu
-                        usahawan bertindak dengan lebih jelas.
-                    </p>
-                    <p data-i18n="about.p2">
-                        Latar belakang saya bermula daripada bidang teknikal dan sistem, kemudian berkembang kepada
-                        sales, digital marketing, fotografi, videografi, WordPress design dan penggunaan AI seperti
-                        ChatGPT, Midjourney dan GenAI untuk pemasaran moden.
-                    </p>
-                    <div class="profile-list">
-                        <span data-i18n="about.current"><strong>Current:</strong> Trainer Marketing Consultant, KB Beyond Creative Sdn Bhd</span>
-                        <span data-i18n="about.certified"><strong>Certified:</strong> HRD Corp Accredited Certified Trainer #7703</span>
-                        <span><strong>HRDC Trainer ID:</strong> 27899</span>
-                        <span data-i18n="about.education"><strong>Education:</strong> Diploma in Computer Science, Universiti Teknologi Malaysia</span>
-                    </div>
-                    <div class="about-actions">
-                        <a href="assets/resume/kamarul-bahareen-trainer-profile-2025.pdf" class="btn-primary"
-                            target="_blank" rel="noopener" data-i18n="about.resume">View Resume</a>
-                        <a href="#catalog" class="btn-secondary" data-i18n="about.work">Lihat Hasil Kerja</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="expertise" class="expertise">
+        <!-- ===================== 01 TENTANG ===================== -->
+        <section id="tentang" class="section about">
             <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-kicker" data-i18n="expertise.kicker">Capabilities</span>
-                    <h2 class="section-title" data-i18n="expertise.title">My Expertise</h2>
-                    <p data-i18n="expertise.subtitle">Combining technical skill, training experience and creative execution.</p>
+                <div class="section-head reveal">
+                    <p class="kicker mono" data-i18n="about.kicker">01 — Tentang</p>
+                    <h2 class="section-title" data-i18n="about.title">Bukan sekadar mengajar pemasaran. Saya membina sistem yang menggerakkannya.</h2>
                 </div>
-                <div class="expertise-grid">
-                    <article class="expertise-card">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <h3 data-i18n="expertise.digital.title">Digital Marketing</h3>
-                        <p data-i18n="expertise.digital.p">Facebook, Google Ads, TikTok marketing, SEO and data-driven campaign planning.</p>
-                    </article>
-                    <article class="expertise-card">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-                        <h3 data-i18n="expertise.ai.title">Generative AI</h3>
-                        <p data-i18n="expertise.ai.p">ChatGPT, Midjourney, GenAI, AI copywriting, prompt systems and marketing automation.</p>
-                    </article>
-                    <article class="expertise-card">
-                        <i class="fa-solid fa-chalkboard-user"></i>
-                        <h3 data-i18n="expertise.training.title">Training</h3>
-                        <p data-i18n="expertise.training.p">HRD Corp accredited training for AI marketing, branding, digital business and SME growth.</p>
-                    </article>
-                    <article class="expertise-card">
-                        <i class="fa-solid fa-camera-retro"></i>
-                        <h3 data-i18n="expertise.visual.title">Photography & Video</h3>
-                        <p data-i18n="expertise.visual.p">Product photography, video content marketing, live streaming and creative direction.</p>
-                    </article>
-                    <article class="expertise-card">
-                        <i class="fa-solid fa-laptop-code"></i>
-                        <h3 data-i18n="expertise.web.title">Web & Tools</h3>
-                        <p data-i18n="expertise.web.p">WordPress design, HTML/CSS/JS tools, landing pages and lightweight business systems.</p>
-                    </article>
-                    <article class="expertise-card">
-                        <i class="fa-solid fa-box-open"></i>
-                        <h3 data-i18n="expertise.packaging.title">Packaging & Export Prep</h3>
-                        <p data-i18n="expertise.packaging.p">Pembungkusan inovatif, penjenamaan kreatif, perlabelan logistik dan persediaan eksport.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience" class="experience">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-kicker" data-i18n="experience.kicker">Career Journey</span>
-                    <h2 class="section-title" data-i18n="experience.title">Professional Experience</h2>
-                    <p data-i18n="experience.subtitle">Over two decades across technology, sales leadership, marketing and training.</p>
-                </div>
-                <div class="timeline">
-                    <article class="timeline-item">
-                        <div class="timeline-date">2013 - Current</div>
-                        <div class="timeline-content">
-                            <h3>Trainer Marketing Consultant</h3>
-                            <h4>KB Beyond Creative Sdn Bhd</h4>
-                            <p data-i18n="experience.current.p">Delivering practical training and consulting in digital marketing, multimedia content,
-                                AI marketing and business digitalization for entrepreneurs.</p>
-                        </div>
-                    </article>
-                    <article class="timeline-item">
-                        <div class="timeline-date">2008 - 2013</div>
-                        <div class="timeline-content">
-                            <h3>Agency Supervisor</h3>
-                            <h4>CIMB Wealth Advisor</h4>
-                            <p data-i18n="experience.agency.p">Led sales activity, agency development and team performance.</p>
-                        </div>
-                    </article>
-                    <article class="timeline-item">
-                        <div class="timeline-date">2006 - 2008</div>
-                        <div class="timeline-content">
-                            <h3>Backup Engineer</h3>
-                            <h4>Shell IT International</h4>
-                            <p data-i18n="experience.backup.p">Managed backup, recovery and data storage technology operations.</p>
-                        </div>
-                    </article>
-                    <article class="timeline-item">
-                        <div class="timeline-date">2004 - 2006</div>
-                        <div class="timeline-content">
-                            <h3>System Engineer</h3>
-                            <h4>Gems Integrated Data Solution</h4>
-                            <p data-i18n="experience.system.p">Handled IT infrastructure, system support and technical implementation.</p>
-                        </div>
-                    </article>
-                    <article class="timeline-item">
-                        <div class="timeline-date">2000 - 2004</div>
-                        <div class="timeline-content">
-                            <h3>Technical Executive</h3>
-                            <h4>Perodua Manufacturing</h4>
-                            <p data-i18n="experience.technical.p">Started professional career in technical execution and manufacturing support.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="book" class="book-section">
-            <div class="container book-container">
-                <div class="book-media">
-                    <img src="assets/books/chatgpt4business-book.jpeg" alt="Buku ChatGPT4Business">
-                </div>
-                <div class="book-content">
-                    <span class="section-kicker" data-i18n="book.kicker">Buku Terbitan</span>
-                    <h2 class="section-title">Buku ChatGPT4Business</h2>
-                    <p data-i18n="book.text">
-                        Buku fizikal untuk usahawan yang mahu menggunakan ChatGPT sebagai pembantu bisnes harian.
-                        Kandungannya membantu pembaca membina prompt untuk BMC, proposal perniagaan, copywriting dan
-                        tugasan pemasaran lain.
-                    </p>
-                    <div class="book-highlights">
-                        <span><i class="fa-solid fa-check"></i> <span data-i18n="book.point1">Panduan prompt untuk kegunaan perniagaan</span></span>
-                        <span><i class="fa-solid fa-check"></i> <span data-i18n="book.point2">Contoh arahan untuk BMC, proposal dan copywriting</span></span>
-                        <span><i class="fa-solid fa-check"></i> <span data-i18n="book.point3">QR code video kelas ChatGPT untuk pengalaman lebih mendalam</span></span>
-                        <span><i class="fa-solid fa-check"></i> <span data-i18n="book.point4">Sentuh penggunaan AI untuk lagu, imej, video dan konten kreatif</span></span>
+                <div class="about-grid">
+                    <div class="about-body reveal">
+                        <p data-i18n="about.p1">Saya <strong>Kamarul Bahareen Bin Kamarudin</strong> — lebih dikenali sebagai
+                            <strong>Cikgu KB</strong> — Trainer Marketing Consultant di KB Beyond Creative Sdn Bhd. Lebih dua
+                            dekad kerjaya saya bergerak daripada dunia teknikal dan sistem, kepada jualan, pemasaran digital,
+                            latihan, dan kini pembangunan aplikasi berasaskan AI.</p>
+                        <p data-i18n="about.p2">Gabungan itu yang membezakan cara saya bekerja: saya boleh duduk dengan pihak
+                            pengurusan untuk merangka strategi, membina sendiri sistem atau prototaip yang menyokongnya, dan
+                            melatih pasukan yang akan mengendalikannya setiap hari.</p>
+                        <h3 class="mini-title mono" data-i18n="about.factsTitle">Kelayakan</h3>
+                        <ul class="fact-list">
+                            <li data-i18n="about.fact1">HRD Corp Accredited Trainer</li>
+                            <li data-i18n="about.fact2">Sijil Kemahiran Malaysia — Latihan Tenaga Pengajar (JPK)</li>
+                            <li data-i18n="about.fact3">Diploma Sains Komputer, Universiti Teknologi Malaysia</li>
+                            <li data-i18n="about.fact4">LRN Level 3 — Digital Entrepreneurship</li>
+                        </ul>
+                        <a class="text-link" href="assets/resume/kamarul-bahareen-trainer-profile-2025.pdf" target="_blank"
+                            rel="noopener" data-i18n="about.resume">Lihat Profil Penuh (PDF)</a>
                     </div>
-                    <div class="book-price">
-                        <span data-i18n="book.priceLabel">Info laman produk</span>
-                        <strong>RM30</strong>
-                        <small data-i18n="book.priceNote">Harga promosi daripada RM49, tertakluk kepada perubahan di laman penjual.</small>
+                    <div class="about-path reveal">
+                        <h3 class="mini-title mono" data-i18n="about.pathTitle">Laluan kerjaya</h3>
+                        <ol class="path-list">
+                            <li>
+                                <span class="path-era mono" data-i18n="about.path1.era">2000–2008 · Teknikal & Sistem</span>
+                                <p data-i18n="about.path1.p">Perodua Manufacturing, Gems Integrated Data Solution dan Shell IT International — disiplin kejuruteraan, infrastruktur dan pengurusan data.</p>
+                            </li>
+                            <li>
+                                <span class="path-era mono" data-i18n="about.path2.era">2008–2013 · Jualan & Kepimpinan Agensi</span>
+                                <p data-i18n="about.path2.p">CIMB Wealth Advisor — memimpin pasukan jualan dan memahami tingkah laku pelanggan sebenar.</p>
+                            </li>
+                            <li>
+                                <span class="path-era mono" data-i18n="about.path3.era">2013–kini · Latihan & Pemasaran Digital</span>
+                                <p data-i18n="about.path3.p">KB Beyond Creative Sdn Bhd — melatih usahawan dan organisasi dalam pemasaran digital, multimedia dan pendigitalan bisnes.</p>
+                            </li>
+                            <li>
+                                <span class="path-era mono" data-i18n="about.path4.era">2022–kini · AI & Pembangunan Aplikasi</span>
+                                <p data-i18n="about.path4.p">Membina alat AI, automasi dan aplikasi web yang digunakan dalam latihan dan projek sebenar.</p>
+                            </li>
+                        </ol>
                     </div>
-                    <a href="https://coachzul.com/shop/buku-chatgpt4business/?bz_aff_ref=sYHZQf0uiO&ref=5&track_code=sYHZQf0uiO&aff=kaybee"
-                        target="_blank" rel="noopener" class="btn-primary" data-i18n="book.cta">Tempah Buku</a>
                 </div>
             </div>
         </section>
 
-        <section id="videos" class="video-gallery">
+        <!-- ===================== 02 RANGKA KERJA ===================== -->
+        <section id="rangka" class="section framework">
+            <div class="blueprint-grid" aria-hidden="true"></div>
             <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-kicker" data-i18n="videos.kicker">Video Works</span>
-                    <h2 class="section-title" data-i18n="videos.title">Koleksi Video</h2>
-                    <p data-i18n="videos.subtitle">Hasil suntingan, pengarahan dan eksperimen video kreatif.</p>
+                <div class="section-head reveal">
+                    <p class="kicker mono" data-i18n="fw.kicker">02 — Rangka Kerja</p>
+                    <h2 class="section-title" data-i18n="fw.title">Empat langkah. Satu pelan induk.</h2>
+                    <p class="section-lead" data-i18n="fw.lead">Setiap projek — kempen, sistem atau latihan — melalui rangka kerja
+                        yang sama, supaya setiap keputusan dibuat atas struktur, bukan tekaan.</p>
                 </div>
-                <div class="video-grid">
-                    <article class="video-card">
-                        <div class="video-thumb">
-                            <img src="assets/videos/jus_master.png" alt="Jus Master Marketing">
-                            <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="video-content">
-                            <h3>Jus Master Refreshment</h3>
-                            <a href="https://www.facebook.com/share/v/17Q3HEBzWQ/" target="_blank" rel="noopener"
-                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        </div>
-                    </article>
-                    <article class="video-card">
-                        <div class="video-thumb">
-                            <img src="assets/videos/marketing_strategy.png" alt="Brader Kei Story">
-                            <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="video-content">
-                            <h3>Kisah Brader Kei</h3>
-                            <a href="https://www.facebook.com/share/v/18Ef6KhNS4/" target="_blank" rel="noopener"
-                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        </div>
-                    </article>
-                    <article class="video-card">
-                        <div class="video-thumb">
-                            <img src="assets/videos/marketing_strategy.png" alt="Alkalising Green Plus">
-                            <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="video-content">
-                            <h3>Solusi Gastrik AGP</h3>
-                            <a href="https://www.facebook.com/share/v/1EC9CLq6tf/" target="_blank" rel="noopener"
-                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        </div>
-                    </article>
-                    <article class="video-card">
-                        <div class="video-thumb">
-                            <img src="assets/videos/marketing_strategy.png" alt="Sakit Gastrik">
-                            <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="video-content">
-                            <h3>Rawatan Gastrik Berkesan</h3>
-                            <a href="https://www.facebook.com/share/v/17zkFWQdNF/" target="_blank" rel="noopener"
-                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        </div>
-                    </article>
-                    <article class="video-card">
-                        <div class="video-thumb">
-                            <img src="assets/videos/paris_travel.png" alt="Eiffel Tower Paris">
-                            <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="video-content">
-                            <h3>Prayer at Eiffel Tower</h3>
-                            <a href="https://www.facebook.com/share/v/1C5cVWMHK6/" target="_blank" rel="noopener"
-                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        </div>
-                    </article>
-                    <article class="video-card">
-                        <div class="video-thumb">
-                            <img src="assets/videos/ai_animation.png" alt="AI Marketing Video">
-                            <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="video-content">
-                            <h3>Commercial Content Trial</h3>
-                            <a href="https://www.facebook.com/share/v/1BubNUsnUs/" target="_blank" rel="noopener"
-                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        </div>
-                    </article>
-                    <article class="video-card">
-                        <div class="video-thumb">
-                            <img src="assets/videos/serunding_premium.png" alt="Serunding Daging Pouch">
-                            <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="video-content">
-                            <h3>Serunding Daging Pouch</h3>
-                            <a href="https://www.facebook.com/share/r/1Ao2AxM4qf/" target="_blank" rel="noopener"
-                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        </div>
-                    </article>
-                    <article class="video-card">
-                        <div class="video-thumb">
-                            <img src="assets/videos/marketing_strategy.png" alt="Side Income Opportunity">
-                            <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="video-content">
-                            <h3>Peluang Jana Pendapatan</h3>
-                            <a href="https://www.facebook.com/share/r/16P2APWYeS/" target="_blank" rel="noopener"
-                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        </div>
-                    </article>
-                    <article class="video-card">
-                        <div class="video-thumb">
-                            <img src="assets/videos/orangutan_nature.png" alt="Environmental Awareness">
-                            <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="video-content">
-                            <h3>Kesedaran Alam Sekitar</h3>
-                            <a href="https://www.facebook.com/share/v/1Ahs9L9JaH/" target="_blank" rel="noopener"
-                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        </div>
-                    </article>
-                    <article class="video-card">
-                        <div class="video-thumb">
-                            <img src="assets/videos/ai_animation.png" alt="AI Creative Tools">
-                            <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="video-content">
-                            <h3>AI Character Consistency</h3>
-                            <a href="https://www.facebook.com/share/v/1838JSKp38/" target="_blank" rel="noopener"
-                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        </div>
-                    </article>
-                    <article class="video-card">
-                        <div class="video-thumb">
-                            <img src="assets/videos/ai_animation.png" alt="Music Video AI">
-                            <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="video-content">
-                            <h3>AI Music Video Trial</h3>
-                            <a href="https://www.facebook.com/share/v/1B6JvHX21E/" target="_blank" rel="noopener"
-                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        </div>
-                    </article>
-                    <article class="video-card">
-                        <div class="video-thumb">
-                            <img src="assets/videos/serunding_premium.png" alt="Serunding HajiWan">
-                            <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="video-content">
-                            <h3>Serunding Daging HajiWan</h3>
-                            <a href="https://www.facebook.com/share/r/1DD9k8CMGL/" target="_blank" rel="noopener"
-                                class="video-link"><span data-i18n="videos.watch">Tonton di Facebook</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        </div>
-                    </article>
-                </div>
+                <ol class="fw-grid">
+                    <li class="fw-step reveal">
+                        <span class="fw-num mono">01</span>
+                        <h3 data-i18n="fw.s1.name">Diagnos</h3>
+                        <p data-i18n="fw.s1.p">Fahami bisnes, pasaran dan punca sebenar masalah sebelum sebarang taktik dibincangkan.</p>
+                    </li>
+                    <li class="fw-step reveal">
+                        <span class="fw-num mono">02</span>
+                        <h3 data-i18n="fw.s2.name">Reka</h3>
+                        <p data-i18n="fw.s2.p">Susun strategi, mesej dan perjalanan pelanggan di atas satu pelan yang jelas dan boleh diukur.</p>
+                    </li>
+                    <li class="fw-step reveal">
+                        <span class="fw-num mono">03</span>
+                        <h3 data-i18n="fw.s3.name">Bina</h3>
+                        <p data-i18n="fw.s3.p">Terjemahkan pelan kepada perkara yang berfungsi: kempen, automasi, aplikasi atau alat digital.</p>
+                    </li>
+                    <li class="fw-step reveal">
+                        <span class="fw-num mono">04</span>
+                        <h3 data-i18n="fw.s4.name">Upaya</h3>
+                        <p data-i18n="fw.s4.p">Latih pasukan untuk mengendali, mengukur dan menambah baik sistem itu tanpa bergantung pada orang luar.</p>
+                    </li>
+                </ol>
             </div>
         </section>
 
-        <section id="catalog" class="catalog-section">
+        <!-- ===================== 03 SOLUSI ===================== -->
+        <section id="solusi" class="section solutions">
             <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-kicker" data-i18n="catalog.kicker">Karya Digital</span>
-                    <h2 class="section-title" data-i18n="catalog.title">Koleksi Tools & Sistem</h2>
-                    <p data-i18n="catalog.subtitle">hasil kerja cikgukb</p>
+                <div class="section-head reveal">
+                    <p class="kicker mono" data-i18n="sol.kicker">03 — Solusi</p>
+                    <h2 class="section-title" data-i18n="sol.title">Disusun ikut masalah bisnes, bukan senarai perkhidmatan.</h2>
+                    <p class="section-lead" data-i18n="sol.lead">Setiap solusi boleh berdiri sendiri atau digabungkan — bergantung pada apa yang bisnes anda perlukan dahulu.</p>
                 </div>
-                <div class="catalog-toolbar" aria-label="Penapis katalog">
-                    <label class="search-box" for="projectSearch">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input id="projectSearch" type="search" placeholder="Cari projek, kategori atau bahasa" data-i18n-placeholder="catalog.search">
-                    </label>
-                    <div id="categoryFilters" class="filter-row" role="list" aria-label="Kategori projek"></div>
+                <div class="sol-grid">
+                    <article class="sol-card reveal">
+                        <span class="sol-num mono">3.1</span>
+                        <h3 data-i18n="sol.1.title">Strategi Pemasaran & Pertumbuhan</h3>
+                        <p data-i18n="sol.1.p">Positioning, perancangan kempen, perjalanan pelanggan dan struktur tawaran — asas sebelum sebarang iklan dibelanjakan.</p>
+                    </article>
+                    <article class="sol-card reveal">
+                        <span class="sol-num mono">3.2</span>
+                        <h3 data-i18n="sol.2.title">AI & Automasi</h3>
+                        <p data-i18n="sol.2.p">Aliran kerja berbantu AI, sistem kandungan, komunikasi pelanggan dan automasi proses yang masih manual.</p>
+                    </article>
+                    <article class="sol-card reveal">
+                        <span class="sol-num mono">3.3</span>
+                        <h3 data-i18n="sol.3.title">Produk Digital & Web</h3>
+                        <p data-i18n="sol.3.p">Landing page, portal, alat bisnes dan aplikasi ringan — dibina sendiri, bukan diserahkan kepada pihak ketiga.</p>
+                    </article>
+                    <article class="sol-card reveal">
+                        <span class="sol-num mono">3.4</span>
+                        <h3 data-i18n="sol.4.title">Latihan & Pembangunan Keupayaan</h3>
+                        <p data-i18n="sol.4.p">Latihan praktikal AI, pemasaran digital dan penghasilan kandungan untuk agensi kerajaan, korporat dan SME.</p>
+                    </article>
+                    <article class="sol-card reveal">
+                        <span class="sol-num mono">3.5</span>
+                        <h3 data-i18n="sol.5.title">Sistem Kempen Kreatif</h3>
+                        <p data-i18n="sol.5.p">Konsep iklan, sistem kandungan, video dan fotografi produk — aset kreatif yang disusun sebagai sistem, bukan one-off.</p>
+                    </article>
                 </div>
-                <p id="resultCount" class="result-count" aria-live="polite"></p>
-                <div id="catalogGrid" class="catalog-grid"></div>
             </div>
         </section>
 
-        <section id="cta" class="cta">
-            <div class="container cta-container">
-                <div class="cta-content">
-                    <span class="section-kicker" data-i18n="cta.kicker">Let's Build</span>
-                    <h2 data-i18n="cta.title">Ready to scale your business?</h2>
-                    <p data-i18n="cta.text">Let's combine training, creativity, technology and strategy to move your business forward.</p>
-                    <a href="https://wa.me/60133815817" target="_blank" rel="noopener" class="btn-primary btn-large" data-i18n="cta.button">Get In Touch</a>
+        <!-- ===================== 04 PROJEK ===================== -->
+        <section id="projek" class="section projects">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="kicker mono" data-i18n="proj.kicker">04 — Projek</p>
+                    <h2 class="section-title" data-i18n="proj.title">Bukti, bukan janji.</h2>
+                    <p class="section-lead" data-i18n="proj.lead">Projek pilihan yang saya bina sendiri — daripada strategi kepada
+                        kod. Setiap satu boleh ditinjau, dicuba, atau disemak terus di GitHub.</p>
                 </div>
-                <div class="cta-image">
-                    <img src="assets/profile-fun.png" alt="Kamarul Bahareen excited pose">
+                <div id="featuredGrid" class="featured-grid"></div>
+
+                <div class="archive-head reveal">
+                    <h3 class="sub-title" data-i18n="proj.archiveTitle">Arkib Projek</h3>
+                    <p class="section-lead" data-i18n="proj.archiveLead">Koleksi penuh alat, laman dan eksperimen yang dibina sepanjang perjalanan — ditapis mengikut kategori.</p>
+                    <div class="archive-toolbar">
+                        <label class="search-box">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                            <input id="archiveSearch" type="search" placeholder="Cari projek…" data-i18n-ph="proj.search" aria-label="Cari projek">
+                        </label>
+                        <div id="archiveFilters" class="filter-row" role="group" aria-label="Kategori projek"></div>
+                    </div>
+                    <p id="archiveCount" class="archive-count mono" aria-live="polite"></p>
+                </div>
+                <div id="archiveGrid" class="archive-grid"></div>
+                <p class="archive-more reveal">
+                    <a class="text-link" href="https://github.com/cikgukb?tab=repositories" target="_blank" rel="noopener"
+                        data-i18n="proj.githubAll">Lihat semua di GitHub</a>
+                </p>
+                <noscript>
+                    <p>Senarai projek memerlukan JavaScript. Lihat semua projek di
+                        <a href="https://github.com/cikgukb?tab=repositories">github.com/cikgukb</a>.</p>
+                </noscript>
+            </div>
+        </section>
+
+        <!-- ===================== 05 LATIHAN ===================== -->
+        <section id="latihan" class="section training">
+            <div class="blueprint-grid" aria-hidden="true"></div>
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="kicker mono" data-i18n="train.kicker">05 — Latihan</p>
+                    <h2 class="section-title" data-i18n="train.title">Latihan yang pulang ke pejabat dengan sistem, bukan sekadar nota.</h2>
+                    <p class="section-lead" data-i18n="train.lead">Setiap program bersifat hands-on: peserta membina prompt, kandungan
+                        atau aliran kerja sebenar untuk organisasi mereka sebelum sesi tamat.</p>
+                </div>
+                <div class="train-grid">
+                    <div class="train-col reveal">
+                        <h3 class="mini-title mono" data-i18n="train.topicsTitle">Topik yang saya sampaikan</h3>
+                        <ul class="tick-list">
+                            <li data-i18n="train.t1">AI Marketing & AI Content Marketing</li>
+                            <li data-i18n="train.t2">Asas Pemasaran Digital</li>
+                            <li data-i18n="train.t3">Pengurusan Perniagaan Digital</li>
+                            <li data-i18n="train.t4">Branding & Pemasaran</li>
+                            <li data-i18n="train.t5">Fotografi Produk Smartphone</li>
+                            <li data-i18n="train.t6">Video Content Marketing & Live Streaming</li>
+                        </ul>
+                    </div>
+                    <div class="train-col reveal">
+                        <h3 class="mini-title mono" data-i18n="train.audTitle">Untuk siapa</h3>
+                        <ul class="tick-list">
+                            <li data-i18n="train.aud1">Agensi kerajaan yang mahu latihan AI yang praktikal</li>
+                            <li data-i18n="train.aud2">Korporat yang membangunkan keupayaan pasukan</li>
+                            <li data-i18n="train.aud3">SME dan organisasi usahawan</li>
+                            <li data-i18n="train.aud4">Penganjur program dan acara</li>
+                        </ul>
+                        <h3 class="mini-title mono" data-i18n="train.formatTitle">Format penyampaian</h3>
+                        <ul class="tick-list">
+                            <li data-i18n="train.f1">Kursus & bengkel bertauliah HRD Corp</li>
+                            <li data-i18n="train.f2">Program dalaman organisasi (in-house)</li>
+                            <li data-i18n="train.f3">Ceramah, forum dan sesi perkongsian</li>
+                        </ul>
+                        <a href="#hubungi" class="btn btn-solid btn-training" data-enquiry="training" data-i18n="train.cta">Minta Proposal Latihan</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== 06 BUKU & MEDIA ===================== -->
+        <section id="buku" class="section book">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="kicker mono" data-i18n="book.kicker">06 — Buku & Media</p>
+                </div>
+                <div class="book-grid reveal">
+                    <figure class="book-media">
+                        <img src="assets/img/book-chatgpt4business.webp" width="600" height="268" loading="lazy"
+                            alt="Buku GPT 4 Business oleh Coach Zul dan Cikgu Kamarul Bahareen">
+                    </figure>
+                    <div class="book-body">
+                        <h2 class="section-title" data-i18n="book.title">GPT 4 Business</h2>
+                        <p data-i18n="book.p">Buku fizikal yang ditulis bersama Coach Zul untuk usahawan yang mahu menjadikan
+                            ChatGPT pembantu bisnes harian — daripada Business Model Canvas, proposal dan copywriting sehingga
+                            kandungan kreatif. Ia bukti pendekatan saya: terjemahkan konsep teknikal kepada panduan yang boleh
+                            terus digunakan.</p>
+                        <ul class="tick-list">
+                            <li data-i18n="book.point1">Panduan prompt untuk kegunaan perniagaan sebenar</li>
+                            <li data-i18n="book.point2">Contoh arahan untuk BMC, proposal dan copywriting</li>
+                            <li data-i18n="book.point3">QR code kelas video untuk pembelajaran lanjut</li>
+                        </ul>
+                        <div class="book-actions">
+                            <a href="https://coachzul.com/shop/buku-chatgpt4business/?bz_aff_ref=sYHZQf0uiO&ref=5&track_code=sYHZQf0uiO&aff=kaybee"
+                                target="_blank" rel="noopener" class="btn btn-solid" data-i18n="book.cta">Tempah di Laman Penjual</a>
+                            <small class="book-note" data-i18n="book.note">Harga dan stok tertakluk kepada laman penjual.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="media-head reveal">
+                    <h3 class="sub-title" data-i18n="media.title">Video & Kempen</h3>
+                    <p class="section-lead" data-i18n="media.lead">Pilihan hasil pengarahan, suntingan dan eksperimen video — bukti pelaksanaan kreatif, bukan sekadar perancangan.</p>
+                </div>
+                <div class="video-rail reveal" role="list">
+                    <a class="video-card" role="listitem" href="https://www.facebook.com/share/v/17Q3HEBzWQ/" target="_blank" rel="noopener">
+                        <img src="assets/img/videos/jus_master.webp" width="720" height="720" loading="lazy" alt="Video pemasaran Jus Master Refreshment">
+                        <span class="video-name">Jus Master Refreshment <span class="video-tag mono" data-i18n="media.watch">Tonton di Facebook</span></span>
+                    </a>
+                    <a class="video-card" role="listitem" href="https://www.facebook.com/share/v/18Ef6KhNS4/" target="_blank" rel="noopener">
+                        <img src="assets/img/videos/marketing_strategy.webp" width="720" height="720" loading="lazy" alt="Video kisah Brader Kei">
+                        <span class="video-name">Kisah Brader Kei <span class="video-tag mono" data-i18n="media.watch">Tonton di Facebook</span></span>
+                    </a>
+                    <a class="video-card" role="listitem" href="https://www.facebook.com/share/r/1Ao2AxM4qf/" target="_blank" rel="noopener">
+                        <img src="assets/img/videos/serunding_premium.webp" width="720" height="720" loading="lazy" alt="Video produk Serunding Daging Pouch">
+                        <span class="video-name">Serunding Daging Pouch <span class="video-tag mono" data-i18n="media.watch">Tonton di Facebook</span></span>
+                    </a>
+                    <a class="video-card" role="listitem" href="https://www.facebook.com/share/v/1BubNUsnUs/" target="_blank" rel="noopener">
+                        <img src="assets/img/videos/ai_animation.webp" width="720" height="720" loading="lazy" alt="Video percubaan kandungan komersial AI">
+                        <span class="video-name">Commercial Content Trial <span class="video-tag mono" data-i18n="media.watch">Tonton di Facebook</span></span>
+                    </a>
+                    <a class="video-card" role="listitem" href="https://www.facebook.com/share/v/1C5cVWMHK6/" target="_blank" rel="noopener">
+                        <img src="assets/img/videos/paris_travel.webp" width="720" height="720" loading="lazy" alt="Video Prayer at Eiffel Tower">
+                        <span class="video-name">Prayer at Eiffel Tower <span class="video-tag mono" data-i18n="media.watch">Tonton di Facebook</span></span>
+                    </a>
+                    <a class="video-card" role="listitem" href="https://www.facebook.com/share/v/1Ahs9L9JaH/" target="_blank" rel="noopener">
+                        <img src="assets/img/videos/orangutan_nature.webp" width="720" height="720" loading="lazy" alt="Video kesedaran alam sekitar">
+                        <span class="video-name">Kesedaran Alam Sekitar <span class="video-tag mono" data-i18n="media.watch">Tonton di Facebook</span></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== 07 HUBUNGI ===================== -->
+        <section id="hubungi" class="section contact">
+            <div class="blueprint-grid" aria-hidden="true"></div>
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="kicker mono" data-i18n="contact.kicker">07 — Hubungi</p>
+                    <h2 class="section-title" data-i18n="contact.title">Ada proses pemasaran yang masih bergerak secara manual?</h2>
+                    <p class="section-lead" data-i18n="contact.lead">Mari kita reka penyelesaian yang lebih tersusun. Lengkapkan
+                        ringkasan di bawah — ia akan menyediakan mesej WhatsApp atau emel yang siap disusun, tiada borang
+                        tersimpan di pelayan.</p>
+                </div>
+                <div class="contact-grid">
+                    <form id="enquiryForm" class="enquiry-form reveal" novalidate>
+                        <div class="form-row">
+                            <label>
+                                <span data-i18n="contact.name">Nama</span>
+                                <input type="text" name="nama" autocomplete="name" required>
+                            </label>
+                            <label>
+                                <span data-i18n="contact.org">Organisasi</span>
+                                <input type="text" name="organisasi" autocomplete="organization">
+                            </label>
+                        </div>
+                        <label>
+                            <span data-i18n="contact.type">Jenis keperluan</span>
+                            <select name="jenis" id="enquiryType">
+                                <option value="training" data-i18n="contact.type1">Latihan / Bengkel</option>
+                                <option value="consulting" data-i18n="contact.type2">Konsultasi Strategi</option>
+                                <option value="system" data-i18n="contact.type3">Sistem / Aplikasi Digital</option>
+                                <option value="collab" data-i18n="contact.type4">Kerjasama Strategik</option>
+                                <option value="speaking" data-i18n="contact.type5">Jemputan Penceramah</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span data-i18n="contact.msg">Ringkasan masalah atau keperluan</span>
+                            <textarea name="mesej" rows="4" data-i18n-ph="contact.msgPh"
+                                placeholder="Contoh: Pasukan kami mahu latihan AI untuk unit komunikasi…"></textarea>
+                        </label>
+                        <fieldset class="via-group">
+                            <legend data-i18n="contact.via">Hantar melalui</legend>
+                            <label class="via-opt"><input type="radio" name="via" value="whatsapp" checked> WhatsApp</label>
+                            <label class="via-opt"><input type="radio" name="via" value="email"> E-mel</label>
+                        </fieldset>
+                        <button type="submit" class="btn btn-solid" data-i18n="contact.send">Hantar Pertanyaan</button>
+                    </form>
+                    <aside class="contact-direct reveal">
+                        <figure class="contact-figure">
+                            <img src="assets/img/portrait-cta.webp" width="520" height="780" loading="lazy"
+                                alt="Kamarul Bahareen">
+                        </figure>
+                        <h3 class="mini-title mono" data-i18n="contact.direct">Atau hubungi terus</h3>
+                        <ul class="direct-list">
+                            <li>
+                                <a href="https://wa.me/60133815817" target="_blank" rel="noopener">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.2 1.1-1.7 1.2-.5 0-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c0 .2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.1.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4 0 .1 0 .7-.2 1.3Z"/></svg>
+                                    013-3815817 (WhatsApp)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:kbcimb@gmail.com">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2"/></svg>
+                                    kbcimb@gmail.com
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/cikgukb" target="_blank" rel="noopener">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.8a10.2 10.2 0 0 0-3.2 19.9c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.3-.3-4.7-1.1-4.7-5a4 4 0 0 1 1-2.8 3.7 3.7 0 0 1 .1-2.7s.9-.3 2.8 1a9.7 9.7 0 0 1 5.1 0c2-1.3 2.8-1 2.8-1 .5 1.3.2 2.4.1 2.7a4 4 0 0 1 1 2.8c0 3.9-2.4 4.7-4.7 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10.2 10.2 0 0 0 12 1.8Z"/></svg>
+                                    github.com/cikgukb
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="reply-note" data-i18n="contact.reply">Kebiasaannya saya membalas dalam masa satu hari bekerja.</p>
+                    </aside>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer id="contact" class="footer">
-        <div class="container footer-container">
-            <div class="footer-col">
-                <h3>Kamarul Bahareen</h3>
-                <p data-i18n="footer.bio">Trainer Marketing Consultant, Marketing & Visual Specialist based in Malaysia.</p>
-                <div class="social-links">
-                    <a href="https://github.com/cikgukb" target="_blank" rel="noopener" aria-label="GitHub">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
-                    <a href="https://wa.me/60133815817" target="_blank" rel="noopener" aria-label="WhatsApp">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
-                </div>
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="#utama" class="logo"><span class="logo-mark" aria-hidden="true"></span>cikgukb<span class="logo-dot">.my</span></a>
+                <p data-i18n="footer.tag">Arkitek Marketing Solutions — merancang strategi, membina sistem, menggerakkan pemasaran.</p>
             </div>
-            <div class="footer-col">
-                <h3 data-i18n="footer.contact">Contact Info</h3>
-                <ul class="contact-list">
-                    <li><i class="fa-solid fa-envelope"></i> kbcimb@gmail.com</li>
-                    <li><i class="fa-solid fa-phone"></i> 013-3815817</li>
-                    <li><i class="fa-solid fa-location-dot"></i> Malaysia</li>
+            <nav class="footer-col" aria-label="Pautan footer">
+                <h3 class="mini-title mono" data-i18n="footer.nav">Navigasi</h3>
+                <ul>
+                    <li><a href="#tentang" data-i18n="nav.about">Tentang</a></li>
+                    <li><a href="#solusi" data-i18n="nav.solutions">Solusi</a></li>
+                    <li><a href="#projek" data-i18n="nav.projects">Projek</a></li>
+                    <li><a href="#latihan" data-i18n="nav.training">Latihan</a></li>
                 </ul>
-            </div>
+            </nav>
             <div class="footer-col">
-                <h3 data-i18n="footer.quick">Quick Links</h3>
-                <ul class="footer-nav">
-                    <li><a href="#about" data-i18n="nav.about">About</a></li>
-                    <li><a href="#expertise" data-i18n="nav.expertise">Expertise</a></li>
-                    <li><a href="#book" data-i18n="nav.book">Buku</a></li>
-                    <li><a href="#videos" data-i18n="nav.video">Video</a></li>
-                    <li><a href="#catalog" data-i18n="nav.catalog">Katalog GitHub</a></li>
+                <h3 class="mini-title mono" data-i18n="footer.contact">Hubungan</h3>
+                <ul>
+                    <li><a href="mailto:kbcimb@gmail.com">kbcimb@gmail.com</a></li>
+                    <li><a href="https://wa.me/60133815817" target="_blank" rel="noopener">013-3815817</a></li>
+                    <li><a href="https://github.com/cikgukb" target="_blank" rel="noopener">github.com/cikgukb</a></li>
                 </ul>
             </div>
         </div>
-        <div class="copyright">
-            <p data-i18n="footer.copy">&copy; 2026 Kamarul Bahareen. All rights reserved.</p>
+        <div class="container copyright">
+            <p class="mono" data-i18n="footer.copy">© 2026 Kamarul Bahareen. Hak cipta terpelihara.</p>
         </div>
     </footer>
 
-    <script src="script.js?v=20260610-zh"></script>
+    <!-- ===================== MODAL KAJIAN KES ===================== -->
+    <div id="caseModal" class="case-modal" hidden role="dialog" aria-modal="true" aria-labelledby="caseTitle">
+        <div class="case-backdrop" data-close></div>
+        <div class="case-panel">
+            <button type="button" class="case-close" data-close aria-label="Tutup">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+            <div id="caseBody" class="case-body"></div>
+        </div>
+    </div>
+
+    <script src="js/i18n.js?v=20260710"></script>
+    <script src="js/projects-data.js?v=20260710"></script>
+    <script src="js/main.js?v=20260710"></script>
 </body>
 
 </html>
