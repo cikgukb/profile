@@ -83,7 +83,6 @@ const I18N = {
         'proj.lead': 'Projek pilihan yang saya bina sendiri — daripada strategi kepada kod. Setiap satu boleh ditinjau, dicuba, atau disemak terus di GitHub.',
         'proj.case': 'Kajian Kes',
         'proj.demo': 'Demo Langsung',
-        'proj.repo': 'Kod Sumber',
         'proj.status.live': 'Live',
         'proj.status.prototype': 'Prototaip',
         'proj.status.repo': 'Repo',
@@ -91,7 +90,7 @@ const I18N = {
         'proj.archiveLead': 'Koleksi penuh alat, laman dan eksperimen yang dibina sepanjang perjalanan — ditapis mengikut kategori.',
         'proj.search': 'Cari projek…',
         'proj.count': 'projek dipaparkan',
-        'proj.githubAll': 'Lihat semua di GitHub',
+        'proj.noscript': 'Senarai projek memerlukan JavaScript. Sila hubungi saya untuk senarai penuh hasil kerja.',
 
         'case.problem': 'Masalah',
         'case.audience': 'Untuk siapa',
@@ -238,7 +237,6 @@ const I18N = {
         'proj.lead': 'Selected projects I built myself — from strategy to code. Each one can be reviewed, tried, or inspected directly on GitHub.',
         'proj.case': 'Case Study',
         'proj.demo': 'Live Demo',
-        'proj.repo': 'Source Code',
         'proj.status.live': 'Live',
         'proj.status.prototype': 'Prototype',
         'proj.status.repo': 'Repo',
@@ -246,7 +244,7 @@ const I18N = {
         'proj.archiveLead': 'The full collection of tools, sites and experiments built along the way — filter by category.',
         'proj.search': 'Search projects…',
         'proj.count': 'projects shown',
-        'proj.githubAll': 'View all on GitHub',
+        'proj.noscript': 'The project list requires JavaScript. Please contact me for the full portfolio.',
 
         'case.problem': 'Problem',
         'case.audience': 'Intended users',
