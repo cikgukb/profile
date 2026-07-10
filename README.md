@@ -1,30 +1,35 @@
-# CikguKB Portfolio Website
+# cikgukb.my — Arkitek Marketing Solutions
 
-Static portfolio website for Kamarul Bahareen Bin Kamarudin.
+Laman web profesional **Kamarul Bahareen (Cikgu KB)** — merancang strategi,
+membina sistem, menggerakkan pemasaran.
 
-## Purpose
+Laman statik tanpa build step, dihoskan melalui GitHub Pages pada domain `cikgukb.my`.
 
-This site presents CikguKB as a Trainer Marketing Consultant, Marketing & Visual Specialist, HRD Corp Accredited Certified Trainer, author, project builder, and creative video producer.
+## Struktur
 
-## Main Sections
+| Fail / Folder | Fungsi |
+|---|---|
+| `index.html` | Struktur halaman + metadata SEO + JSON-LD |
+| `css/main.css` | Sistem reka bentuk (token warna, tipografi, komponen, motion) |
+| `js/i18n.js` | Semua teks UI dalam BM dan EN |
+| `js/projects-data.js` | **Satu-satunya fail untuk urus projek** (pilihan + arkib) |
+| `js/main.js` | Interaksi: bahasa, modal kajian kes, penapis arkib, borang |
+| `assets/img/` | Imej dioptimumkan (WebP) — jangan padam folder asal |
+| `assets/portfolio/`, `assets/videos/` | Imej asal (rujukan) |
+| `assets/resume/` | Profil PDF |
+| `docs/` | Audit, panduan penyelenggaraan, senarai semakan pemilik |
+| `sitemap.xml`, `robots.txt`, `404.html`, `CNAME` | SEO + deployment |
 
-- Profile and biodata
-- Expertise
-- Career journey
-- Featured work
-- Book publication
-- Video collection
-- GitHub project catalog
-- Contact
+## Kemas kini kandungan
 
-## Files
+Lihat **[docs/MAINTENANCE.md](docs/MAINTENANCE.md)** untuk panduan langkah demi langkah:
+tambah projek, tukar gambar, edit terjemahan, kemas kini statistik dan deploy.
 
-- `index.html` - page structure
-- `style.css` - responsive visual design
-- `script.js` - mobile menu and GitHub catalog search/filter
-- `assets/` - profile images, portfolio thumbnails, video thumbnails, book image, and resume PDF
-- `CNAME` - custom domain configuration for `cikgukb.my`
+## Lihat secara lokal
 
-## View Locally
+```
+python -m http.server 4173
+```
 
-Open `index.html` in a browser.
+Kemudian buka `http://localhost:4173`. (Perlu server kerana data projek dimuat
+melalui JavaScript — jangan buka `index.html` terus dari fail.)
