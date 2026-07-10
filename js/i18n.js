@@ -28,7 +28,7 @@ const I18N = {
 
         'cred.years': 'Tahun pengalaman profesional',
         'cred.training': 'Tahun latihan & konsultasi',
-        'cred.builds': 'Projek awam di GitHub',
+        'cred.builds': 'Projek digital dibina',
         'cred.hrdc': 'HRD Corp Accredited Trainer',
         'cred.book': 'Buku diterbitkan — GPT 4 Business',
 
@@ -80,7 +80,7 @@ const I18N = {
 
         'proj.kicker': '04 — Projek',
         'proj.title': 'Bukti, bukan janji.',
-        'proj.lead': 'Projek pilihan yang saya bina sendiri — daripada strategi kepada kod. Setiap satu boleh ditinjau, dicuba, atau disemak terus di GitHub.',
+        'proj.lead': 'Projek pilihan yang saya bina sendiri — daripada strategi kepada kod. Setiap satu boleh ditinjau atau dicuba terus.',
         'proj.case': 'Kajian Kes',
         'proj.demo': 'Demo Langsung',
         'proj.status.live': 'Live',
@@ -182,7 +182,7 @@ const I18N = {
 
         'cred.years': 'Years of professional experience',
         'cred.training': 'Years training & consulting',
-        'cred.builds': 'Public projects on GitHub',
+        'cred.builds': 'Digital projects built',
         'cred.hrdc': 'HRD Corp Accredited Trainer',
         'cred.book': 'Published book — GPT 4 Business',
 
@@ -234,7 +234,7 @@ const I18N = {
 
         'proj.kicker': '04 — Projects',
         'proj.title': 'Proof, not promises.',
-        'proj.lead': 'Selected projects I built myself — from strategy to code. Each one can be reviewed, tried, or inspected directly on GitHub.',
+        'proj.lead': 'Selected projects I built myself — from strategy to code. Each one can be reviewed or tried directly.',
         'proj.case': 'Case Study',
         'proj.demo': 'Live Demo',
         'proj.status.live': 'Live',
