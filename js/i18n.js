@@ -13,7 +13,7 @@ const I18N = {
         'nav.solutions': 'Solusi',
         'nav.projects': 'Projek',
         'nav.training': 'Latihan',
-        'nav.calendar': 'Kalendar',
+        'nav.calendar': 'Training Calendar',
         'nav.blog': 'Blog',
         'nav.book': 'Buku & Media',
         'nav.contact': 'Hubungi',

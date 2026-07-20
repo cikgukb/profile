@@ -432,11 +432,26 @@
         });
     }
 
+    let blogSearchTerm = '';
+
     function renderBlog() {
         const grid = document.getElementById('blogGrid');
         if (!grid || typeof BLOG_DATA === 'undefined') return;
 
-        const filtered = BLOG_DATA.filter(b => blogCategory === 'all' || b.category === blogCategory);
+        const term = blogSearchTerm.trim().toLowerCase();
+        const filtered = BLOG_DATA.filter(b => {
+            const matchCat = blogCategory === 'all' || b.category === blogCategory;
+            const titleStr = loc(b.title).toLowerCase();
+            const excStr = loc(b.excerpt).toLowerCase();
+            const tagStr = (b.tags || []).join(' ').toLowerCase();
+            const matchSearch = !term || titleStr.includes(term) || excStr.includes(term) || tagStr.includes(term);
+            return matchCat && matchSearch;
+        });
+
+        if (filtered.length === 0) {
+            grid.innerHTML = '<p style="grid-column:1/-1; padding:2rem; text-align:center; color:var(--ink-3);">Tiada artikel ditemui untuk carian ini.</p>';
+            return;
+        }
 
         grid.innerHTML = filtered.map(b => {
             const coverHtml = b.coverImage
@@ -464,6 +479,14 @@
                 const item = BLOG_DATA.find(x => x.id === btn.dataset.readBlog);
                 if (item) openBlogModal(item);
             });
+        });
+    }
+
+    const blogSearchInput = document.getElementById('blogSearch');
+    if (blogSearchInput) {
+        blogSearchInput.addEventListener('input', e => {
+            blogSearchTerm = e.target.value;
+            renderBlog();
         });
     }
 
