@@ -9,6 +9,10 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="css/main.css?v=20260720">
 
+    <!-- Quill Editor -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+
     <style>
         .admin-wrap { max-width: 1100px; margin-inline: auto; padding: 2rem 1rem; }
         .admin-card { background: var(--white); border: 1px solid var(--line); padding: 1.5rem; border-radius: var(--radius); margin-bottom: 1.5rem; }
@@ -207,7 +211,9 @@
                     </div>
                     <label>Tag (Pisahkan dengan koma): <input type="text" id="blTags" placeholder="AI Marketing, ChatGPT, SME"></label>
                     <label>Ringkasan/Excerpt (BM): <textarea id="blExcMs" rows="3" required></textarea></label>
-                    <label>Kandungan Lengkap HTML (BM): <textarea id="blContMs" rows="10" required></textarea></label>
+                    <label>Kandungan Lengkap HTML (BM):</label>
+                    <div id="editor-container" style="height: 350px; background: var(--white); margin-bottom: 1rem;"></div>
+                    <textarea id="blContMs" style="display:none;" required></textarea>
                     <div style="display:flex; gap:0.5rem; margin-top:1rem;">
                         <button type="submit" class="btn btn-solid">Simpan Draf Artikel Ini</button>
                         <button type="button" class="btn btn-line" onclick="resetBlogForm()">Batal</button>
@@ -239,6 +245,7 @@
         const DEFAULT_PASS = '202688';
         let currentEvents = [...(typeof EVENTS_DATA !== 'undefined' ? EVENTS_DATA : [])];
         let currentBlog = [...(typeof BLOG_DATA !== 'undefined' ? BLOG_DATA : [])];
+        let quill;
 
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -266,6 +273,27 @@
 
         function initDashboard() {
             document.getElementById('ghPatInput').value = localStorage.getItem('github_pat') || '';
+            
+            if (!quill) {
+                quill = new Quill('#editor-container', {
+                    theme: 'snow',
+                    placeholder: 'Tulis kandungan artikel di sini (boleh format teks, letak pautan, imej atau embed Youtube)...',
+                    modules: {
+                        toolbar: [
+                            [{ 'header': [2, 3, false] }],
+                            ['bold', 'italic', 'underline', 'strike'],
+                            ['blockquote', 'code-block'],
+                            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                            ['link', 'image', 'video'],
+                            ['clean']
+                        ]
+                    }
+                });
+                quill.on('text-change', function() {
+                    document.getElementById('blContMs').value = quill.root.innerHTML;
+                });
+            }
+
             renderEventsTable();
             renderBlogTable();
         }
@@ -385,6 +413,7 @@
             document.getElementById('blId').value = '';
             document.getElementById('blogForm').reset();
             document.getElementById('blFormTitle').innerText = 'Borang Tambah Artikel Baharu';
+            if (quill) quill.root.innerHTML = '';
         }
 
         function editBlogItem(idx) {
@@ -401,7 +430,10 @@
             document.getElementById('blCover').value = b.coverImage || '';
             document.getElementById('blTags').value = (b.tags || []).join(', ');
             document.getElementById('blExcMs').value = typeof b.excerpt === 'object' ? b.excerpt.ms : (b.excerpt || '');
-            document.getElementById('blContMs').value = typeof b.content === 'object' ? b.content.ms : (b.content || '');
+            
+            const content = typeof b.content === 'object' ? b.content.ms : (b.content || '');
+            document.getElementById('blContMs').value = content;
+            if (quill) quill.root.innerHTML = content;
         }
 
         function saveBlogItem(e) {
