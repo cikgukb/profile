@@ -104,11 +104,11 @@ const FEATURED_PROJECTS = [
         },
         category: { ms: 'AI & Pemasaran', en: 'AI & Marketing' },
         tech: ['React', 'TypeScript', 'Vite', 'Serverless API', 'Replicate'],
-        status: 'live',
+        status: 'repo',
         image: 'assets/img/projects/aisaleskit.webp',
         imageAlt: { ms: 'Antara muka aplikasi AI Sales Kit', en: 'AI Sales Kit application interface' },
         repo: 'https://github.com/cikgukb/ai-sales-kit',
-        demo: 'https://ai-sales-kit-chi.vercel.app',
+        demo: '',
         caseStudy: {
             problem: {
                 ms: 'Kebanyakan SME tahu mereka perlu bahan pemasaran yang meyakinkan, tetapi tiada masa, pasukan kreatif atau bajet agensi untuk menghasilkannya secara konsisten.',
@@ -123,16 +123,16 @@ const FEATURED_PROJECTS = [
                 en: 'A React + TypeScript web app with server-side API functions that generate marketing material — including visuals via image-generation models — from simple inputs about the product and offer.'
             },
             features: {
-                ms: ['Penjanaan bahan jualan daripada input berstruktur', 'Penjanaan imej AI di pelayan (kunci API tidak terdedah)', 'Antara muka moden yang mesra bukan-teknikal', 'Demo awam yang boleh dicuba terus'],
-                en: ['Sales material generation from structured inputs', 'Server-side AI image generation (API keys never exposed)', 'Modern interface friendly to non-technical users', 'Public demo you can try immediately']
+                ms: ['Penjanaan bahan jualan daripada input berstruktur', 'Penjanaan imej AI di pelayan (kunci API tidak terdedah)', 'Antara muka moden yang mesra bukan-teknikal', 'Kod sumber tersedia di GitHub'],
+                en: ['Sales material generation from structured inputs', 'Server-side AI image generation (API keys never exposed)', 'Modern interface friendly to non-technical users', 'Source code available on GitHub']
             },
             value: {
                 ms: 'Menggabungkan pemahaman jualan (struktur tawaran, copywriting) dengan pelaksanaan teknikal — jenis alat yang boleh disesuaikan untuk mana-mana industri.',
                 en: 'Combines sales understanding (offer structure, copywriting) with technical execution — the kind of tool that can be adapted for any industry.'
             },
             statusNote: {
-                ms: 'Live — demo awam di Vercel.',
-                en: 'Live — public demo on Vercel.'
+                ms: 'Kod sumber tersedia di GitHub.',
+                en: 'Source code available on GitHub.'
             }
         }
     },
@@ -279,18 +279,18 @@ const ARCHIVE_CATEGORIES = [
 
 const ARCHIVE_PROJECTS = [
     { name: 'MYBHA / MYMFH Audit', cat: 'web', tech: 'TypeScript', desc: { ms: 'Sistem audit halal mesra bajet untuk hotel dan operasi hospitaliti.', en: 'Budget-friendly halal audit system for hotels and hospitality operations.' }, repo: 'https://github.com/cikgukb/-mybha-mymfh-audit', demo: 'https://mybha-mymfh-audit.vercel.app', image: 'assets/img/projects/halalaudit.webp' },
-    { name: 'Guerrilla Marketing Kit', cat: 'marketing', tech: 'HTML/JS', desc: { ms: 'Planner taktikal mobile-first untuk usahawan mikro dan kecil Malaysia.', en: 'Mobile-first tactical planner for Malaysian micro and small entrepreneurs.' }, repo: 'https://github.com/cikgukb/guerillamarketingkit', demo: 'https://cikgukb.github.io/guerillamarketingkit/', image: 'assets/img/projects/guerillamarketingkit.webp' },
+    { name: 'Guerrilla Marketing Kit', cat: 'marketing', tech: 'HTML/JS', desc: { ms: 'Planner taktikal mobile-first untuk usahawan mikro dan kecil Malaysia.', en: 'Mobile-first tactical planner for Malaysian micro and small entrepreneurs.' }, repo: 'https://github.com/cikgukb/guerillamarketingkit', demo: '', image: 'assets/img/projects/guerillamarketingkit.webp' },
     { name: 'SME Prompt Generator', cat: 'ai', tech: 'JavaScript', desc: { ms: 'Penjana prompt AI dwibahasa untuk usahawan SME menggunakan kerangka BROKE.', en: 'Bilingual AI prompt generator for SME entrepreneurs using the BROKE framework.' }, repo: 'https://github.com/cikgukb/sme-prompt-generator', demo: 'https://cikgukb.github.io/sme-prompt-generator/', image: 'assets/img/projects/sme-prompt-generator.webp' },
-    { name: 'VizuAIl Marketing Strategist', cat: 'ai', tech: 'JavaScript', desc: { ms: 'Penjana prompt fotografi produk AI dengan 13 sudut visual dan formula 5T.', en: 'AI product photography prompt generator with 13 visual angles and the 5T formula.' }, repo: 'https://github.com/cikgukb/vizuail-marketing-strategist', demo: 'https://cikgukb.github.io/vizuail-marketing-strategist/', image: 'assets/img/projects/vizuail.webp' },
+    { name: 'VizuAIl Marketing Strategist', cat: 'ai', tech: 'JavaScript', desc: { ms: 'Penjana prompt fotografi produk AI dengan 13 sudut visual dan formula 5T.', en: 'AI product photography prompt generator with 13 visual angles and the 5T formula.' }, repo: 'https://github.com/cikgukb/vizuail-marketing-strategist', demo: '', image: 'assets/img/projects/vizuail.webp' },
     { name: 'Katalog Funnel Hacker', cat: 'marketing', tech: 'JavaScript', desc: { ms: 'Katalog interaktif strategi pemasaran funnel untuk usahawan.', en: 'Interactive catalog of funnel marketing strategies for entrepreneurs.' }, repo: 'https://github.com/cikgukb/katalog-funnel-hacker', demo: 'https://cikgukb.github.io/katalog-funnel-hacker/', image: 'assets/img/projects/katalog-funnel-hacker.webp' },
     { name: 'Google Ads Takeoff', cat: 'marketing', tech: 'JavaScript', desc: { ms: 'Penjana copy iklan Google Ads untuk rangka iklan dan variasi kempen.', en: 'Google Ads copy generator for ad frameworks and campaign variations.' }, repo: 'https://github.com/cikgukb/Google-Ads-Takeoff', demo: 'https://cikgukb.github.io/Google-Ads-Takeoff/', image: 'assets/img/projects/google-ads-takeoff.webp' },
-    { name: 'TikTok Live Script', cat: 'marketing', tech: 'JavaScript', desc: { ms: 'Alat penyusunan skrip TikTok Live untuk host, penjual dan kempen jualan.', en: 'TikTok Live script builder for hosts, sellers and sales campaigns.' }, repo: 'https://github.com/cikgukb/tiktoklivescript', demo: 'https://cikgukb.github.io/tiktoklivescript/', image: 'assets/img/projects/tiktoklivescript.webp' },
-    { name: 'Veo 3 Prompt Builder', cat: 'ai', tech: 'HTML/JS', desc: { ms: 'Pembina prompt video Veo 3 dengan struktur yang jelas dan mudah diguna.', en: 'Veo 3 video prompt builder with a clear, easy-to-use structure.' }, repo: 'https://github.com/cikgukb/veo3promptbuilder', demo: 'https://cikgukb.github.io/veo3promptbuilder/', image: 'assets/img/projects/veo3promptbuilder.webp' },
-    { name: 'Penjana Gambar Raya', cat: 'ai', tech: 'HTML/JS', desc: { ms: 'Penjana visual bertema raya untuk ucapan dan bahan media sosial.', en: 'Raya-themed visual generator for greetings and social media material.' }, repo: 'https://github.com/cikgukb/penjanagambaraya', demo: 'https://cikgukb.github.io/penjanagambaraya/', image: 'assets/img/projects/penjanagambaraya.webp' },
+    { name: 'TikTok Live Script', cat: 'marketing', tech: 'JavaScript', desc: { ms: 'Alat penyusunan skrip TikTok Live untuk host, penjual dan kempen jualan.', en: 'TikTok Live script builder for hosts, sellers and sales campaigns.' }, repo: 'https://github.com/cikgukb/tiktoklivescript', demo: '', image: 'assets/img/projects/tiktoklivescript.webp' },
+    { name: 'Veo 3 Prompt Builder', cat: 'ai', tech: 'HTML/JS', desc: { ms: 'Pembina prompt video Veo 3 dengan struktur yang jelas dan mudah diguna.', en: 'Veo 3 video prompt builder with a clear, easy-to-use structure.' }, repo: 'https://github.com/cikgukb/veo3promptbuilder', demo: '', image: 'assets/img/projects/veo3promptbuilder.webp' },
+    { name: 'Penjana Gambar Raya', cat: 'ai', tech: 'HTML/JS', desc: { ms: 'Penjana visual bertema raya untuk ucapan dan bahan media sosial.', en: 'Raya-themed visual generator for greetings and social media material.' }, repo: 'https://github.com/cikgukb/penjanagambaraya', demo: '', image: 'assets/img/projects/penjanagambaraya.webp' },
     { name: 'Jimeng Tool', cat: 'ai', tech: 'JavaScript', desc: { ms: 'Alat kreatif untuk aliran kerja prompt dan eksperimen AI generatif.', en: 'Creative tool for prompt workflows and generative AI experiments.' }, repo: 'https://github.com/cikgukb/jimengtool', demo: 'https://jimengtool.vercel.app', image: 'assets/img/projects/jimengtool.webp' },
     { name: 'Kata Hikmah Video', cat: 'ai', tech: 'JavaScript', desc: { ms: 'Penjana video daripada kata-kata hikmah untuk kandungan motivasi.', en: 'Video generator from words of wisdom for motivational content.' }, repo: 'https://github.com/cikgukb/katahikmah', demo: 'https://katahikmah.vercel.app', image: 'assets/img/projects/katahikmah.webp' },
     { name: 'JomSplit', cat: 'app', tech: 'JavaScript', desc: { ms: 'Kalkulator pintar kongsi bayaran dan agihan bil untuk kumpulan.', en: 'Smart bill-splitting calculator for groups.' }, repo: 'https://github.com/cikgukb/jomsplit', demo: 'https://jomsplit.vercel.app', image: 'assets/img/projects/jomsplit.webp' },
-    { name: 'Kit Jimat Cermat', cat: 'app', tech: 'JavaScript', desc: { ms: 'Kit digital untuk merancang bajet dan keputusan perbelanjaan.', en: 'Digital kit for planning budgets and spending decisions.' }, repo: 'https://github.com/cikgukb/kitjimatcermat', demo: 'https://kitjimatcermat.vercel.app', image: 'assets/img/projects/kitjimatcermat.webp' },
+    { name: 'Kit Jimat Cermat', cat: 'app', tech: 'JavaScript', desc: { ms: 'Kit digital untuk merancang bajet dan keputusan perbelanjaan.', en: 'Digital kit for planning budgets and spending decisions.' }, repo: 'https://github.com/cikgukb/kitjimatcermat', demo: '', image: 'assets/img/projects/kitjimatcermat.webp' },
     { name: 'Tasbih 99', cat: 'app', tech: 'HTML/JS', desc: { ms: 'Aplikasi tasbih digital untuk zikir, kiraan harian dan sasaran amalan.', en: 'Digital tasbih app for dhikr, daily counts and practice targets.' }, repo: 'https://github.com/cikgukb/tasbih99', demo: 'https://cikgukb.github.io/tasbih99/', image: 'assets/img/projects/tasbih99.webp' },
     { name: 'Food Explorer', cat: 'app', tech: 'JavaScript', desc: { ms: 'Aplikasi meneroka menu dan idea makan secara interaktif.', en: 'Interactive app for exploring menus and meal ideas.' }, repo: 'https://github.com/cikgukb/foodexplorer', demo: 'https://cikgukb.github.io/foodexplorer/', image: 'assets/img/projects/foodexplorer.webp' },
     { name: 'Al Marji', cat: 'app', tech: 'TypeScript', desc: { ms: 'Aplikasi rujukan digital untuk akses maklumat berstruktur.', en: 'Digital reference app for structured information access.' }, repo: 'https://github.com/cikgukb/almarji', demo: 'https://almarji.vercel.app', image: 'assets/img/projects/almarji.webp' },
