@@ -57,6 +57,10 @@
         renderFeatured();
         renderFilters();
         renderArchive();
+        renderEventsFilter();
+        renderEvents();
+        renderBlogFilter();
+        renderBlog();
     }
 
     /* ---------- ikon SVG ---------- */
@@ -306,6 +310,252 @@
         sections.forEach(s => spy.observe(s));
     }
 
+    /* ---------- kalendar & acara ---------- */
+    let eventFilter = 'all';
+
+    function renderEventsFilter() {
+        const row = document.getElementById('eventFilters');
+        if (!row) return;
+
+        const filters = [
+            { id: 'all', labelKey: 'cal.filter.all' },
+            { id: 'upcoming', labelKey: 'cal.filter.upcoming' },
+            { id: 'completed', labelKey: 'cal.filter.completed' }
+        ];
+
+        row.innerHTML = filters.map(f => {
+            const active = eventFilter === f.id ? ' active' : '';
+            return '<button type="button" class="chip' + active + '" data-event-cat="' + f.id + '">' + t(f.labelKey) + '</button>';
+        }).join('');
+
+        row.querySelectorAll('[data-event-cat]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                eventFilter = btn.dataset.eventCat;
+                renderEventsFilter();
+                renderEvents();
+            });
+        });
+    }
+
+    function renderEvents() {
+        const grid = document.getElementById('eventsGrid');
+        if (!grid || typeof EVENTS_DATA === 'undefined') return;
+
+        const filtered = EVENTS_DATA.filter(ev => {
+            if (eventFilter === 'upcoming') return ev.status === 'open' || ev.status === 'upcoming';
+            if (eventFilter === 'completed') return ev.status === 'completed';
+            return true;
+        });
+
+        grid.innerHTML = filtered.map((ev) => {
+            const statusTagClass = 'is-' + ev.status;
+            const statusLabelText = t('cal.status.' + ev.status);
+            const highlightsList = loc(ev.highlights) && Array.isArray(loc(ev.highlights))
+                ? loc(ev.highlights).slice(0, 3).map(h => '<li>' + esc(h) + '</li>').join('')
+                : '';
+
+            return '<article class="event-card reveal in" itemscope itemtype="https://schema.org/Event">' +
+                '<meta itemprop="startDate" content="' + esc(ev.date) + '">' +
+                '<meta itemprop="endDate" content="' + esc(ev.endDate || ev.date) + '">' +
+                '<div class="event-top">' +
+                '<span class="event-date-badge"><time datetime="' + esc(ev.date) + '">' + esc(loc(ev.displayDate)) + '</time></span>' +
+                '<span class="event-status-tag ' + statusTagClass + '">' + esc(statusLabelText) + '</span>' +
+                '</div>' +
+                '<h3 class="event-title" itemprop="name">' + esc(loc(ev.title)) + '</h3>' +
+                '<div class="event-meta-list">' +
+                '<div class="event-meta-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> <span>' + esc(ev.time) + '</span></div>' +
+                '<div class="event-meta-item" itemprop="location" itemscope itemtype="https://schema.org/Place"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> <span itemprop="name">' + esc(loc(ev.location)) + '</span></div>' +
+                '</div>' +
+                '<p class="event-summary" itemprop="description">' + esc(loc(ev.summary)) + '</p>' +
+                (highlightsList ? '<ul class="event-highlights-list">' + highlightsList + '</ul>' : '') +
+                '<div class="event-actions">' +
+                '<button type="button" class="btn btn-line btn-sm" data-event-detail="' + ev.id + '">' + t('cal.info') + '</button>' +
+                (ev.registrationUrl ? '<a class="btn btn-solid btn-sm" href="' + esc(ev.registrationUrl) + '" target="_blank" rel="noopener">' + t('cal.register') + ' ' + ICON_EXT + '</a>' : '') +
+                '</div>' +
+                '</article>';
+        }).join('');
+
+        grid.querySelectorAll('[data-event-detail]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = EVENTS_DATA.find(x => x.id === btn.dataset.eventDetail);
+                if (item) openEventModal(item);
+            });
+        });
+    }
+
+    function openEventModal(ev) {
+        const body = document.getElementById('caseBody');
+        const modal = document.getElementById('caseModal');
+        if (!body || !modal) return;
+
+        const highlightsArr = loc(ev.highlights);
+        const highlightsHtml = Array.isArray(highlightsArr) ? highlightsArr.map(h => '<li>' + esc(h) + '</li>').join('') : '';
+
+        body.innerHTML = '<span class="case-kicker mono">' + esc(ev.type.toUpperCase()) + ' · ' + esc(loc(ev.displayDate)) + '</span>' +
+            '<h2 id="caseTitle" class="case-title">' + esc(loc(ev.title)) + '</h2>' +
+            caseSection(t('cal.time'), '<p>' + esc(ev.time) + '</p>') +
+            caseSection(t('cal.venue'), '<p>' + esc(loc(ev.venue)) + '</p>') +
+            caseSection(t('cal.audience'), '<p>' + esc(loc(ev.targetAudience)) + '</p>') +
+            (highlightsHtml ? caseSection(t('cal.highlights'), '<ul>' + highlightsHtml + '</ul>') : '') +
+            (ev.registrationUrl ? '<div class="case-links"><a class="btn btn-solid" href="' + esc(ev.registrationUrl) + '" target="_blank" rel="noopener">' + t('cal.register') + ' ' + ICON_EXT + '</a></div>' : '');
+
+        modal.hidden = false;
+        document.body.classList.add('menu-open');
+    }
+
+    /* ---------- blog & artikel ---------- */
+    let blogCategory = 'all';
+
+    function renderBlogFilter() {
+        const row = document.getElementById('blogFilters');
+        if (!row) return;
+
+        const cats = [
+            { id: 'all', labelKey: 'blog.filter.all' },
+            { id: 'ai', labelKey: 'blog.filter.ai' },
+            { id: 'marketing', labelKey: 'blog.filter.marketing' },
+            { id: 'automation', labelKey: 'blog.filter.automation' },
+            { id: 'strategy', labelKey: 'blog.filter.strategy' }
+        ];
+
+        row.innerHTML = cats.map(c => {
+            const active = blogCategory === c.id ? ' active' : '';
+            return '<button type="button" class="chip' + active + '" data-blog-cat="' + c.id + '">' + t(c.labelKey) + '</button>';
+        }).join('');
+
+        row.querySelectorAll('[data-blog-cat]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                blogCategory = btn.dataset.blogCat;
+                renderBlogFilter();
+                renderBlog();
+            });
+        });
+    }
+
+    function renderBlog() {
+        const grid = document.getElementById('blogGrid');
+        if (!grid || typeof BLOG_DATA === 'undefined') return;
+
+        const filtered = BLOG_DATA.filter(b => blogCategory === 'all' || b.category === blogCategory);
+
+        grid.innerHTML = filtered.map(b => {
+            const coverHtml = b.coverImage
+                ? '<div class="blog-cover"><img src="' + esc(b.coverImage) + '" width="600" height="300" loading="lazy" alt="' + esc(loc(b.title)) + '"></div>'
+                : '<div class="blog-cover"><div class="blog-cover-placeholder"><span class="blog-icon">📝</span><span class="mono">' + esc(b.category.toUpperCase()) + '</span></div></div>';
+
+            return '<article class="blog-card reveal in" itemscope itemtype="https://schema.org/BlogPosting">' +
+                coverHtml +
+                '<div class="blog-body">' +
+                '<div class="blog-meta-top">' +
+                '<span class="blog-cat-tag">' + esc(b.category.toUpperCase()) + '</span>' +
+                '<span class="blog-read-time">' + esc(loc(b.readTime)) + '</span>' +
+                '</div>' +
+                '<h3 class="blog-title" itemprop="headline">' + esc(loc(b.title)) + '</h3>' +
+                '<p class="blog-excerpt" itemprop="description">' + esc(loc(b.excerpt)) + '</p>' +
+                '<div class="blog-footer">' +
+                '<span class="mono" style="font-size:0.75rem; color:var(--ink-3);"><time itemprop="datePublished" datetime="' + esc(b.date) + '">' + esc(b.date) + '</time></span>' +
+                '<button type="button" class="blog-read-btn" data-read-blog="' + b.id + '">' + t('blog.readMore') + '</button>' +
+                '</div></div>' +
+                '</article>';
+        }).join('');
+
+        grid.querySelectorAll('[data-read-blog]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = BLOG_DATA.find(x => x.id === btn.dataset.readBlog);
+                if (item) openBlogModal(item);
+            });
+        });
+    }
+
+    function openBlogModal(post) {
+        const body = document.getElementById('caseBody');
+        const modal = document.getElementById('caseModal');
+        if (!body || !modal) return;
+
+        const shareUrl = encodeURIComponent('https://cikgukb.my/#' + post.slug);
+        const shareText = encodeURIComponent(loc(post.title));
+
+        body.innerHTML = '<div class="blog-article-content">' +
+            '<div class="blog-article-header">' +
+            '<span class="blog-cat-tag">' + esc(post.category.toUpperCase()) + '</span>' +
+            '<h2 id="caseTitle">' + esc(loc(post.title)) + '</h2>' +
+            '<div class="blog-article-meta">' +
+            '<span>' + t('blog.by') + ' <strong>' + esc(post.author) + '</strong></span> · ' +
+            '<span><time datetime="' + esc(post.date) + '">' + esc(post.date) + '</time></span> · ' +
+            '<span>' + esc(loc(post.readTime)) + '</span>' +
+            '</div></div>' +
+            '<div class="blog-article-body">' + loc(post.content) + '</div>' +
+            '<div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">' +
+            '<a class="btn btn-solid btn-sm" href="https://api.whatsapp.com/send?text=' + shareText + '%20' + shareUrl + '" target="_blank" rel="noopener">📲 ' + t('blog.share') + ' WhatsApp</a>' +
+            '<div style="display:flex; gap:0.5rem; flex-wrap:wrap;">' + (post.tags || []).map(t => '<span class="tech-tag">' + esc(t) + '</span>').join('') + '</div>' +
+            '</div></div>';
+
+        modal.hidden = false;
+        document.body.classList.add('menu-open');
+    }
+
+    /* ---------- dynamic JSON-LD injection for SEO & AI ---------- */
+    function injectDynamicJsonLd() {
+        if (typeof EVENTS_DATA !== 'undefined' && Array.isArray(EVENTS_DATA)) {
+            const eventSchemas = EVENTS_DATA.map(ev => ({
+                "@context": "https://schema.org",
+                "@type": "EducationEvent",
+                "name": loc(ev.title),
+                "startDate": ev.date,
+                "endDate": ev.endDate || ev.date,
+                "eventStatus": "https://schema.org/EventScheduled",
+                "eventAttendanceMode": (ev.venue && ev.venue.ms && (ev.venue.ms.toLowerCase().includes('talian') || ev.venue.ms.toLowerCase().includes('hybrid'))) ? "https://schema.org/MixedEventAttendanceMode" : "https://schema.org/OfflineEventAttendanceMode",
+                "location": {
+                    "@type": "Place",
+                    "name": loc(ev.venue),
+                    "address": loc(ev.location)
+                },
+                "organizer": {
+                    "@type": "Organization",
+                    "name": ev.organizer,
+                    "url": "https://cikgukb.my/"
+                },
+                "performer": {
+                    "@type": "Person",
+                    "name": "Kamarul Bahareen (Cikgu KB)",
+                    "url": "https://cikgukb.my/"
+                },
+                "description": loc(ev.summary)
+            }));
+
+            const eventScript = document.createElement('script');
+            eventScript.type = 'application/ld+json';
+            eventScript.text = JSON.stringify(eventSchemas);
+            document.head.appendChild(eventScript);
+        }
+
+        if (typeof BLOG_DATA !== 'undefined' && Array.isArray(BLOG_DATA)) {
+            const blogSchemas = BLOG_DATA.map(b => ({
+                "@context": "https://schema.org",
+                "@type": "BlogPosting",
+                "headline": loc(b.title),
+                "description": loc(b.excerpt),
+                "datePublished": b.date,
+                "author": {
+                    "@type": "Person",
+                    "name": b.author,
+                    "url": "https://cikgukb.my/"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "KB Beyond Creative Sdn Bhd",
+                    "url": "https://cikgukb.my/"
+                },
+                "mainEntityOfPage": "https://cikgukb.my/#" + b.slug
+            }));
+
+            const blogScript = document.createElement('script');
+            blogScript.type = 'application/ld+json';
+            blogScript.text = JSON.stringify(blogSchemas);
+            document.head.appendChild(blogScript);
+        }
+    }
+
     /* ---------- reveal semasa skrol ---------- */
     function initReveals() {
         const items = document.querySelectorAll('.reveal:not(.in)');
@@ -357,4 +607,5 @@
     applyLanguage(lang);
     initReveals();
     initCounters();
+    injectDynamicJsonLd();
 })();
