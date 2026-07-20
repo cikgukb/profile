@@ -2,6 +2,7 @@
    DATA BLOG & ARTIKEL — cikgukb.my
    ------------------------------------------------------------
    Fail ini menguruskan artikel, panduan dan penulisan Cikgu KB.
+   Diuruskan secara automatik menerusi admin.html atau suntingan terus.
    ============================================================ */
 
 const BLOG_DATA = [
@@ -69,91 +70,88 @@ const BLOG_DATA = [
         }
     },
     {
-        id: '5-kesilapan-pemasaran-digital-2026',
-        slug: '5-kesilapan-pemasaran-digital-2026',
-        category: 'marketing',
-        date: '2026-07-02',
-        readTime: {
-            ms: '7 min bacaan',
-            en: '7 min read'
-        },
-        title: {
-            ms: '5 Kesilapan Pemasaran Digital yang Sering Membakar Bajet Usahawan',
-            en: '5 Digital Marketing Mistakes That Secretly Burn Entrepreneur Budgets'
-        },
-        excerpt: {
-            ms: 'Bukan semua masalah jualan berpunca daripada iklan yang tak menjadi. Kerap kali, punca sebenar ialah tiada struktur tawaran yang jelas dan tiada saluran susulan yang tersusun.',
-            en: 'Not all sales problems stem from bad ads. Often, the real culprit is a weak offer structure and a lack of systematic follow-up channels.'
-        },
-        coverImage: 'assets/img/projects/google-ads-takeoff.webp',
-        author: 'Kamarul Bahareen (Cikgu KB)',
-        tags: ['Digital Marketing', 'Funnel', 'SME Strategy', 'ROI'],
-        content: {
-            ms: `
-<p>Sepanjang lebih 12 tahun melatih dan memberikan konsultasi kepada ratusan syarikat di Malaysia, saya melihat corak kesilapan yang sama berulang kali apabila usahawan cuba meluaskan pemasaran digital mereka.</p>
-
-<h3>1. Terus Melabur Iklan Berbayar Tanpa Memperbaiki Tawaran (Offer)</h3>
-<p>Iklan berbayar (Facebook Ads, TikTok Ads, Google Ads) hanyalah penguat suara (amplifier). Jika mesej dan tawaran anda kurang meyakinkan, iklan hanya akan menyampaikan tawaran yang lemah itu kepada lebih ramai orang — dan membakar bajet anda lebih pantas.</p>
-
-<h3>2. Tiada Sistem Menangkap Lead (Lead Capture)</h3>
-<p>Ramai peniaga mengalirkan semua trafik terus ke borang belian atau WhatsApp tanpa menyimpan maklumat prospek yang belum bersedia membeli pada hari pertama. Akibatnya, 95% prospek hilang begitu sahaja.</p>
-
-<h3>3. Menganggap Media Sosial Adalah Hak Milik Sendiri</h3>
-<p>Akaun media sosial adalah tapak disewa. Perubahan algoritma boleh menjejaskan jualan anda dalam sekelip mata. Usahawan yang matang sentiasa memindahkan audiens ke platform milik sendiri seperti pangkalan data emel, laman web rasmi, atau saluran komuniti.</p>
-
-<h3>4. Membeli Alat Digital Tanpa Melatih Pasukan</h3>
-<p>Membeli perisian CRM atau sistem automasi tercanggih tidak membawa nilai jika pasukan anda tidak dilatih mengendalikannya setiap hari. Sistem yang bagus adalah sistem yang difahami dan dijalankan oleh pasukan.</p>
-
-<h3>5. Tidak Mengukur Metrik yang Betul</h3>
-<p>Jualan akhir dan kos mendapatkan pelanggan (CAC) adalah metrik sebenar — bukannya jumlah <em>likes</em> atau <em>views</em> semata-mata.</p>
-            `,
-            en: `
-<p>Throughout over 12 years of training and consulting Malaysian enterprises, I observe recurring patterns of marketing inefficiencies.</p>
-
-<h3>1. Scaling Paid Ads Before Refining the Offer</h3>
-<p>Paid advertising amplifies your existing offer. If the core offer lacks clarity, ads only accelerate budget burn.</p>
-
-<h3>2. Neglecting Lead Capture Systems</h3>
-<p>Directing 100% of traffic to instant checkout without capturing hesitant leads wastes up to 95% of potential inquiries.</p>
-            `
-        }
-    },
-    {
-        id: 'automasi-webhook-ai-pemasaran',
-        slug: 'automasi-webhook-ai-pemasaran',
-        category: 'automation',
-        date: '2026-06-25',
+        id: 'perbandingan-model-ai-generatif-2026',
+        slug: 'perbandingan-model-ai-generatif-2026',
+        category: 'ai',
+        date: '2026-07-10',
         readTime: {
             ms: '6 min bacaan',
             en: '6 min read'
         },
         title: {
-            ms: 'Bagaimana Automasi Webhook & AI Boleh Menjimatkan Masa Pasukan Pemasaran',
-            en: 'How Webhook Automation & AI Save Marketing Team Hours Every Week'
+            ms: 'Perbandingan Model AI Generatif 2026: ChatGPT, Gemini & Claude untuk Bisnes Malaysia',
+            en: 'Generative AI Models Comparison 2026: ChatGPT, Gemini & Claude for Malaysian Business'
         },
         excerpt: {
-            ms: 'Menerangkan konsep integrasi sistem tanpa kod (no-code), penghantaran maklumat prospek secara automatik, dan tindak balas pantas menggunakan kecerdasan buatan.',
-            en: 'Explaining no-code system integration, automatic lead routing, and instant AI-assisted responses for modern business operations.'
+            ms: 'Setiap model AI mempunyai keunikan tersendiri. Artikel ini meneliti kekuatan ChatGPT 4o/5, Google Gemini 1.5/2.0 dan Claude 3.5 Sonnet dalam pemprosesan Bahasa Melayu, analisis dokumen dan pemasaran.',
+            en: 'Every AI model has unique strengths. This article evaluates ChatGPT, Google Gemini, and Claude 3.5 Sonnet in Malay NLP, document processing, and marketing.'
         },
-        coverImage: 'assets/img/projects/halalaudit.webp',
+        coverImage: 'assets/img/videos/clip3.webp',
         author: 'Kamarul Bahareen (Cikgu KB)',
-        tags: ['Automation', 'Webhook', 'Workflow', 'AI System'],
+        tags: ['AI Models', 'Gemini', 'Claude', 'ChatGPT', 'Comparison'],
         content: {
             ms: `
-<p>Dalam dunia perniagaan yang pantas hari ini, masa tindak balas kepada prospek (response time) menentukan kadar kejayaan jualan anda. Kajian menunjukkan prospek yang dihubungi dalam tempoh 5 minit pertama mempunyai kebarangkalian penukaran 7 kali lebih tinggi berbanding yang dihubungi selepas 1 jam.</p>
+<p>Sehingga tahun 2026, persaingan antara gergasi AI telah menghasilkan model-model yang sangat matang. Walau bagaimanapun, untuk kegunaan syarikat dan usahawan di Malaysia, setiap satu mempunyai kelebihan yang berbeza mengikut skop tugas.</p>
 
-<h3>Apa Itu Webhook dan Mengapa Anda Perlu Tahu?</h3>
-<p>Secara ringkas, webhook adalah seperti penyambung paip digital. Apabila seseorang mengisi borang di laman web anda, webhook menghantar maklumat tersebut secara automatik ke akaun WhatsApp, spreadsheet, atau CRM anda tanpa sebarang kerja salin-tampal manual.</p>
+<h3>1. Claude 3.5 Sonnet / Opus — Penguasa Copywriting & Bahasa Melayu Semulajadi</h3>
+<p>Claude menonjol daripada segi nada bahasa Melayu yang lebih natural, mengelakkan struktur ayat yang terasa 'diterjemah secara langsung dari Bahasa Inggeris'. Ia amat sesuai untuk penulisan artikel panjang, emel rasmi, dan cadangan perniagaan.</p>
 
-<h3>3 Aliran Kerja Automasi Utama untuk SME</h3>
-<ul>
-    <li><strong>Notifikasi Jualan Segera:</strong> Setiap kali prospek mendaftar, pasukan terus mendapat amaran di telefon beserta draf mesej peribadi yang disedia oleh AI.</li>
-    <li><strong>Penjanaan Dokumen Automatic:</strong> Mengubah maklumat borang terus menjadi PDF sebut harga atau proposal rasmi.</li>
-    <li><strong>Kemaskini Status Prospek:</strong> Menjejak perjalanan prospek secara automatik tanpa perlu penginputan manual yang kerap terlupa.</li>
-</ul>
+<h3>2. Google Gemini 1.5 Pro / 2.0 — Juara Pemprosesan Dokumen Panjang & Ekosistem Google</h3>
+<p>Dengan tetingkap konteks (context window) melebihi 1 juta token, Gemini mampu membaca keseluruhan PDF laporan kewangan 500 muka surat atau menganalisis rakaman video 1 jam dalam satu sesi. Integrasinya dengan Google Docs & Drive menjadikan ia alat produktiviti terbaik bagi organisasi.</p>
+
+<h3>3. ChatGPT 4o / GPT-5 — Rangka Kerja Serba Boleh & Ekosistem Custom GPTs</h3>
+<p>OpenAI kekal relevan dengan ciri pembantu suara masa nyata (real-time voice), penjanaan imej bersepadu, dan koleksi Custom GPTs yang membolehkan anda membina ejen AI khusus untuk tugasan harian tanpa pengetahuan kod.</p>
+
+<h3>Kesimpulan Ringkas</h3>
+<p>Gunakan <strong>Claude</strong> untuk penulisan emel dan copywriting rasmi, <strong>Gemini</strong> untuk analisis fail/dokumen besar, dan <strong>ChatGPT</strong> untuk eksperimen perbualan interaktif & integrasi alatan.</p>
             `,
             en: `
-<p>In modern digital operations, response time directly impacts conversion rates. Research shows prospects contacted within 5 minutes are 7 times more likely to convert than those contacted after an hour.</p>
+<p>By 2026, competition among AI giants has produced mature models. However, for Malaysian businesses, each tool excels in distinct operational domains.</p>
+
+<h3>1. Claude — Natural Malay Copywriting</h3>
+<p>Claude excels in natural Malay phrasing, avoiding direct English-to-Malay literal translations.</p>
+
+<h3>2. Google Gemini — Large Context Window & Document Processing</h3>
+<p>With massive context windows, Gemini parses long PDFs and hour-long videos effortlessly.</p>
+            `
+        }
+    },
+    {
+        id: 'automasi-kandungan-media-sosial-ai-webhook',
+        slug: 'automasi-kandungan-media-sosial-ai-webhook',
+        category: 'automation',
+        date: '2026-06-28',
+        readTime: {
+            ms: '7 min bacaan',
+            en: '7 min read'
+        },
+        title: {
+            ms: 'Cara Automasi Kandungan Media Sosial Menggunakan AI & Webhook Tanpa Kod',
+            en: 'How to Automate Social Media Content Using AI & No-Code Webhooks'
+        },
+        excerpt: {
+            ms: 'Menghasilkan kandungan secara konsisten adalah masalah terbesar usahawan. Ketahui cara menghubungkan penjanaan idea AI dengan jadual hantaran media sosial secara automatik.',
+            en: 'Consistent content generation is a major hurdle for business owners. Learn how to connect AI idea generation with automated social posting.'
+        },
+        coverImage: 'assets/img/videos/clip1.webp',
+        author: 'Kamarul Bahareen (Cikgu KB)',
+        tags: ['Automation', 'Webhook', 'Social Media', 'Content Creation'],
+        content: {
+            ms: `
+<p>Mengekalkan kehadiran aktif di Facebook, Instagram, TikTok dan LinkedIn memerlukan disiplin yang tinggi. Namun, jika anda memandu keseluruhan proses secara manual dari awal hingga akhir, masa anda akan habis pada tugasan rutin.</p>
+
+<h3>Aliran Kerja Automasi Kandungan 3 Langkah</h3>
+
+<ol>
+    <li><strong>Sistem Penjanaan Idea AI:</strong> Sediakan borang ringkas di mana anda memasukkan tajuk atau berita industri. Prompt AI akan menjana 3 variasi sudut penyampaian (educate, entertain, sell).</li>
+    <li><strong>Penyimpanan Berstruktur (Airtable / Google Sheets):</strong> Webhook menghantar hasil penulisan AI terus ke jadual kandungan untuk disemak dan diluluskan.</li>
+    <li><strong>Auto-Posting (Make / Zapier):</strong> Sebaik sahaja status kandungan ditukar kepada <em>'Approved'</em>, pautan webhook akan menjadualkan hantaran ke akaun sosial syarikat anda.</li>
+</ol>
+
+<p>Dengan persediaan ini, anda hanya perlu meluangkan masa 1 jam seminggu untuk menyemak kandungan, manakala sistem menggerakkan selebihnya.</p>
+            `,
+            en: `
+<p>Maintaining active social presences requires discipline. Automating routine workflows frees your time for strategic decisions.</p>
             `
         }
     },
@@ -167,8 +165,8 @@ const BLOG_DATA = [
             en: '8 min read'
         },
         title: {
-            ms: 'Kerangka BROKE: Cara Menulis Arahan AI yang Tepat untuk Kakitangan Awam & Korporat',
-            en: 'The BROKE Framework: Writing Precise AI Prompts for Public & Corporate Sectors'
+            ms: 'Penggunaan AI Dalam Sektor Awam: Etika, Protokol Rasmi & Templat Prompt Penjawat Awam',
+            en: 'AI Usage in Public Sector: Ethics, Official Protocol & Civil Servant Prompt Templates'
         },
         excerpt: {
             ms: 'Kertas kerja, memo rasmi, dan minit mesyuarat memerlukan nada dan struktur yang khusus. Belajar cara menggunakan kerangka BROKE untuk mempercepat penulisan dokumen rasmi.',
@@ -176,7 +174,7 @@ const BLOG_DATA = [
         },
         coverImage: 'assets/img/projects/promptkakitanganawam.webp',
         author: 'Kamarul Bahareen (Cikgu KB)',
-        tags: ['BROKE Framework', 'Public Sector', 'Prompt Engineering', 'AI Training'],
+        tags: ['BROKE Framework', 'Public Sector', 'Prompt Engineering', 'AI Ethics'],
         content: {
             ms: `
 <p>Sektor awam dan korporat mempunyai bahasa serta etika penulisan yang ketat. Menggunakan AI tanpa kerangka arahan yang jelas kerap menghasilkan teks yang tidak sesuai dengan protokol rasmi.</p>
@@ -190,9 +188,50 @@ const BLOG_DATA = [
     <li><strong>K — Key Result (Hasil Utama):</strong> Bentuk dokumen yang diperlukan (nota taklimat, emel rasmi).</li>
     <li><strong>E — Expectation (Jangkaan & Nada):</strong> Gunakan Bahasa Melayu berekonomi, sopan dan mematuhi format rasmi.</li>
 </ul>
+
+<h3>Kerahsiaan Data & Keselamatan Maklumat</h3>
+<p>Sentiasa ingat: <strong>Jangan sekali-kali memasukkan maklumat peribadi sensitif (NOC/IC), dokumen terperingkat Rahsia/Sulit, atau kata laluan ke dalam model AI awam.</strong></p>
             `,
             en: `
 <p>Public and corporate sectors maintain strict document etiquette. Prompting AI without a structured framework often yields text non-compliant with official protocols.</p>
+            `
+        }
+    },
+    {
+        id: '5-alat-ai-visual-video-terbaik-2026',
+        slug: '5-alat-ai-visual-video-terbaik-2026',
+        category: 'ai',
+        date: '2026-05-20',
+        readTime: {
+            ms: '6 min bacaan',
+            en: '6 min read'
+        },
+        title: {
+            ms: '5 Alat AI Visual & Video Terbaik 2026 untuk Menjana Visual Iklan Produk SME',
+            en: '5 Best AI Visual & Video Tools 2026 for SME Product Ad Visuals'
+        },
+        excerpt: {
+            ms: 'Penjanaan visual berkualiti tinggi tidak lagi memerlukan studio mahal. Terokai Midjourney, Flux, Kling AI, Luma Dream Machine dan Veo 3 untuk rekaan visual jenama anda.',
+            en: 'High-quality visual generation no longer demands costly studios. Explore Midjourney, Flux, Kling AI, Luma Dream Machine, and Veo 3 for your brand.'
+        },
+        coverImage: 'assets/img/projects/vizuail.webp',
+        author: 'Kamarul Bahareen (Cikgu KB)',
+        tags: ['Visual AI', 'Midjourney', 'Veo 3', 'Product Photography', 'Generative Video'],
+        content: {
+            ms: `
+<p>Bagi peniaga kecil dan pemilik jenama, menghasilkan foto produk dan klip video iklan yang nampak profesional selalunya menelan belanja besar. Perkembangan teknologi penjanaan imej & video AI dalam 2026 menukar lanskap ini secara drastik.</p>
+
+<h3>1. Flux.1 & Midjourney v6.5 — Fotografi Produk Sinematik</h3>
+<p>Flux dan Midjourney kini mampu menghasilkan tekstur bahan produk, biasan cahaya studio, dan bayangan yang sangat realistik berdasarkan input gambar asal produk anda.</p>
+
+<h3>2. Google Veo 3 & Kling AI — Pembinaan Klip Iklan Pendek</h3>
+<p>Untuk video iklan TikTok dan Reels, model video generasi terkini seperti Veo 3 membolehkan pergerakan kamera sinematik (pan, zoom, orbit) dijana daripada arahan teks yang ringkas.</p>
+
+<h3>3. CapCut AI & Remotion — Automasi Suntingan & Subtajuk</h3>
+<p>Mengabungkan aset video AI dengan automasi templat subtajuk dan susunan audio untuk kempen promosi sedia siar dalam beberapa minit.</p>
+            `,
+            en: `
+<p>For small business owners, creating professional product photography and video ads used to be expensive. 2026 AI visual generation changes everything.</p>
             `
         }
     }

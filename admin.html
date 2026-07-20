@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal CMS — Cikgu KB Profile</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/main.css?v=20260720">
+
+    <style>
+        .admin-wrap { max-width: 1100px; margin-inline: auto; padding: 2rem 1rem; }
+        .admin-card { background: var(--white); border: 1px solid var(--line); padding: 1.5rem; border-radius: var(--radius); margin-bottom: 1.5rem; }
+        .admin-form label { display: block; margin-bottom: 1rem; font-size: 0.9rem; font-weight: 600; }
+        .admin-form input, .admin-form select, .admin-form textarea {
+            width: 100%; padding: 0.6rem 0.8rem; margin-top: 0.3rem; border: 1px solid var(--line); border-radius: var(--radius); font-family: inherit; font-size: 0.95rem; background: var(--paper);
+        }
+        .admin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .admin-table { width: 100%; border-collapse: collapse; margin-block: 1rem; font-size: 0.9rem; }
+        .admin-table th, .admin-table td { padding: 0.75rem; border-bottom: 1px solid var(--line); text-align: left; }
+        .admin-table th { background: var(--paper-2); font-family: var(--font-mono); }
+        .badge { display: inline-block; padding: 2px 6px; border-radius: 2px; font-size: 0.75rem; font-family: var(--font-mono); }
+        .badge-open { background: #E6F4EA; color: #137333; }
+        .badge-completed { background: #F1F3F4; color: #5F6368; }
+        .status-box { padding: 1rem; background: #14181D; color: #7BF1A8; font-family: var(--font-mono); font-size: 0.85rem; border-radius: 4px; display: none; margin-top: 1rem; white-space: pre-wrap; }
+    </style>
+</head>
+
+<body>
+    <!-- ===================== PASSCODE MODAL ===================== -->
+    <div id="loginModal" style="position:fixed; inset:0; background:rgba(20,24,29,0.92); z-index:999; display:flex; align-items:center; justify-content:center; padding:1rem;">
+        <div style="background:var(--white); border:1px solid var(--line); padding:2rem; max-width:400px; width:100%; border-radius:var(--radius); text-align:center;">
+            <span class="mono" style="color:var(--blue-deep);">PENGESAHAN ADMIN</span>
+            <h2 style="font-family:var(--font-display); margin-block:0.5rem 1rem;">Log Masuk Portal</h2>
+            <form id="loginForm">
+                <input type="password" id="passcodeInput" placeholder="Masukkan Kata Laluan Admin..." style="width:100%; padding:0.8rem; border:1px solid var(--line); border-radius:var(--radius); margin-bottom:1rem; text-align:center; font-size:1.1rem;" required>
+                <button type="submit" class="btn btn-solid" style="width:100%;">Log Masuk 🔒</button>
+            </form>
+            <p id="loginError" style="color:red; font-size:0.85rem; margin-top:0.5rem; display:none;">Kata laluan tidak tepat!</p>
+        </div>
+    </div>
+
+    <!-- ===================== ADMIN DASHBOARD ===================== -->
+    <div id="adminApp" class="admin-wrap" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:1.5rem; gap:1rem;">
+            <div>
+                <span class="mono" style="color:var(--blue-deep);">CIKGU KB CMS PORTAL</span>
+                <h1 style="font-family:var(--font-display); font-size:2rem;">Pengurusan Kalendar & Blog</h1>
+            </div>
+            <div style="display:flex; gap:0.5rem;">
+                <a href="index.html" class="btn btn-line btn-sm" target="_blank">Lihat Laman Utama ↗</a>
+                <button type="button" class="btn btn-line btn-sm" onclick="logoutAdmin()">Log Keluar</button>
+            </div>
+        </div>
+
+        <!-- CONFIG CARD -->
+        <div class="admin-card">
+            <h3 class="mono" style="margin-bottom:0.75rem;">🔑 Konfigurasi GitHub API</h3>
+            <div class="admin-grid">
+                <div>
+                    <label>GitHub Personal Access Token (PAT):
+                        <input type="password" id="ghPatInput" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+                    </label>
+                </div>
+                <div>
+                    <label>Target Repo & Branch:
+                        <input type="text" id="ghRepoInput" value="cikgukb/profile (main)" readonly>
+                    </label>
+                </div>
+            </div>
+            <button type="button" class="btn btn-line btn-sm" onclick="savePat()">Simpan Token Dalam Browser</button>
+        </div>
+
+        <!-- TABS -->
+        <div style="display:flex; gap:0.5rem; margin-bottom:1.5rem;">
+            <button type="button" class="btn btn-solid" id="tabEvBtn" onclick="switchTab('events')">📅 Pengurusan Kalendar</button>
+            <button type="button" class="btn btn-line" id="tabBlBtn" onclick="switchTab('blog')">📝 Pengurusan Blog</button>
+        </div>
+
+        <!-- EVENTS TAB -->
+        <div id="tabEvents">
+            <div class="admin-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                    <h3>Senarai Acara Kalendar</h3>
+                    <button type="button" class="btn btn-solid btn-sm" onclick="resetEventForm()">+ Tambah Acara Baharu</button>
+                </div>
+
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Tarikh</th>
+                            <th>Tajuk Acara (BM)</th>
+                            <th>Jenis</th>
+                            <th>Status</th>
+                            <th>Tindakan</th>
+                        </tr>
+                    </thead>
+                    <tbody id="eventsTableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="admin-card">
+                <h3 id="evFormTitle" style="margin-bottom:1rem;">Borang Acara</h3>
+                <form id="eventForm" class="admin-form" onsubmit="saveEventItem(event)">
+                    <input type="hidden" id="evId">
+                    <div class="admin-grid">
+                        <label>Tajuk Acara (BM): <input type="text" id="evTitleMs" required></label>
+                        <label>Tajuk Acara (EN): <input type="text" id="evTitleEn" required></label>
+                    </div>
+                    <div class="admin-grid">
+                        <label>Jenis Acara:
+                            <select id="evType">
+                                <option value="workshop">Bengkel (Workshop)</option>
+                                <option value="seminar">Seminar / Masterclass</option>
+                                <option value="webinar">Webinar (Online)</option>
+                                <option value="corporate">In-House Corporate</option>
+                            </select>
+                        </label>
+                        <label>Status:
+                            <select id="evStatus">
+                                <option value="open">Pendaftaran Dibuka (Open)</option>
+                                <option value="upcoming">Akan Datang (Upcoming)</option>
+                                <option value="completed">Selesai (Completed)</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="admin-grid">
+                        <label>Tarikh Mula (YYYY-MM-DD): <input type="date" id="evDate" required></label>
+                        <label>Tarikh Tamat (YYYY-MM-DD): <input type="date" id="evEndDate"></label>
+                    </div>
+                    <div class="admin-grid">
+                        <label>Paparan Tarikh (BM): <input type="text" id="evDispMs" placeholder="22 – 23 Ogos 2026"></label>
+                        <label>Paparan Tarikh (EN): <input type="text" id="evDispEn" placeholder="22 – 23 August 2026"></label>
+                    </div>
+                    <div class="admin-grid">
+                        <label>Masa: <input type="text" id="evTime" placeholder="09:00 AM – 05:00 PM"></label>
+                        <label>Pautan Pendaftaran (WhatsApp/Form): <input type="url" id="evRegUrl"></label>
+                    </div>
+                    <div class="admin-grid">
+                        <label>Lokasi Ringkas (BM): <input type="text" id="evLocMs" placeholder="Kuala Lumpur / Dewam Latihan"></label>
+                        <label>Lokasi Ringkas (EN): <input type="text" id="evLocEn" placeholder="Kuala Lumpur / Training Hall"></label>
+                    </div>
+                    <div class="admin-grid">
+                        <label>Tempat Penuh / Venue (BM): <input type="text" id="evVenMs"></label>
+                        <label>Tempat Penuh / Venue (EN): <input type="text" id="evVenEn"></label>
+                    </div>
+                    <label>Ringkasan Acara (BM): <textarea id="evSumMs" rows="3" required></textarea></label>
+                    <label>Ringkasan Acara (EN): <textarea id="evSumEn" rows="3"></textarea></label>
+                    <label>Audiens Sasaran (BM): <input type="text" id="evAudMs" placeholder="Usahawan SME, Pengurus Pemasaran"></label>
+                    <label>Manfaat Utama (Garis Baru bagi setiap poin): <textarea id="evHighMs" rows="4" placeholder="Item 1&#10;Item 2&#10;Item 3"></textarea></label>
+                    <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+                        <button type="submit" class="btn btn-solid">Simpan Draf Acara Ini</button>
+                        <button type="button" class="btn btn-line" onclick="resetEventForm()">Batal</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- BLOG TAB -->
+        <div id="tabBlog" style="display:none;">
+            <div class="admin-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                    <h3>Senarai Artikel Blog</h3>
+                    <button type="button" class="btn btn-solid btn-sm" onclick="resetBlogForm()">+ Tambah Artikel Baharu</button>
+                </div>
+
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Tarikh</th>
+                            <th>Tajuk Artikel (BM)</th>
+                            <th>Kategori</th>
+                            <th>Tindakan</th>
+                        </tr>
+                    </thead>
+                    <tbody id="blogTableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="admin-card">
+                <h3 id="blFormTitle" style="margin-bottom:1rem;">Borang Artikel Blog</h3>
+                <form id="blogForm" class="admin-form" onsubmit="saveBlogItem(event)">
+                    <input type="hidden" id="blId">
+                    <div class="admin-grid">
+                        <label>Tajuk Artikel (BM): <input type="text" id="blTitleMs" required></label>
+                        <label>Tajuk Artikel (EN): <input type="text" id="blTitleEn"></label>
+                    </div>
+                    <div class="admin-grid">
+                        <label>Slug URL: <input type="text" id="blSlug" placeholder="panduan-ai-sme" required></label>
+                        <label>Kategori:
+                            <select id="blCategory">
+                                <option value="ai">AI & Prompt</option>
+                                <option value="marketing">Pemasaran (Marketing)</option>
+                                <option value="automation">Automasi (Automation)</option>
+                                <option value="strategy">Strategi (Strategy)</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="admin-grid">
+                        <label>Tarikh Terbit (YYYY-MM-DD): <input type="date" id="blDate" required></label>
+                        <label>Masa Bacaan: <input type="text" id="blReadMs" placeholder="5 min bacaan"></label>
+                    </div>
+                    <div class="admin-grid">
+                        <label>Penulis: <input type="text" id="blAuthor" value="Kamarul Bahareen (Cikgu KB)"></label>
+                        <label>Imej Muka Depan (Path/URL): <input type="text" id="blCover" placeholder="assets/img/projects/sme-prompt-generator.webp"></label>
+                    </div>
+                    <label>Tag (Pisahkan dengan koma): <input type="text" id="blTags" placeholder="AI Marketing, ChatGPT, SME"></label>
+                    <label>Ringkasan/Excerpt (BM): <textarea id="blExcMs" rows="3" required></textarea></label>
+                    <label>Kandungan Lengkap HTML (BM): <textarea id="blContMs" rows="10" required></textarea></label>
+                    <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+                        <button type="submit" class="btn btn-solid">Simpan Draf Artikel Ini</button>
+                        <button type="button" class="btn btn-line" onclick="resetBlogForm()">Batal</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- GLOBAL COMMIT BAR -->
+        <div class="admin-card" style="background:#14181D; color:white;">
+            <h3 style="color:#7BF1A8; margin-bottom:0.5rem;">🚀 Simpan & Hantar Terus ke GitHub Pages</h3>
+            <p style="font-size:0.9rem; color:#A0AEC0; margin-bottom:1rem;">Klik butang di bawah untuk mengemaskini fail <code>js/events-data.js</code> dan <code>js/blog-data.js</code> secara terus ke repositori GitHub anda.</p>
+            
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                <button type="button" class="btn btn-solid" style="background:#7BF1A8; color:#14181D;" onclick="commitToGitHub()">Push Updates to GitHub API 🚀</button>
+                <button type="button" class="btn btn-line" style="color:white; border-color:#4A5568;" onclick="downloadBackups()">Muat Turun Fail Backup JS 💾</button>
+            </div>
+
+            <div id="statusConsole" class="status-box"></div>
+        </div>
+    </div>
+
+    <!-- Script imports -->
+    <script src="js/i18n.js?v=20260720"></script>
+    <script src="js/events-data.js?v=20260720"></script>
+    <script src="js/blog-data.js?v=20260720"></script>
+
+    <script>
+        const DEFAULT_PASS = '202688';
+        let currentEvents = [...(typeof EVENTS_DATA !== 'undefined' ? EVENTS_DATA : [])];
+        let currentBlog = [...(typeof BLOG_DATA !== 'undefined' ? BLOG_DATA : [])];
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const val = document.getElementById('passcodeInput').value;
+            if (val === DEFAULT_PASS || val === localStorage.getItem('admin_pass')) {
+                document.getElementById('loginModal').style.display = 'none';
+                document.getElementById('adminApp').style.display = 'block';
+                initDashboard();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        });
+
+        function logoutAdmin() {
+            location.reload();
+        }
+
+        function savePat() {
+            const pat = document.getElementById('ghPatInput').value.trim();
+            if (pat) {
+                localStorage.setItem('github_pat', pat);
+                alert('Personal Access Token disimpan dalam browser!');
+            }
+        }
+
+        function initDashboard() {
+            document.getElementById('ghPatInput').value = localStorage.getItem('github_pat') || '';
+            renderEventsTable();
+            renderBlogTable();
+        }
+
+        function switchTab(tab) {
+            document.getElementById('tabEvents').style.display = tab === 'events' ? 'block' : 'none';
+            document.getElementById('tabBlog').style.display = tab === 'blog' ? 'block' : 'none';
+            document.getElementById('tabEvBtn').className = tab === 'events' ? 'btn btn-solid' : 'btn btn-line';
+            document.getElementById('tabBlBtn').className = tab === 'blog' ? 'btn btn-solid' : 'btn btn-line';
+        }
+
+        /* ---------- EVENTS ADMIN ---------- */
+        function renderEventsTable() {
+            const tbody = document.getElementById('eventsTableBody');
+            tbody.innerHTML = currentEvents.map((ev, idx) => {
+                const title = typeof ev.title === 'object' ? (ev.title.ms || ev.title.en) : ev.title;
+                return `<tr>
+                    <td>${ev.date}</td>
+                    <td><strong>${title}</strong></td>
+                    <td>${ev.type}</td>
+                    <td><span class="badge badge-${ev.status}">${ev.status}</span></td>
+                    <td>
+                        <button type="button" class="btn btn-line btn-sm" onclick="editEventItem(${idx})">Edit</button>
+                        <button type="button" class="btn btn-line btn-sm" style="color:red;" onclick="deleteEventItem(${idx})">Hapus</button>
+                    </td>
+                </tr>`;
+            }).join('');
+        }
+
+        function resetEventForm() {
+            document.getElementById('evId').value = '';
+            document.getElementById('eventForm').reset();
+            document.getElementById('evFormTitle').innerText = 'Borang Tambah Acara Baharu';
+        }
+
+        function editEventItem(idx) {
+            const ev = currentEvents[idx];
+            document.getElementById('evId').value = idx;
+            document.getElementById('evFormTitle').innerText = 'Borang Edit Acara';
+            document.getElementById('evTitleMs').value = typeof ev.title === 'object' ? ev.title.ms : ev.title;
+            document.getElementById('evTitleEn').value = typeof ev.title === 'object' ? (ev.title.en || '') : '';
+            document.getElementById('evType').value = ev.type || 'workshop';
+            document.getElementById('evStatus').value = ev.status || 'open';
+            document.getElementById('evDate').value = ev.date || '';
+            document.getElementById('evEndDate').value = ev.endDate || '';
+            document.getElementById('evDispMs').value = typeof ev.displayDate === 'object' ? ev.displayDate.ms : (ev.displayDate || '');
+            document.getElementById('evDispEn').value = typeof ev.displayDate === 'object' ? (ev.displayDate.en || '') : '';
+            document.getElementById('evTime').value = ev.time || '';
+            document.getElementById('evRegUrl').value = ev.registrationUrl || '';
+            document.getElementById('evLocMs').value = typeof ev.location === 'object' ? ev.location.ms : (ev.location || '');
+            document.getElementById('evLocEn').value = typeof ev.location === 'object' ? (ev.location.en || '') : '';
+            document.getElementById('evVenMs').value = typeof ev.venue === 'object' ? ev.venue.ms : (ev.venue || '');
+            document.getElementById('evVenEn').value = typeof ev.venue === 'object' ? (ev.venue.en || '') : '';
+            document.getElementById('evSumMs').value = typeof ev.summary === 'object' ? ev.summary.ms : (ev.summary || '');
+            document.getElementById('evSumEn').value = typeof ev.summary === 'object' ? (ev.summary.en || '') : '';
+            document.getElementById('evAudMs').value = typeof ev.targetAudience === 'object' ? ev.targetAudience.ms : (ev.targetAudience || '');
+            
+            const high = typeof ev.highlights === 'object' ? (ev.highlights.ms || []) : (ev.highlights || []);
+            document.getElementById('evHighMs').value = Array.isArray(high) ? high.join('\n') : high;
+        }
+
+        function saveEventItem(e) {
+            e.preventDefault();
+            const idx = document.getElementById('evId').value;
+            const highText = document.getElementById('evHighMs').value.trim();
+            const highArr = highText ? highText.split('\n').filter(Boolean) : [];
+
+            const item = {
+                id: document.getElementById('evTitleMs').value.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+                title: { ms: document.getElementById('evTitleMs').value, en: document.getElementById('evTitleEn').value || document.getElementById('evTitleMs').value },
+                type: document.getElementById('evType').value,
+                status: document.getElementById('evStatus').value,
+                date: document.getElementById('evDate').value,
+                endDate: document.getElementById('evEndDate').value,
+                displayDate: { ms: document.getElementById('evDispMs').value || document.getElementById('evDate').value, en: document.getElementById('evDispEn').value || document.getElementById('evDate').value },
+                time: document.getElementById('evTime').value,
+                location: { ms: document.getElementById('evLocMs').value, en: document.getElementById('evLocEn').value || document.getElementById('evLocMs').value },
+                venue: { ms: document.getElementById('evVenMs').value, en: document.getElementById('evVenEn').value || document.getElementById('evVenMs').value },
+                organizer: 'KB Beyond Creative Sdn Bhd',
+                summary: { ms: document.getElementById('evSumMs').value, en: document.getElementById('evSumEn').value || document.getElementById('evSumMs').value },
+                highlights: { ms: highArr, en: highArr },
+                targetAudience: { ms: document.getElementById('evAudMs').value, en: document.getElementById('evAudMs').value },
+                registrationUrl: document.getElementById('evRegUrl').value
+            };
+
+            if (idx !== '') { currentEvents[Number(idx)] = item; } else { currentEvents.unshift(item); }
+            renderEventsTable();
+            resetEventForm();
+            alert('Acara disimpan dalam draf!');
+        }
+
+        function deleteEventItem(idx) {
+            if (confirm('Hapus acara ini?')) {
+                currentEvents.splice(idx, 1);
+                renderEventsTable();
+            }
+        }
+
+        /* ---------- BLOG ADMIN ---------- */
+        function renderBlogTable() {
+            const tbody = document.getElementById('blogTableBody');
+            tbody.innerHTML = currentBlog.map((b, idx) => {
+                const title = typeof b.title === 'object' ? (b.title.ms || b.title.en) : b.title;
+                return `<tr>
+                    <td>${b.date}</td>
+                    <td><strong>${title}</strong></td>
+                    <td><span class="badge badge-open">${b.category}</span></td>
+                    <td>
+                        <button type="button" class="btn btn-line btn-sm" onclick="editBlogItem(${idx})">Edit</button>
+                        <button type="button" class="btn btn-line btn-sm" style="color:red;" onclick="deleteBlogItem(${idx})">Hapus</button>
+                    </td>
+                </tr>`;
+            }).join('');
+        }
+
+        function resetBlogForm() {
+            document.getElementById('blId').value = '';
+            document.getElementById('blogForm').reset();
+            document.getElementById('blFormTitle').innerText = 'Borang Tambah Artikel Baharu';
+        }
+
+        function editBlogItem(idx) {
+            const b = currentBlog[idx];
+            document.getElementById('blId').value = idx;
+            document.getElementById('blFormTitle').innerText = 'Borang Edit Artikel';
+            document.getElementById('blTitleMs').value = typeof b.title === 'object' ? b.title.ms : b.title;
+            document.getElementById('blTitleEn').value = typeof b.title === 'object' ? (b.title.en || '') : '';
+            document.getElementById('blSlug').value = b.slug || b.id;
+            document.getElementById('blCategory').value = b.category || 'ai';
+            document.getElementById('blDate').value = b.date || '';
+            document.getElementById('blReadMs').value = typeof b.readTime === 'object' ? b.readTime.ms : (b.readTime || '');
+            document.getElementById('blAuthor').value = b.author || 'Kamarul Bahareen (Cikgu KB)';
+            document.getElementById('blCover').value = b.coverImage || '';
+            document.getElementById('blTags').value = (b.tags || []).join(', ');
+            document.getElementById('blExcMs').value = typeof b.excerpt === 'object' ? b.excerpt.ms : (b.excerpt || '');
+            document.getElementById('blContMs').value = typeof b.content === 'object' ? b.content.ms : (b.content || '');
+        }
+
+        function saveBlogItem(e) {
+            e.preventDefault();
+            const idx = document.getElementById('blId').value;
+            const tagsText = document.getElementById('blTags').value.trim();
+            const tagsArr = tagsText ? tagsText.split(',').map(s=>s.trim()).filter(Boolean) : [];
+
+            const item = {
+                id: document.getElementById('blSlug').value,
+                slug: document.getElementById('blSlug').value,
+                category: document.getElementById('blCategory').value,
+                date: document.getElementById('blDate').value,
+                readTime: { ms: document.getElementById('blReadMs').value || '5 min bacaan', en: '5 min read' },
+                title: { ms: document.getElementById('blTitleMs').value, en: document.getElementById('blTitleEn').value || document.getElementById('blTitleMs').value },
+                excerpt: { ms: document.getElementById('blExcMs').value, en: document.getElementById('blExcMs').value },
+                coverImage: document.getElementById('blCover').value,
+                author: document.getElementById('blAuthor').value,
+                tags: tagsArr,
+                content: { ms: document.getElementById('blContMs').value, en: document.getElementById('blContMs').value }
+            };
+
+            if (idx !== '') { currentBlog[Number(idx)] = item; } else { currentBlog.unshift(item); }
+            renderBlogTable();
+            resetBlogForm();
+            alert('Artikel disimpan dalam draf!');
+        }
+
+        function deleteBlogItem(idx) {
+            if (confirm('Hapus artikel ini?')) {
+                currentBlog.splice(idx, 1);
+                renderBlogTable();
+            }
+        }
+
+        /* ---------- GITHUB COMMIT & DOWNLOAD ---------- */
+        function generateEventsJs() {
+            return `/* ============================================================
+   DATA ACARA & KALENDAR — cikgukb.my
+   ============================================================ */
+
+const EVENTS_DATA = ${JSON.stringify(currentEvents, null, 4)};\n`;
+        }
+
+        function generateBlogJs() {
+            return `/* ============================================================
+   DATA BLOG & ARTIKEL — cikgukb.my
+   ============================================================ */
+
+const BLOG_DATA = ${JSON.stringify(currentBlog, null, 4)};\n`;
+        }
+
+        function downloadBackups() {
+            const blobEv = new Blob([generateEventsJs()], { type: 'text/javascript' });
+            const aEv = document.createElement('a'); aEv.href = URL.createObjectURL(blobEv); aEv.download = 'events-data.js'; aEv.click();
+            
+            const blobBl = new Blob([generateBlogJs()], { type: 'text/javascript' });
+            const aBl = document.createElement('a'); aBl.href = URL.createObjectURL(blobBl); aBl.download = 'blog-data.js'; aBl.click();
+        }
+
+        async function commitToGitHub() {
+            const pat = document.getElementById('ghPatInput').value.trim() || localStorage.getItem('github_pat');
+            const consoleEl = document.getElementById('statusConsole');
+            consoleEl.style.display = 'block';
+            consoleEl.textContent = '🔄 Memulakan sambungan ke GitHub REST API...\n';
+
+            if (!pat) {
+                alert('Sila masukkan Personal Access Token (PAT) GitHub anda terlebih dahulu!');
+                return;
+            }
+
+            try {
+                // 1. Commit events-data.js
+                consoleEl.textContent += '📍 Mendapatkan SHA bagi js/events-data.js...\n';
+                const getEv = await fetch('https://api.github.com/repos/cikgukb/profile/contents/js/events-data.js', {
+                    headers: { 'Authorization': `Bearer ${pat}` }
+                });
+                const evData = await getEv.json();
+                const evSha = evData.sha;
+
+                consoleEl.textContent += '💾 Memuat naik js/events-data.js yang baru...\n';
+                const evContent = btoa(unescape(encodeURIComponent(generateEventsJs())));
+                const putEv = await fetch('https://api.github.com/repos/cikgukb/profile/contents/js/events-data.js', {
+                    method: 'PUT',
+                    headers: { 'Authorization': `Bearer ${pat}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: 'cms: update events-data.js via admin portal',
+                        content: evContent,
+                        sha: evSha,
+                        branch: 'main'
+                    })
+                });
+
+                if (!putEv.ok) throw new Error('Gagal mengemas kini events-data.js');
+
+                // 2. Commit blog-data.js
+                consoleEl.textContent += '📍 Mendapatkan SHA bagi js/blog-data.js...\n';
+                const getBl = await fetch('https://api.github.com/repos/cikgukb/profile/contents/js/blog-data.js', {
+                    headers: { 'Authorization': `Bearer ${pat}` }
+                });
+                const blData = await getBl.json();
+                const blSha = blData.sha;
+
+                consoleEl.textContent += '💾 Memuat naik js/blog-data.js yang baru...\n';
+                const blContent = btoa(unescape(encodeURIComponent(generateBlogJs())));
+                const putBl = await fetch('https://api.github.com/repos/cikgukb/profile/contents/js/blog-data.js', {
+                    method: 'PUT',
+                    headers: { 'Authorization': `Bearer ${pat}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: 'cms: update blog-data.js via admin portal',
+                        content: blContent,
+                        sha: blSha,
+                        branch: 'main'
+                    })
+                });
+
+                if (!putBl.ok) throw new Error('Gagal mengemas kini blog-data.js');
+
+                consoleEl.textContent += '✅ BERJAYA! Perubahan telah di-commit ke GitHub branch main.\nGitHub Pages akan mengemas kini laman web anda secara automatik dalam 1-2 minit.';
+                alert('Berjaya di-commit ke GitHub Pages!');
+            } catch (err) {
+                consoleEl.textContent += `❌ Ralat: ${err.message}\nSila pastikan PAT anda mempunyai kebenaran repo (contents: write).`;
+            }
+        }
+    </script>
+</body>
+
+</html>
