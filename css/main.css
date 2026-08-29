@@ -871,6 +871,41 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
     color: var(--ink-2);
 }
 
+/* ---------- ElevenLabs personal coaching widget ---------- */
+elevenlabs-convai#coachingAgent {
+    --agent-widget-x: 0px;
+    --agent-widget-y: 0px;
+    z-index: 140;
+    transform: translate3d(var(--agent-widget-x), var(--agent-widget-y), 0) !important;
+}
+
+.agent-widget-drag-handle {
+    position: fixed;
+    right: max(18px, env(safe-area-inset-right));
+    bottom: calc(148px + env(safe-area-inset-bottom));
+    z-index: 141;
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    box-shadow: 0 5px 18px rgba(20, 24, 29, 0.22);
+    font-size: 1.05rem;
+    line-height: 1;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    transform: translate3d(var(--agent-widget-x, 0px), var(--agent-widget-y, 0px), 0);
+}
+
+.agent-widget-drag-handle:hover,
+.agent-widget-drag-handle:focus-visible { background: var(--blue-deep); }
+.agent-widget-drag-handle:active,
+.agent-widget-drag-handle.is-dragging { cursor: grabbing; }
+
 @media (max-width: 900px) {
     .events-grid, .blog-grid { grid-template-columns: 1fr; }
 }
@@ -896,6 +931,12 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 }
 
 @media (max-width: 860px) {
+    elevenlabs-convai#coachingAgent {
+        --agent-widget-x: 0px !important;
+        --agent-widget-y: 0px !important;
+    }
+    .agent-widget-drag-handle { display: none; }
+
     .nav-links {
         position: fixed; inset: var(--nav-h) 0 auto 0; z-index: 99;
         flex-direction: column; align-items: stretch; gap: 0;

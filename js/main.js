@@ -622,6 +622,90 @@
         nums.forEach(el => io.observe(el));
     }
 
+    /* ---------- widget personal coaching ---------- */
+    function initCoachingAgentDrag() {
+        const widget = document.getElementById('coachingAgent');
+        const handle = document.querySelector('.agent-widget-drag-handle');
+        if (!widget || !handle) return;
+
+        const STORAGE_KEY = 'cikgukbCoachingAgentPosition';
+        const DESKTOP = window.matchMedia('(min-width: 861px) and (pointer: fine)');
+        const NAV_CLEARANCE = 88;
+        const EDGE_CLEARANCE = 72;
+        let position = { x: 0, y: 0 };
+        let drag = null;
+
+        function clamp(next) {
+            return {
+                x: Math.min(0, Math.max(-(window.innerWidth - EDGE_CLEARANCE), next.x)),
+                y: Math.min(0, Math.max(-(window.innerHeight - NAV_CLEARANCE - EDGE_CLEARANCE), next.y))
+            };
+        }
+
+        function render() {
+            const x = DESKTOP.matches ? position.x : 0;
+            const y = DESKTOP.matches ? position.y : 0;
+            widget.style.setProperty('--agent-widget-x', x + 'px');
+            widget.style.setProperty('--agent-widget-y', y + 'px');
+            handle.style.setProperty('--agent-widget-x', x + 'px');
+            handle.style.setProperty('--agent-widget-y', y + 'px');
+        }
+
+        function save() {
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(position)); } catch (e) { /* private mode */ }
+        }
+
+        function restore() {
+            try {
+                const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+                if (saved && Number.isFinite(saved.x) && Number.isFinite(saved.y)) {
+                    position = clamp(saved);
+                }
+            } catch (e) { /* invalid or unavailable storage */ }
+            render();
+        }
+
+        handle.addEventListener('pointerdown', event => {
+            if (!DESKTOP.matches || event.button !== 0) return;
+            drag = {
+                pointerId: event.pointerId,
+                startX: event.clientX,
+                startY: event.clientY,
+                originX: position.x,
+                originY: position.y
+            };
+            handle.setPointerCapture(event.pointerId);
+            handle.classList.add('is-dragging');
+            event.preventDefault();
+        });
+
+        handle.addEventListener('pointermove', event => {
+            if (!drag || event.pointerId !== drag.pointerId) return;
+            position = clamp({
+                x: drag.originX + event.clientX - drag.startX,
+                y: drag.originY + event.clientY - drag.startY
+            });
+            render();
+        });
+
+        function finishDrag(event) {
+            if (!drag || event.pointerId !== drag.pointerId) return;
+            drag = null;
+            handle.classList.remove('is-dragging');
+            save();
+        }
+
+        handle.addEventListener('pointerup', finishDrag);
+        handle.addEventListener('pointercancel', finishDrag);
+        window.addEventListener('resize', () => {
+            position = clamp(position);
+            render();
+            save();
+        });
+        DESKTOP.addEventListener?.('change', render);
+        restore();
+    }
+
     /* ---------- mula ---------- */
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
@@ -631,4 +715,5 @@
     initReveals();
     initCounters();
     injectDynamicJsonLd();
+    initCoachingAgentDrag();
 })();
