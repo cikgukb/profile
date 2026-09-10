@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Coaching — Cikgu KB</title>
+  <meta name="description" content="Ceritakan matlamat anda, pilih bidang coaching dan cadangkan sesi tiga jam bersama Cikgu KB. Online atau fizikal, mengikut keperluan anda.">
+  <link rel="canonical" href="https://cikgukb.my/coaching.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#172d67">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/coaching.css?v=20260910">
+  <script src="js/coaching-config.js?v=20260910" defer></script>
+  <script src="js/coaching.js?v=20260910" defer></script>
+</head>
+<body>
+  <a class="skip" href="#question">Terus ke soalan</a>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Cikgu KB — laman utama"><span class="brand-mark" aria-hidden="true"></span>cikgukb<span>.my</span></a>
+    <a class="home-link" href="index.html">← <span>Laman utama</span></a>
+  </header>
+  <main class="layout">
+    <aside class="intro" aria-label="Tentang sesi coaching">
+      <div>
+        <p class="eyebrow">PERSONAL COACHING / CIKGU KB</p>
+        <h1>Satu sesi.<br> Satu langkah<br> <em>lebih jelas.</em></h1>
+        <p class="intro-copy">Dari “nak mula di mana?” kepada langkah yang boleh anda buat sendiri.</p>
+        <div class="session-details"><span>3 jam / sesi</span><span>Online atau fizikal</span></div>
+      </div>
+      <div class="coach">
+        <img src="assets/img/portrait-hero-sm.webp" width="56" height="56" alt="Cikgu KB">
+        <div><strong>Kamarul Bahareen</strong><span>KB Beyond Creative</span></div>
+      </div>
+      <p class="price-note">Satu bidang bagi setiap permohonan.<br>Harga dimaklumkan selepas semakan.</p>
+    </aside>
+    <section class="workspace" aria-label="Borang personal coaching">
+      <div class="progress-header"><span id="step-label">Langkah 1</span><span id="progress-percent">0%</span></div>
+      <progress id="progress" max="100" value="0" aria-label="Kemajuan borang"></progress>
+      <form id="coaching-form" novalidate>
+        <div class="honeypot" aria-hidden="true"><label>Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+        <div id="question" tabindex="-1"></div>
+        <p id="form-error" class="error" role="alert"></p>
+        <div id="navigation" class="navigation">
+          <button id="back" type="button" class="back">← Kembali</button>
+          <button id="next" type="submit" class="primary">Seterusnya <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+      <noscript><p>Sila aktifkan JavaScript untuk mengisi borang ini. Anda juga boleh <a href="https://wa.me/60133815817">hubungi Cikgu KB melalui WhatsApp</a>.</p></noscript>
+      <p class="privacy-note">Maklumat ini digunakan untuk menyemak keperluan coaching dan menghubungi anda melalui WhatsApp.</p>
+    </section>
+  </main>
+  <footer class="footer"><span>KB Beyond Creative</span><span>Belajar. Cuba. Gerakkan.</span></footer>
+</body>
+</html>

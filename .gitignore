@@ -1,0 +1,10 @@
+node_modules/
+.wrangler/
+.dev.vars*
+.env*
+!.dev.vars.example
+!.env.example
+.playwright-cli/
+test-results/
+backend/dist/
+backend/worker-configuration.d.ts

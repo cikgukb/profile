@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cikgukb-coaching-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-10",
+  "compatibility_flags": ["nodejs_compat"],
+  "account_id": "8d6b380bb3adbf6aa2e9042fddda0463",
+  "workers_dev": true,
+  "observability": { "enabled": true, "head_sampling_rate": 1 },
+  "vars": {
+    "ALLOWED_ORIGINS": "https://cikgukb.my,https://www.cikgukb.my,https://cikgukb.github.io",
+    "CALENDAR_ID": "cikgukb.my@gmail.com",
+    "MURPATI_SESSION_ID": "official:15553963664",
+    "MURPATI_RECIPIENT": "60133815817",
+    "MURPATI_TEMPLATE": "coaching_request_admin",
+    "MURPATI_LANGUAGE": "ms",
+    "NOTIFICATIONS_ENABLED": "true"
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "cikgukb-coaching",
+    "database_id": "7245607b-8e8f-4975-b216-1d4da2d99ac2",
+    "migrations_dir": "migrations"
+  }],
+  "triggers": { "crons": ["*/5 * * * *"] }
+}

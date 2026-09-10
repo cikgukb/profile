@@ -1,0 +1,20 @@
+{
+  "name": "cikgukb-coaching-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "test": "tsx --test tests/*.test.ts",
+    "typecheck": "wrangler types --strict-vars=false && tsc --noEmit",
+    "deploy": "wrangler deploy",
+    "migrate:local": "wrangler d1 migrations apply DB --local",
+    "migrate:remote": "wrangler d1 migrations apply DB --remote"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.2",
+    "miniflare": "^5.20260908.0-alpha",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.130.0"
+  }
+}
