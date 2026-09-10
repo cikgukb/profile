@@ -13,7 +13,8 @@ Backend di `backend/` menggunakan Cloudflare Worker dan D1. Rekod permohonan ser
 - Projek Google Cloud `cikgukb-coaching` mempunyai Google Calendar API yang aktif. Key khusus dihadkan kepada Google Calendar API dan disimpan sebagai rahsia Worker. FreeBusy sebenar berjaya: 15 September tiada slot; 18 September tiga slot tersedia.
 - Murpati sesi `official:15553963664`, penerima tetap `60133815817`. Templat `coaching_request_admin` (Utility, `ms`) berstatus **Approved**.
 - Ketiga-tiga rahsia server tersedia dan `NOTIFICATIONS_ENABLED=true`. Frontend menggunakan URL Worker production; GitHub Pages kekal main/root.
-- Sepuluh ujian automatik dan semakan TypeScript lulus. QA desktop/mobile serta aliran bersyarat telah diuji secara tempatan. Penerimaan WhatsApp sebenar perlu disahkan dalam ujian akhir pelancaran; status `sent` hanya bukti penerimaan API.
+- Sepuluh ujian automatik dan semakan TypeScript lulus. QA desktop/mobile serta aliran bersyarat telah diuji secara tempatan. GitHub Pages deployment berjaya dan halaman live memberikan HTTP 200; dua pautan coaching serta borang pertanyaan umum disahkan tersedia.
+- Ujian melalui borang production berjaya dengan rujukan `42b5112f-7881-42da-b920-d2538d1b8c94` (nama UJIAN SISTEM Cikgu KB). D1 menunjukkan `pending_confirmation`, notifikasi `sent`, satu cubaan dan tiada ralat. Pemilik mengesahkan mesej lengkap diterima pada WhatsApp `60133815817`. Mesej terima kasih tepat turut disahkan. Rekod ini ialah ujian sahaja; jangan jadualkan sesi untuknya.
 
 ## Penyediaan dan deploy
 
