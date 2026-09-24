@@ -4,6 +4,37 @@
 
 const BLOG_DATA = [
     {
+        "id": "google-gemini-3-8-flash-tts-flash-lite-tts",
+        "slug": "google-gemini-3-8-flash-tts-flash-lite-tts",
+        "category": "ai",
+        "date": "2026-09-24",
+        "readTime": {
+            "ms": "4 min bacaan",
+            "en": "5 min read"
+        },
+        "title": {
+            "ms": "Google Perkenalkan Gemini 3.8 Flash TTS dan Flash-Lite TTS",
+            "en": "Google Introduces Gemini 3.8 Flash TTS and Flash-Lite TTS"
+        },
+        "excerpt": {
+            "ms": "Google AI memperkenalkan Gemini 3.8 Flash TTS dan Flash-Lite TTS untuk suara AI lebih ekspresif, kawalan terperinci dan penggunaan berskala besar.",
+            "en": "Google AI memperkenalkan Gemini 3.8 Flash TTS dan Flash-Lite TTS untuk suara AI lebih ekspresif, kawalan terperinci dan penggunaan berskala besar."
+        },
+        "coverImage": "",
+        "author": "Kamarul Bahareen (Cikgu KB)",
+        "tags": [
+            "AI",
+            "Gemini",
+            "Text-to-Speech",
+            "Google AI",
+            "Audio AI"
+        ],
+        "content": {
+            "ms": "<p>Google memperkenalkan dua model audio AI baharu</p><p><br></p><p>Google AI telah mengumumkan Gemini 3.8 Flash TTS dan Gemini 3.8 Flash-Lite TTS. Menurut pengumuman rasmi, kedua-duanya direka untuk menghasilkan suara AI yang lebih ekspresif dan konsisten.</p><p><br></p><p>Antara keupayaan yang diketengahkan ialah sokongan untuk lebih 100 bahasa, lebih 2,000 suara sedia digunakan, penciptaan suara tersuai, serta kawalan penyampaian dialog pada peringkat baris.</p><p><br></p><p>Apakah perbezaannya?</p><p><br></p><p>Gemini 3.8 Flash TTS disasarkan kepada produksi kreatif yang memerlukan reka bentuk suara dan kawalan terperinci, termasuk permainan, buku audio dan podcast.</p><p><br></p><p>Gemini 3.8 Flash-Lite TTS pula memberi tumpuan kepada penggunaan pantas dan berskala besar seperti ejen suara masa nyata, alih suara pukal dan penghasilan audio dalam jumlah tinggi.</p><p><br></p><p>Perkembangan ini menunjukkan teknologi suara AI sedang bergerak daripada bacaan teks asas kepada persembahan audio yang lebih fleksibel dan boleh diarahkan.</p><p><br></p><p>Kredit dan video asal: Google AI di X</p><p>https://x.com/GoogleAI/status/2102781694730285427</p>",
+            "en": "<p>Google memperkenalkan dua model audio AI baharu</p><p><br></p><p>Google AI telah mengumumkan Gemini 3.8 Flash TTS dan Gemini 3.8 Flash-Lite TTS. Menurut pengumuman rasmi, kedua-duanya direka untuk menghasilkan suara AI yang lebih ekspresif dan konsisten.</p><p><br></p><p>Antara keupayaan yang diketengahkan ialah sokongan untuk lebih 100 bahasa, lebih 2,000 suara sedia digunakan, penciptaan suara tersuai, serta kawalan penyampaian dialog pada peringkat baris.</p><p><br></p><p>Apakah perbezaannya?</p><p><br></p><p>Gemini 3.8 Flash TTS disasarkan kepada produksi kreatif yang memerlukan reka bentuk suara dan kawalan terperinci, termasuk permainan, buku audio dan podcast.</p><p><br></p><p>Gemini 3.8 Flash-Lite TTS pula memberi tumpuan kepada penggunaan pantas dan berskala besar seperti ejen suara masa nyata, alih suara pukal dan penghasilan audio dalam jumlah tinggi.</p><p><br></p><p>Perkembangan ini menunjukkan teknologi suara AI sedang bergerak daripada bacaan teks asas kepada persembahan audio yang lebih fleksibel dan boleh diarahkan.</p><p><br></p><p>Kredit dan video asal: Google AI di X</p><p>https://x.com/GoogleAI/status/2102781694730285427</p>"
+        }
+    },
+    {
         "id": "update-ai-harian-2026-09-24",
         "slug": "update-ai-harian-2026-09-24",
         "category": "ai",
