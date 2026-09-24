@@ -4,6 +4,38 @@
 
 const BLOG_DATA = [
     {
+        "id": "nvidia-nemotron-3-diarization-kenal-pasti-penutur",
+        "slug": "nvidia-nemotron-3-diarization-kenal-pasti-penutur",
+        "category": "ai",
+        "date": "2026-09-24",
+        "readTime": {
+            "ms": "4 min bacaan",
+            "en": "4 min read"
+        },
+        "title": {
+            "ms": "NVIDIA Perkenal AI yang Boleh Kenal Pasti Siapa Sedang Bercakap",
+            "en": "NVIDIA Introduces AI That Can Identify Who Is Speaking"
+        },
+        "excerpt": {
+            "ms": "Nemotron 3 Diarization membantu membezakan sehingga lapan orang yang bercakap, termasuk ketika suara mereka bertindih.",
+            "en": "Nemotron 3 Diarization can distinguish up to eight speakers, including when their voices overlap."
+        },
+        "coverImage": "",
+        "author": "Kamarul Bahareen (Cikgu KB)",
+        "tags": [
+            "AI",
+            "NVIDIA",
+            "Nemotron",
+            "AI Audio",
+            "Transkripsi",
+            "Speaker Diarization"
+        ],
+        "content": {
+            "ms": "<video controls preload=\"metadata\" style=\"width:100%;height:auto;border-radius:12px;margin-bottom:1.5rem\"><source src=\"assets/videos/2026-09-24-nvidia-nemotron-3-diarization.mp4\" type=\"video/mp4\">Pelayar anda tidak menyokong video HTML5.</video><p>Menghasilkan transkrip menjadi lebih mencabar apabila beberapa orang bercakap serentak. Teks mungkin berjaya direkodkan, tetapi sistem masih perlu mengetahui siapa yang menyebut setiap ayat.</p><p>NVIDIA baru-baru ini memperkenalkan <strong>Nemotron 3 Diarization</strong>, sebuah model AI yang direka untuk mengenal pasti siapa bercakap dan bila mereka bercakap. Menurut NVIDIA, model berkapasiti 100 juta parameter ini boleh mengendalikan sehingga lapan penutur, termasuk situasi apabila suara bertindih.</p><h3>Apakah maksud “diarization”?</h3><p>Dalam pemprosesan audio, <em>speaker diarization</em> ialah proses membahagikan rakaman mengikut penutur. Ringkasnya, sistem cuba menjawab soalan: “Siapa bercakap pada waktu ini?”</p><p>Teknologi ini berbeza daripada transkripsi biasa. Transkripsi menukar suara kepada teks, manakala diarization membantu melabelkan teks atau segmen audio mengikut individu yang bercakap.</p><h3>Mengapa teknologi ini penting?</h3><p>Keupayaan mengenal pasti penutur boleh membantu dalam beberapa keadaan:</p><ul><li>menyediakan minit mesyuarat dengan lebih tersusun;</li><li>membezakan suara hos dan tetamu dalam podcast atau temu bual;</li><li>menganalisis perbualan pusat khidmat pelanggan;</li><li>menyusun sari kata bagi rakaman yang melibatkan ramai peserta; dan</li><li>memudahkan pencarian maklumat dalam arkib audio atau video.</li></ul><p>Cabaran utama muncul apabila peserta mencelah atau bercakap pada masa yang sama. NVIDIA menyatakan Nemotron 3 Diarization direka untuk mengendalikan pertindihan suara seperti ini.</p><h3>Prestasi dan ketersediaan</h3><p>Dalam posting susulan, NVIDIA menyatakan model tersebut menduduki tempat pertama daripada 12 sistem dalam keputusan awal Diarization-Bench oleh Voice Arena. Kadar ralat yang dilaporkan ialah 14.72%, kira-kira 24% lebih rendah daripada sistem di tempat kedua. Angka ini ialah dakwaan NVIDIA berdasarkan keputusan awal yang dirujuk dalam posting mereka.</p><p>Model dan demonstrasi berkaitan kini tersedia melalui Hugging Face untuk diterokai oleh pembangun.</p><h3>Apa maknanya kepada pengguna biasa?</h3><p>Bagi pengguna biasa, teknologi ini berpotensi menjadikan nota mesyuarat automatik, transkrip temu bual dan analisis panggilan lebih mudah dibaca. Namun, keputusan sistem AI masih perlu disemak, terutama apabila rakaman kurang jelas, terdapat bunyi bising atau suara penutur hampir sama.</p><p>Perkembangan ini menunjukkan bahawa AI audio bukan lagi sekadar memahami apa yang disebut. Sistem semakin mampu memahami struktur sesuatu perbualan dan membezakan individu yang terlibat.</p><p><strong>Kredit video:</strong> NVIDIA AI (@NVIDIAAI)<br><strong>Sumber asal:</strong> <a href=\"https://x.com/NVIDIAAI/status/2102775666366435450\" target=\"_blank\" rel=\"noopener noreferrer\">Posting NVIDIA AI di X</a></p>",
+            "en": "<video controls preload=\"metadata\" style=\"width:100%;height:auto;border-radius:12px;margin-bottom:1.5rem\"><source src=\"assets/videos/2026-09-24-nvidia-nemotron-3-diarization.mp4\" type=\"video/mp4\">Your browser does not support HTML5 video.</video><p>Transcription becomes more difficult when several people speak at the same time. A system may capture the words, but it still needs to identify who said each sentence.</p><p>NVIDIA has introduced <strong>Nemotron 3 Diarization</strong>, an AI model designed to identify who spoke and when. According to NVIDIA, the 100-million-parameter model can handle up to eight speakers, including overlapping voices.</p><h3>What does diarization mean?</h3><p>In audio processing, speaker diarization divides a recording by speaker. Put simply, the system tries to answer: “Who is speaking at this moment?”</p><p>This differs from ordinary transcription. Transcription converts speech into text, while diarization labels the text or audio segments according to the person speaking.</p><h3>Why does it matter?</h3><p>Speaker identification can help to organise meeting notes, distinguish hosts and guests in interviews, analyse customer-service calls, structure subtitles and search audio archives.</p><p>The main challenge appears when participants interrupt one another or speak simultaneously. NVIDIA says Nemotron 3 Diarization is designed to handle this type of overlapping speech.</p><h3>Performance and availability</h3><p>In a follow-up post, NVIDIA said the model ranked first among 12 systems in Voice Arena's initial Diarization-Bench results. NVIDIA reported a 14.72% error rate, about 24% lower than the runner-up. These figures are NVIDIA's claims based on the early results referenced in its post.</p><p>The model and a related demonstration are available through Hugging Face for developers to explore.</p><h3>What does this mean for everyday users?</h3><p>This technology could make automated meeting notes, interview transcripts and call analysis easier to read. AI results should still be reviewed, especially when recordings contain noise, unclear speech or speakers with similar voices.</p><p><strong>Video credit:</strong> NVIDIA AI (@NVIDIAAI)<br><strong>Original source:</strong> <a href=\"https://x.com/NVIDIAAI/status/2102775666366435450\" target=\"_blank\" rel=\"noopener noreferrer\">NVIDIA AI post on X</a></p>"
+        }
+    },
+    {
         "id": "google-gemini-3-8-flash-tts-flash-lite-tts",
         "slug": "google-gemini-3-8-flash-tts-flash-lite-tts",
         "category": "ai",
