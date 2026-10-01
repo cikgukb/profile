@@ -4,6 +4,35 @@
 
 const BLOG_DATA = [
     {
+        "id": "menu-banyak-pelanggan-tak-tahu-nak-order-apa",
+        "slug": "menu-banyak-pelanggan-tak-tahu-nak-order-apa",
+        "category": "marketing",
+        "date": "2026-10-01",
+        "readTime": {
+            "ms": "2 min bacaan",
+            "en": "2 min read"
+        },
+        "title": {
+            "ms": "Menu banyak, tapi pelanggan tak tahu nak order apa.",
+            "en": "Menu banyak, tapi pelanggan tak tahu nak order apa."
+        },
+        "excerpt": {
+            "ms": "Bayangkan pelanggan dah duduk, menu pun dah buka. Tapi masih lama nak pilih.",
+            "en": "Bayangkan pelanggan dah duduk, menu pun dah buka. Tapi masih lama nak pilih."
+        },
+        "coverImage": "assets/img/blog/menu-pilihan-2026-10-01/cikgu-kb-menu-06.png",
+        "author": "Kamarul Bahareen (Cikgu KB)",
+        "tags": [
+            "Marketing Bajet Ciput",
+            "Menu",
+            "Usahawan Mikro"
+        ],
+        "content": {
+            "ms": "<p>Bayangkan pelanggan dah duduk, menu pun dah buka. Tapi masih lama nak pilih.</p>\n<p>Kalau semua item nampak sama penting, kita boleh cuba tonjolkan satu set dulu. Tunjuk apa yang dapat, berapa harga, dan macam mana nak order.</p>\n<p>Bajet ciput pun boleh mula dengan benda ni. Kemaskan satu tawaran, kemudian tengok respons pelanggan.</p>\n<p>Menu mana nak jadi hero untuk bisnes tuan-puan?</p>\n<p>Ilustrasi AI. Set dan harga RM10 dalam carousel ni contoh sahaja.</p>\n<p><img src=\"assets/img/blog/menu-pilihan-2026-10-01/cikgu-kb-menu-01.webp\" width=\"1080\" height=\"1350\" loading=\"lazy\" alt=\"Menu banyak. Pelanggan masih memilih.\" style=\"display:block;width:100%;max-width:1080px;height:auto;\"></p>\n<p><img src=\"assets/img/blog/menu-pilihan-2026-10-01/cikgu-kb-menu-02.webp\" width=\"1080\" height=\"1350\" loading=\"lazy\" alt=\"Dah selak menu, masih belum pilih. Yang utama pun tenggelam.\" style=\"display:block;width:100%;max-width:1080px;height:auto;\"></p>\n<p><img src=\"assets/img/blog/menu-pilihan-2026-10-01/cikgu-kb-menu-03.webp\" width=\"1080\" height=\"1350\" loading=\"lazy\" alt=\"Bagi satu pilihan jadi hero. Letak set utama paling jelas.\" style=\"display:block;width:100%;max-width:1080px;height:auto;\"></p>\n<p><img src=\"assets/img/blog/menu-pilihan-2026-10-01/cikgu-kb-menu-04.webp\" width=\"1080\" height=\"1350\" loading=\"lazy\" alt=\"Contoh set ayam kunyit RM10: nasi, ayam, sayur, sambal dan teh ais. Harga ilustrasi sahaja.\" style=\"display:block;width:100%;max-width:1080px;height:auto;\"></p>\n<p><img src=\"assets/img/blog/menu-pilihan-2026-10-01/cikgu-kb-menu-05.webp\" width=\"1080\" height=\"1350\" loading=\"lazy\" alt=\"Bila jelas, senang nak order. Nampak set, tahu harga, kemudian order.\" style=\"display:block;width:100%;max-width:1080px;height:auto;\"></p>\n<p><img src=\"assets/img/blog/menu-pilihan-2026-10-01/cikgu-kb-menu-06.png\" width=\"1080\" height=\"1350\" loading=\"lazy\" alt=\"Bajet ciput? Mulakan dengan satu set utama, harga dan isi set jelas, serta cara order mudah.\" style=\"display:block;width:100%;max-width:1080px;height:auto;\"></p>",
+            "en": "<p>Bayangkan pelanggan dah duduk, menu pun dah buka. Tapi masih lama nak pilih.</p>\n<p>Kalau semua item nampak sama penting, kita boleh cuba tonjolkan satu set dulu. Tunjuk apa yang dapat, berapa harga, dan macam mana nak order.</p>\n<p>Bajet ciput pun boleh mula dengan benda ni. Kemaskan satu tawaran, kemudian tengok respons pelanggan.</p>\n<p>Menu mana nak jadi hero untuk bisnes tuan-puan?</p>\n<p>Ilustrasi AI. Set dan harga RM10 dalam carousel ni contoh sahaja.</p>\n<p><img src=\"assets/img/blog/menu-pilihan-2026-10-01/cikgu-kb-menu-01.webp\" width=\"1080\" height=\"1350\" loading=\"lazy\" alt=\"Menu banyak. Pelanggan masih memilih.\" style=\"display:block;width:100%;max-width:1080px;height:auto;\"></p>\n<p><img src=\"assets/img/blog/menu-pilihan-2026-10-01/cikgu-kb-menu-02.webp\" width=\"1080\" height=\"1350\" loading=\"lazy\" alt=\"Dah selak menu, masih belum pilih. Yang utama pun tenggelam.\" style=\"display:block;width:100%;max-width:1080px;height:auto;\"></p>\n<p><img src=\"assets/img/blog/menu-pilihan-2026-10-01/cikgu-kb-menu-03.webp\" width=\"1080\" height=\"1350\" loading=\"lazy\" alt=\"Bagi satu pilihan jadi hero. Letak set utama paling jelas.\" style=\"display:block;width:100%;max-width:1080px;height:auto;\"></p>\n<p><img src=\"assets/img/blog/menu-pilihan-2026-10-01/cikgu-kb-menu-04.webp\" width=\"1080\" height=\"1350\" loading=\"lazy\" alt=\"Contoh set ayam kunyit RM10: nasi, ayam, sayur, sambal dan teh ais. Harga ilustrasi sahaja.\" style=\"display:block;width:100%;max-width:1080px;height:auto;\"></p>\n<p><img src=\"assets/img/blog/menu-pilihan-2026-10-01/cikgu-kb-menu-05.webp\" width=\"1080\" height=\"1350\" loading=\"lazy\" alt=\"Bila jelas, senang nak order. Nampak set, tahu harga, kemudian order.\" style=\"display:block;width:100%;max-width:1080px;height:auto;\"></p>\n<p><img src=\"assets/img/blog/menu-pilihan-2026-10-01/cikgu-kb-menu-06.png\" width=\"1080\" height=\"1350\" loading=\"lazy\" alt=\"Bajet ciput? Mulakan dengan satu set utama, harga dan isi set jelas, serta cara order mudah.\" style=\"display:block;width:100%;max-width:1080px;height:auto;\"></p>"
+        }
+    },
+    {
         "id": "update-ai-harian-2026-09-27",
         "slug": "update-ai-harian-2026-09-27",
         "category": "ai",
