@@ -13,7 +13,7 @@ Perkara yang TIDAK dapat disahkan semasa overhaul, atau memerlukan keputusan and
    `assets/resume/` dan kemas kini pautan dalam `index.html`.
 4. **Bahasa Mandarin dibuang buat sementara.** Kandungan baharu jauh lebih banyak dan
    terjemahan ZH berkualiti tidak dapat dijamin. Rentetan lama masih ada dalam sejarah
-   git (commit `dd65c52`). Jika mahu ZH kembali, dapatkan penterjemah dan tambah kamus
+   git (commit `be43b7d`). Jika mahu ZH kembali, dapatkan penterjemah dan tambah kamus
    `zh` dalam `js/i18n.js`.
 5. **kbbeyondcreative.my sudah mati (404)** dan telah dibuang dari katalog. Jika domain
    itu akan dihidupkan semula, tambah semula dalam arkib.
@@ -53,18 +53,18 @@ Perkara yang TIDAK dapat disahkan semasa overhaul, atau memerlukan keputusan and
 
 **Selesai**
 
-- PDF resume (yang memaparkan nombor IC pada ms. 1, 5 dan 6) telah **dibuang** daripada
-  laman dan digantikan dengan `profil.html`. Nota: fail lama masih wujud dalam *sejarah*
-  git repo awam ini — lihat perkara 1 di bawah.
+- PDF resume lama telah **dibuang** daripada laman dan digantikan dengan `profil.html`.
+  Ia juga telah dibuang daripada sejarah git semua branch (sejarah ditulis semula pada
+  21 November 2026, jadi hash commit sebelum tarikh itu telah berubah).
 - Halaman utama dipendekkan: arkib projek dipindah ke `projek.html`, blog memaparkan
   3 artikel terbaru, kalendar menjadi senarai agenda.
 - Menu diringkaskan kepada 6 pautan + Hubungi; "Training Calendar" → "Kalendar".
 
 **Perlu semakan anda**
 
-1. **Sejarah git masih menyimpan PDF lama.** Sesiapa yang tahu caranya masih boleh
-   memuat turunnya dari commit lama. Untuk membuang sepenuhnya, sejarah repo perlu
-   ditulis semula (force-push) — tindakan yang tidak boleh diundur, jadi belum dibuat.
+1. **Salinan repo lain perlu di-clone semula.** Mana-mana komputer atau alat automasi
+   yang ada salinan repo ini dari sebelum 21 November 2026 mesti clone semula sebelum
+   push, supaya sejarah lama tidak digabungkan balik.
 2. **ID Jurulatih HRD Corp "27899" dan tempoh sah 25 Mac 2025 – 25 Mac 2028** kini
    dipaparkan di `profil.html`, diambil terus daripada sijil akreditasi dalam PDF lama.
    Sahkan ia betul (lihat juga perkara 1 dalam senarai asal di atas tentang "#7703").
