@@ -46,3 +46,38 @@ Perkara yang TIDAK dapat disahkan semasa overhaul, atau memerlukan keputusan and
 6. Pertimbangkan halaman `/latihan` berasingan dengan silibus penuh setiap program untuk SEO
    ("latihan AI Malaysia", "kursus pemasaran digital HRD Corp").
 7. Hidupkan semula kbbeyondcreative.my atau alihkan domain itu ke cikgukb.my.
+
+---
+
+## Kemas kini 21 November 2026 — profil web & reka bentuk semula
+
+**Selesai**
+
+- PDF resume (yang memaparkan nombor IC pada ms. 1, 5 dan 6) telah **dibuang** daripada
+  laman dan digantikan dengan `profil.html`. Nota: fail lama masih wujud dalam *sejarah*
+  git repo awam ini — lihat perkara 1 di bawah.
+- Halaman utama dipendekkan: arkib projek dipindah ke `projek.html`, blog memaparkan
+  3 artikel terbaru, kalendar menjadi senarai agenda.
+- Menu diringkaskan kepada 6 pautan + Hubungi; "Training Calendar" → "Kalendar".
+
+**Perlu semakan anda**
+
+1. **Sejarah git masih menyimpan PDF lama.** Sesiapa yang tahu caranya masih boleh
+   memuat turunnya dari commit lama. Untuk membuang sepenuhnya, sejarah repo perlu
+   ditulis semula (force-push) — tindakan yang tidak boleh diundur, jadi belum dibuat.
+2. **ID Jurulatih HRD Corp "27899" dan tempoh sah 25 Mac 2025 – 25 Mac 2028** kini
+   dipaparkan di `profil.html`, diambil terus daripada sijil akreditasi dalam PDF lama.
+   Sahkan ia betul (lihat juga perkara 1 dalam senarai asal di atas tentang "#7703").
+3. **Angka MDEC** — "2,640 peserta eUsahawan dilatih" dan "RM7.54 juta jualan dilaporkan"
+   (2016–2021) diambil daripada grafik *eUsahawan Trainer Report 2021* dalam PDF lama.
+   Kini dipaparkan di hero, seksyen Latihan dan profil. Sahkan anda selesa ia dipaparkan.
+4. **Kapsyen galeri** di `profil.html` ditulis berdasarkan apa yang kelihatan dalam foto
+   (cth. "Lawatan kerja ke Istanbul Chamber of Commerce", "Program kemahiran di MEATECH
+   Creative Academy"). Betulkan jika acara sebenar berbeza.
+5. **Peserta dalam foto galeri** — foto ini sudah ada dalam PDF awam sebelum ini, tetapi
+   kini lebih menonjol. Buang mana-mana foto jika ada peserta yang tidak bersetuju.
+6. **Tahun Diploma UTM** dipaparkan sebagai 2000 (ikut jadual resume); sijilnya sendiri
+   bertarikh Mac 2002. Betulkan di `profil.html` jika perlu.
+7. **Testimoni** masih kosong — isi `js/testimonials-data.js` apabila ada testimoni sah.
+8. **Kalendar** — keempat-empat acara dalam `js/events-data.js` sudah lepas tarikh, jadi
+   semuanya dilabel "Selesai". Tambah acara baharu melalui Admin Portal / fail data.

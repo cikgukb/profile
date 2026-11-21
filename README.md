@@ -9,14 +9,18 @@ Laman statik tanpa build step, dihoskan melalui GitHub Pages pada domain `cikguk
 
 | Fail / Folder | Fungsi |
 |---|---|
-| `index.html` | Struktur halaman + metadata SEO + JSON-LD |
+| `index.html` | Halaman utama + metadata SEO + JSON-LD |
+| `profil.html` | Profil profesional (resume versi web, boleh dicetak ke PDF) |
+| `projek.html` | Projek pilihan + arkib penuh bertapis |
+| `blog.html` | Senarai penuh artikel blog |
 | `css/main.css` | Sistem reka bentuk (token warna, tipografi, komponen, motion) |
 | `js/i18n.js` | Semua teks UI dalam BM dan EN |
 | `js/projects-data.js` | **Satu-satunya fail untuk urus projek** (pilihan + arkib) |
-| `js/main.js` | Interaksi: bahasa, modal kajian kes, penapis arkib, borang |
+| `js/testimonials-data.js` | Testimoni — seksyen hanya muncul jika fail ini ada isi |
+| `js/main.js` | Interaksi dikongsi semua halaman: bahasa, modal, penapis, borang, dok mudah alih |
 | `assets/img/` | Imej dioptimumkan (WebP) — jangan padam folder asal |
 | `assets/portfolio/`, `assets/videos/` | Imej asal (rujukan) |
-| `assets/resume/` | Profil PDF |
+| `assets/img/profil/` | Foto galeri latihan & sijil untuk `profil.html` |
 | `docs/` | Audit, panduan penyelenggaraan, senarai semakan pemilik |
 | `sitemap.xml`, `robots.txt`, `404.html`, `CNAME` | SEO + deployment |
 

@@ -29,6 +29,9 @@ kes penuh — salin satu blok sedia ada dan isi setiap medan `ms`/`en`:
 `status` mestilah: `live` (demo awam), `prototype` (belum dilancar) atau `repo`.
 Susunan array = susunan paparan. Kekalkan 4–6 projek pilihan sahaja.
 
+Halaman utama memaparkan projek pilihan + pautan kategori sahaja. Arkib penuh
+(carian + penapis) berada di `projek.html` dan membaca fail data yang sama.
+
 ## 3. Kemas kini statistik hero
 
 Dalam `index.html`, cari `cred-strip`. Nombor dikawal oleh atribut:
@@ -55,14 +58,16 @@ Semua teks UI dalam `js/i18n.js` — kamus `ms` dan `en` dengan kunci yang sama.
 Ubah KEDUA-DUA bahasa setiap kali. Teks projek pula dalam `js/projects-data.js`
 (medan `{ ms: …, en: … }`).
 
-Selepas ubah fail JS/CSS, naikkan nombor versi query string dalam `index.html`
-(cth. `?v=20260710` → tarikh baharu) supaya cache pelawat dikosongkan.
+Selepas ubah fail JS/CSS, naikkan nombor versi query string (cth. `?v=20261121`
+→ tarikh baharu) dalam SEMUA halaman yang memuatkannya — `index.html`,
+`profil.html`, `projek.html`, `blog.html` — supaya cache pelawat dikosongkan.
 
 ## 6. Kemas kini pautan hubungan
 
-Nombor WhatsApp/emel muncul di TIGA tempat:
-1. `index.html` — seksyen hubungi + footer + JSON-LD
-2. `js/main.js` — fungsi borang pertanyaan (`wa.me/...` dan `mailto:`)
+Nombor WhatsApp/emel muncul di beberapa tempat:
+1. `index.html` — seksyen hubungi + footer + dok mudah alih + JSON-LD
+2. `profil.html`, `projek.html`, `blog.html` — footer + dok (dan hero profil)
+3. `js/main.js` — fungsi borang pertanyaan (`wa.me/...` dan `mailto:`)
 
 Cari "60133815817" dan "kbcimb@gmail.com" untuk jumpa semuanya.
 
@@ -79,3 +84,29 @@ Cari "60133815817" dan "kbcimb@gmail.com" untuk jumpa semuanya.
 - Klik semua pautan "Demo Langsung" — buang/tandakan yang mati.
 - Kemas kini `sitemap.xml` `<lastmod>` selepas perubahan besar.
 - Semak harga/pautan buku di laman penjual masih sah.
+
+## 9. Profil profesional (`profil.html`)
+
+Halaman ini menggantikan PDF resume. Kandungannya HTML biasa; teks yang ada
+`data-i18n="prof.…"` diterjemah melalui `js/i18n.js` (kunci `prof.*`).
+
+- **Tambah pengalaman / sijil / program**: salin satu blok `<article class="cv-row">`
+  (atau `<div class="cv-row cv-row--tight">`) dalam seksyen berkenaan dan tukar isinya.
+- **Tambah foto galeri**: simpan WebP (lebar ~960) dalam `assets/img/profil/`, kemudian
+  salin satu `<figure>` dalam `.cv-gallery`. Kelas `wide` = separuh lebar, `full` = dua pertiga.
+- **Butang "Cetak / Simpan PDF"** memanggil cetakan pelayar; susun atur cetak dikawal
+  oleh blok `@media print` di hujung `css/main.css`.
+- **JANGAN** masukkan nombor IC, alamat rumah atau imej sijil yang memaparkan IC.
+  Profil rasmi untuk permohonan HRD Corp dihantar secara peribadi atas permintaan.
+
+## 10. Testimoni
+
+Buka `js/testimonials-data.js` dan ikut format dalam komen di atas fail. Selagi senarai
+kosong, seksyen testimoni tidak dipaparkan langsung. Masukkan testimoni sebenar sahaja,
+dengan kebenaran bertulis.
+
+## 11. Kalendar acara
+
+Acara dibaca dari `js/events-data.js`. Acara yang tarikh tamatnya sudah lepas dilabel
+"Selesai" secara automatik walaupun `status` belum dikemas kini. Jika tiada acara akan
+datang, laman memaparkan jemputan untuk meminta sesi dalaman.

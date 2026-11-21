@@ -1,7 +1,12 @@
 /* ============================================================
    INTERAKSI — cikgukb.my
-   Bergantung pada: js/i18n.js (I18N), js/projects-data.js
-   (FEATURED_PROJECTS, ARCHIVE_PROJECTS, ARCHIVE_CATEGORIES)
+   Dikongsi oleh index.html, projek.html, profil.html, blog.html.
+   Bergantung pada: js/i18n.js (I18N). Data lain adalah pilihan —
+   setiap fungsi render menyemak dahulu sama ada elemen & datanya wujud:
+     js/projects-data.js      FEATURED_PROJECTS, ARCHIVE_PROJECTS, ARCHIVE_CATEGORIES
+     js/events-data.js        EVENTS_DATA
+     js/blog-data.js          BLOG_DATA
+     js/testimonials-data.js  TESTIMONIALS
    ============================================================ */
 
 (function () {
@@ -9,9 +14,22 @@
 
     /* ---------- keadaan ---------- */
     let lang = getSavedLang();
-    let activeCat = 'all';
+    let activeCat = getInitialCat();
     let searchTerm = '';
     const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const PAGE = document.body.dataset.page || 'home';
+
+    const HAS = {
+        projects: typeof FEATURED_PROJECTS !== 'undefined' && typeof ARCHIVE_PROJECTS !== 'undefined',
+        events: typeof EVENTS_DATA !== 'undefined' && Array.isArray(EVENTS_DATA),
+        blog: typeof BLOG_DATA !== 'undefined' && Array.isArray(BLOG_DATA),
+        testimonials: typeof TESTIMONIALS !== 'undefined' && Array.isArray(TESTIMONIALS) && TESTIMONIALS.length > 0
+    };
+
+    const MONTHS = {
+        ms: ['Jan', 'Feb', 'Mac', 'Apr', 'Mei', 'Jun', 'Jul', 'Ogo', 'Sep', 'Okt', 'Nov', 'Dis'],
+        en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    };
 
     function getSavedLang() {
         try {
@@ -20,18 +38,38 @@
         } catch (e) { return 'ms'; }
     }
 
+    function getInitialCat() {
+        try {
+            const cat = new URLSearchParams(window.location.search).get('cat');
+            if (cat && typeof ARCHIVE_CATEGORIES !== 'undefined' && ARCHIVE_CATEGORIES.some(c => c.id === cat)) return cat;
+        } catch (e) { /* URL tidak disokong */ }
+        return 'all';
+    }
+
     function t(key) {
         return (I18N[lang] && I18N[lang][key]) || I18N.ms[key] || key;
     }
 
     function loc(field) {
         if (field == null) return '';
-        return typeof field === 'object' ? (field[lang] || field.ms || '') : field;
+        return typeof field === 'object' && !Array.isArray(field) ? (field[lang] || field.ms || '') : field;
     }
 
     const esc = s => String(s).replace(/[&<>"']/g, c => ({
         '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
     }[c]));
+
+    // '2026-10-01' → { day: '1', month: 'Okt', year: '2026' } tanpa anjakan zon masa
+    function dateParts(iso) {
+        const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '');
+        if (!m) return null;
+        return { day: String(Number(m[3])), month: MONTHS[lang][Number(m[2]) - 1], year: m[1] };
+    }
+
+    function formatDate(iso) {
+        const d = dateParts(iso);
+        return d ? d.day + ' ' + d.month + ' ' + d.year : (iso || '');
+    }
 
     /* ---------- bahasa ---------- */
     function applyLanguage(next) {
@@ -39,14 +77,23 @@
         try { localStorage.setItem('siteLang', lang); } catch (e) { /* file:// */ }
         document.documentElement.lang = lang;
 
+        const archiveTotal = HAS.projects ? String(ARCHIVE_PROJECTS.length) : '';
         document.querySelectorAll('[data-i18n]').forEach(el => {
-            el.innerHTML = t(el.dataset.i18n);
+            el.innerHTML = t(el.dataset.i18n).replace('{n}', archiveTotal);
         });
         document.querySelectorAll('[data-i18n-ph]').forEach(el => {
             el.setAttribute('placeholder', t(el.dataset.i18nPh));
         });
+        document.querySelectorAll('[data-i18n-label]').forEach(el => {
+            el.setAttribute('aria-label', t(el.dataset.i18nLabel));
+        });
+
+        // setiap halaman ada meta & tajuk sendiri (kunci: meta.description.<page>, meta.title.<page>)
+        const metaKey = 'meta.description.' + PAGE;
         const meta = document.querySelector('meta[name="description"]');
-        if (meta) meta.setAttribute('content', t('meta.description'));
+        if (meta) meta.setAttribute('content', I18N.ms[metaKey] ? t(metaKey) : t('meta.description'));
+        const titleKey = 'meta.title.' + PAGE;
+        if (I18N.ms[titleKey]) document.title = t(titleKey);
 
         document.querySelectorAll('.lang-btn').forEach(btn => {
             const on = btn.dataset.lang === lang;
@@ -57,14 +104,65 @@
         renderFeatured();
         renderFilters();
         renderArchive();
+        renderArchiveTeaser();
         renderEventsFilter();
         renderEvents();
         renderBlogFilter();
         renderBlog();
+        renderTestimonials();
     }
 
     /* ---------- ikon SVG ---------- */
     const ICON_EXT = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    const ICON_CLOCK = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>';
+    const ICON_PIN = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+
+    /* ---------- modal (kajian kes, butiran acara, pembaca artikel) ---------- */
+    const modal = document.getElementById('caseModal');
+    const caseBody = document.getElementById('caseBody');
+    let lastFocus = null;
+
+    function openModal(html, variant) {
+        if (!modal || !caseBody) return;
+        caseBody.innerHTML = html;
+        modal.classList.toggle('is-article', variant === 'article');
+        lastFocus = document.activeElement;
+        modal.hidden = false;
+        document.body.classList.add('modal-open');
+        const panel = modal.querySelector('.case-panel');
+        if (panel) panel.scrollTop = 0;
+        modal.querySelector('.case-close').focus();
+        caseBody.querySelectorAll('[data-close-goto]').forEach(a => {
+            a.addEventListener('click', () => closeModal());
+        });
+        updateDock();
+    }
+
+    function closeModal() {
+        if (!modal || modal.hidden) return;
+        modal.hidden = true;
+        document.body.classList.remove('modal-open');
+        if (lastFocus && document.contains(lastFocus)) lastFocus.focus();
+        updateDock();
+    }
+
+    if (modal) {
+        modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
+        document.addEventListener('keydown', e => {
+            if (modal.hidden) return;
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'Tab') {
+                const focusables = modal.querySelectorAll('button, a[href], input, select, textarea');
+                const first = focusables[0], last = focusables[focusables.length - 1];
+                if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
+                else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
+            }
+        });
+    }
+
+    function caseSection(title, html) {
+        return '<div class="case-section"><h4>' + esc(title) + '</h4>' + html + '</div>';
+    }
 
     /* ---------- projek pilihan ---------- */
     function statusLabel(status) {
@@ -73,7 +171,7 @@
 
     function renderFeatured() {
         const grid = document.getElementById('featuredGrid');
-        if (!grid) return;
+        if (!grid || !HAS.projects) return;
 
         grid.innerHTML = FEATURED_PROJECTS.map((p, i) => {
             const visual = p.image
@@ -86,7 +184,7 @@
                 ? '<a href="' + esc(p.demo) + '" target="_blank" rel="noopener">' + t('proj.demo') + ' ' + ICON_EXT + '</a>'
                 : '';
 
-            return '<article class="feat-card reveal in">' +
+            return '<article class="feat-card">' +
                 '<div class="feat-visual">' + visual +
                 '<span class="feat-status is-' + esc(p.status) + '">' + esc(statusLabel(p.status)) + '</span></div>' +
                 '<div class="feat-body">' +
@@ -105,75 +203,39 @@
         });
     }
 
-    /* ---------- modal kajian kes ---------- */
-    const modal = document.getElementById('caseModal');
-    const caseBody = document.getElementById('caseBody');
-    let lastFocus = null;
-
-    function caseSection(title, html) {
-        return '<div class="case-section"><h4>' + esc(title) + '</h4>' + html + '</div>';
-    }
-
     function openCase(index) {
         const p = FEATURED_PROJECTS[index];
-        if (!p || !modal) return;
+        if (!p) return;
         const cs = p.caseStudy;
 
         const demo = p.demo
-            ? '<a class="btn btn-solid" href="' + esc(p.demo) + '" target="_blank" rel="noopener">' + t('proj.demo') + '</a>'
+            ? '<a class="btn btn-solid" href="' + esc(p.demo) + '" target="_blank" rel="noopener">' + t('proj.demo') + ' ' + ICON_EXT + '</a>'
             : '';
+        const contactHref = document.getElementById('hubungi') ? '#hubungi' : 'index.html#hubungi';
 
-        caseBody.innerHTML =
+        openModal(
             '<span class="case-kicker mono">' + esc(loc(p.category)) + ' · ' + esc(statusLabel(p.status)) + '</span>' +
             '<h3 id="caseTitle">' + esc(p.name) + '</h3>' +
             '<p class="case-tagline">' + esc(loc(p.tagline)) + '</p>' +
             caseSection(t('case.problem'), '<p>' + esc(loc(cs.problem)) + '</p>') +
             caseSection(t('case.audience'), '<p>' + esc(loc(cs.audience)) + '</p>') +
             caseSection(t('case.solution'), '<p>' + esc(loc(cs.solution)) + '</p>') +
-            caseSection(t('case.features'), '<ul>' + loc(cs.features).map(f => '<li>' + esc(f) + '</li>').join('') + '</ul>') +
+            caseSection(t('case.features'), '<ul>' + (cs.features[lang] || cs.features.ms).map(f => '<li>' + esc(f) + '</li>').join('') + '</ul>') +
             caseSection(t('case.tech'), '<div class="tech-row">' + p.tech.map(x => '<span class="tech-tag">' + esc(x) + '</span>').join('') + '</div>') +
             caseSection(t('case.value'), '<p>' + esc(loc(cs.value)) + '</p>') +
             caseSection(t('case.status'), '<p>' + esc(loc(cs.statusNote)) + '</p>') +
             '<div class="case-links">' + demo +
-            '<a class="text-link" href="#hubungi" data-close-goto>' + t('case.cta') + '</a></div>';
-
-        lastFocus = document.activeElement;
-        modal.hidden = false;
-        document.body.style.overflow = 'hidden';
-        modal.querySelector('.case-close').focus();
-
-        caseBody.querySelectorAll('[data-close-goto]').forEach(a => {
-            a.addEventListener('click', () => closeCase());
-        });
+            '<a class="text-link" href="' + contactHref + '" data-close-goto>' + t('case.cta') + '</a></div>'
+        );
     }
 
-    function closeCase() {
-        if (!modal || modal.hidden) return;
-        modal.hidden = true;
-        document.body.style.overflow = '';
-        if (lastFocus) lastFocus.focus();
-    }
-
-    if (modal) {
-        modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeCase));
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeCase();
-            if (e.key === 'Tab' && !modal.hidden) {
-                const focusables = modal.querySelectorAll('button, a[href], input, select, textarea');
-                const first = focusables[0], last = focusables[focusables.length - 1];
-                if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
-                else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
-            }
-        });
-    }
-
-    /* ---------- arkib ---------- */
+    /* ---------- arkib projek (projek.html) ---------- */
     function renderFilters() {
         const root = document.getElementById('archiveFilters');
-        if (!root) return;
+        if (!root || !HAS.projects) return;
         root.innerHTML = ARCHIVE_CATEGORIES.map(c =>
             '<button type="button" class="filter-btn' + (c.id === activeCat ? ' active' : '') +
-            '" data-cat="' + esc(c.id) + '">' + esc(loc(c.label)) + '</button>'
+            '" data-cat="' + esc(c.id) + '" aria-pressed="' + (c.id === activeCat) + '">' + esc(loc(c.label)) + '</button>'
         ).join('');
         root.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -187,7 +249,7 @@
     function renderArchive() {
         const grid = document.getElementById('archiveGrid');
         const count = document.getElementById('archiveCount');
-        if (!grid || !count) return;
+        if (!grid || !count || !HAS.projects) return;
 
         const visible = ARCHIVE_PROJECTS.filter(p => {
             const inCat = activeCat === 'all' || p.cat === activeCat;
@@ -196,6 +258,11 @@
         });
 
         count.textContent = visible.length + ' ' + t('proj.count');
+
+        if (!visible.length) {
+            grid.innerHTML = '<p class="empty-note">' + t('proj.empty') + '</p>';
+            return;
+        }
 
         const catLabel = id => {
             const c = ARCHIVE_CATEGORIES.find(x => x.id === id);
@@ -230,6 +297,18 @@
         });
     }
 
+    // halaman utama: hanya pautan kategori + kiraan, arkib penuh di projek.html
+    function renderArchiveTeaser() {
+        const root = document.getElementById('archiveCats');
+        if (!root || !HAS.projects) return;
+        root.innerHTML = ARCHIVE_CATEGORIES.filter(c => c.id !== 'all').map(c => {
+            const n = ARCHIVE_PROJECTS.filter(p => p.cat === c.id).length;
+            if (!n) return '';
+            return '<a class="chip" href="projek.html?cat=' + encodeURIComponent(c.id) + '#arkib">' +
+                esc(loc(c.label)) + '<span class="chip-count">' + n + '</span></a>';
+        }).join('');
+    }
+
     /* ---------- borang pertanyaan ---------- */
     const TYPE_LABELS = {
         training: { ms: 'Latihan / Bengkel', en: 'Training / Workshop' },
@@ -241,6 +320,16 @@
 
     const form = document.getElementById('enquiryForm');
     if (form) {
+        const nameInput = form.querySelector('[name="nama"]');
+        const nameError = document.getElementById('namaError');
+
+        const setNameError = on => {
+            if (!nameInput) return;
+            nameInput.setAttribute('aria-invalid', String(on));
+            if (nameError) nameError.textContent = on ? t('contact.nameError') : '';
+        };
+        if (nameInput) nameInput.addEventListener('input', () => setNameError(false));
+
         form.addEventListener('submit', e => {
             e.preventDefault();
             const data = new FormData(form);
@@ -250,7 +339,7 @@
             const mesej = (data.get('mesej') || '').toString().trim();
             const via = (data.get('via') || 'whatsapp').toString();
 
-            if (!nama) { form.querySelector('[name="nama"]').focus(); return; }
+            if (!nama) { setNameError(true); nameInput.focus(); return; }
 
             const jenisLabel = loc(TYPE_LABELS[jenis] || TYPE_LABELS.training);
             const lines = lang === 'en'
@@ -282,40 +371,88 @@
     /* ---------- menu mudah alih ---------- */
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.getElementById('navLinks');
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            const open = navLinks.classList.toggle('open');
-            document.body.classList.toggle('menu-open', open);
-            hamburger.setAttribute('aria-expanded', String(open));
-            hamburger.setAttribute('aria-label', open ? t('nav.close') : t('nav.open'));
-        });
-        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-            navLinks.classList.remove('open');
-            document.body.classList.remove('menu-open');
-            hamburger.setAttribute('aria-expanded', 'false');
-        }));
+
+    function setMenu(open) {
+        if (!hamburger || !navLinks) return;
+        navLinks.classList.toggle('open', open);
+        document.body.classList.toggle('menu-open', open);
+        hamburger.setAttribute('aria-expanded', String(open));
+        hamburger.setAttribute('aria-label', open ? t('nav.close') : t('nav.open'));
+        updateDock();
     }
 
-    /* ---------- seksyen aktif dalam nav ---------- */
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && navLinks.classList.contains('open')) { setMenu(false); hamburger.focus(); }
+        });
+    }
+
+    /* ---------- nav: bayang semasa skrol + seksyen aktif ---------- */
+    const navbar = document.querySelector('.navbar');
     const sections = document.querySelectorAll('header[id], section[id]');
-    const navAnchors = document.querySelectorAll('.nav-links a');
-    if ('IntersectionObserver' in window && sections.length) {
+    // hanya pautan dalam-halaman (#id) dijejak; pautan halaman lain kekal dengan kelas aktif statik
+    const spyAnchors = Array.from(document.querySelectorAll('.nav-links a')).filter(a => (a.getAttribute('href') || '').charAt(0) === '#');
+    if ('IntersectionObserver' in window && sections.length && spyAnchors.length) {
         const spy = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
-                navAnchors.forEach(a => a.classList.toggle('active',
-                    a.getAttribute('href') === '#' + entry.target.id));
+                const id = entry.target.dataset.nav || entry.target.id;
+                spyAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
             });
         }, { rootMargin: '-40% 0px -55% 0px' });
         sections.forEach(s => spy.observe(s));
     }
 
+    /* ---------- dok tindakan (mudah alih) ---------- */
+    const dock = document.getElementById('ctaDock');
+    let contactInView = false;
+
+    function updateDock() {
+        if (!dock) return;
+        const blocked = contactInView || document.body.classList.contains('menu-open') || document.body.classList.contains('modal-open');
+        dock.classList.toggle('show', window.scrollY > 520 && !blocked);
+    }
+
+    function onScroll() {
+        if (navbar) navbar.classList.toggle('is-scrolled', window.scrollY > 12);
+        updateDock();
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    if (dock) {
+        document.body.classList.add('has-dock');
+        const contact = document.getElementById('hubungi');
+        if (contact && 'IntersectionObserver' in window) {
+            new IntersectionObserver(entries => {
+                contactInView = entries[0].isIntersecting;
+                updateDock();
+            }, { threshold: 0.15 }).observe(contact);
+        }
+    }
+
     /* ---------- kalendar & acara ---------- */
     let eventFilter = 'all';
 
+    // acara yang tarikhnya sudah lepas dikira "selesai" walaupun data belum dikemas kini
+    function eventStatus(ev) {
+        if (ev.status === 'completed') return 'completed';
+        const end = new Date((ev.endDate || ev.date) + 'T23:59:59');
+        return !isNaN(end) && end < new Date() ? 'completed' : ev.status;
+    }
+
+    function sortedEvents() {
+        const live = [], done = [];
+        EVENTS_DATA.forEach(ev => (eventStatus(ev) === 'completed' ? done : live).push(ev));
+        live.sort((a, b) => a.date.localeCompare(b.date));
+        done.sort((a, b) => b.date.localeCompare(a.date));
+        return { live, done };
+    }
+
     function renderEventsFilter() {
         const row = document.getElementById('eventFilters');
-        if (!row) return;
+        if (!row || !HAS.events) return;
 
         const filters = [
             { id: 'all', labelKey: 'cal.filter.all' },
@@ -324,8 +461,8 @@
         ];
 
         row.innerHTML = filters.map(f => {
-            const active = eventFilter === f.id ? ' active' : '';
-            return '<button type="button" class="chip' + active + '" data-event-cat="' + f.id + '">' + t(f.labelKey) + '</button>';
+            const on = eventFilter === f.id;
+            return '<button type="button" class="chip' + (on ? ' active' : '') + '" data-event-cat="' + f.id + '" aria-pressed="' + on + '">' + t(f.labelKey) + '</button>';
         }).join('');
 
         row.querySelectorAll('[data-event-cat]').forEach(btn => {
@@ -339,39 +476,41 @@
 
     function renderEvents() {
         const grid = document.getElementById('eventsGrid');
-        if (!grid || typeof EVENTS_DATA === 'undefined') return;
+        if (!grid || !HAS.events) return;
 
-        const filtered = EVENTS_DATA.filter(ev => {
-            if (eventFilter === 'upcoming') return ev.status === 'open' || ev.status === 'upcoming';
-            if (eventFilter === 'completed') return ev.status === 'completed';
-            return true;
-        });
+        const { live, done } = sortedEvents();
+        const list = eventFilter === 'upcoming' ? live : eventFilter === 'completed' ? done : live.concat(done);
 
-        grid.innerHTML = filtered.map((ev) => {
-            const statusTagClass = 'is-' + ev.status;
-            const statusLabelText = t('cal.status.' + ev.status);
-            const highlightsList = loc(ev.highlights) && Array.isArray(loc(ev.highlights))
-                ? loc(ev.highlights).slice(0, 3).map(h => '<li>' + esc(h) + '</li>').join('')
-                : '';
+        // tiada program terbuka → jemput tempahan sesi dalaman, jangan biar kosong
+        const note = document.getElementById('eventsEmpty');
+        if (note) note.hidden = live.length > 0;
 
-            return '<article class="event-card reveal in" itemscope itemtype="https://schema.org/Event">' +
+        if (!list.length) {
+            grid.innerHTML = '<p class="empty-note">' + t('cal.none') + '</p>';
+            return;
+        }
+
+        grid.innerHTML = list.map(ev => {
+            const status = eventStatus(ev);
+            const d = dateParts(ev.date);
+            return '<article class="event-row is-' + status + '" itemscope itemtype="https://schema.org/Event">' +
                 '<meta itemprop="startDate" content="' + esc(ev.date) + '">' +
                 '<meta itemprop="endDate" content="' + esc(ev.endDate || ev.date) + '">' +
-                '<div class="event-top">' +
-                '<span class="event-date-badge"><time datetime="' + esc(ev.date) + '">' + esc(loc(ev.displayDate)) + '</time></span>' +
-                '<span class="event-status-tag ' + statusTagClass + '">' + esc(statusLabelText) + '</span>' +
-                '</div>' +
+                '<time class="event-when" datetime="' + esc(ev.date) + '">' +
+                '<span class="event-day">' + (d ? d.day : '') + '</span>' +
+                '<span class="event-month mono">' + (d ? d.month + ' ' + d.year : '') + '</span></time>' +
+                '<div class="event-main">' +
                 '<h3 class="event-title" itemprop="name">' + esc(loc(ev.title)) + '</h3>' +
                 '<div class="event-meta-list">' +
-                '<div class="event-meta-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> <span>' + esc(ev.time) + '</span></div>' +
-                '<div class="event-meta-item" itemprop="location" itemscope itemtype="https://schema.org/Place"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> <span itemprop="name">' + esc(loc(ev.location)) + '</span></div>' +
-                '</div>' +
-                '<p class="event-summary" itemprop="description">' + esc(loc(ev.summary)) + '</p>' +
-                (highlightsList ? '<ul class="event-highlights-list">' + highlightsList + '</ul>' : '') +
+                '<span class="event-meta-item">' + ICON_CLOCK + ' ' + esc(loc(ev.displayDate)) + '</span>' +
+                '<span class="event-meta-item" itemprop="location" itemscope itemtype="https://schema.org/Place">' + ICON_PIN + ' <span itemprop="name">' + esc(loc(ev.location)) + '</span></span>' +
+                '</div></div>' +
+                '<div class="event-side">' +
+                '<span class="event-status-tag is-' + status + '">' + esc(t('cal.status.' + status)) + '</span>' +
                 '<div class="event-actions">' +
-                '<button type="button" class="btn btn-line btn-sm" data-event-detail="' + ev.id + '">' + t('cal.info') + '</button>' +
-                (ev.registrationUrl ? '<a class="btn btn-solid btn-sm" href="' + esc(ev.registrationUrl) + '" target="_blank" rel="noopener">' + t('cal.register') + ' ' + ICON_EXT + '</a>' : '') +
-                '</div>' +
+                '<button type="button" class="btn btn-line btn-sm" data-event-detail="' + esc(ev.id) + '">' + t('cal.info') + '</button>' +
+                (ev.registrationUrl && status !== 'completed' ? '<a class="btn btn-solid btn-sm" href="' + esc(ev.registrationUrl) + '" target="_blank" rel="noopener">' + t('cal.register') + ' ' + ICON_EXT + '</a>' : '') +
+                '</div></div>' +
                 '</article>';
         }).join('');
 
@@ -384,31 +523,31 @@
     }
 
     function openEventModal(ev) {
-        const body = document.getElementById('caseBody');
-        const modal = document.getElementById('caseModal');
-        if (!body || !modal) return;
-
-        const highlightsArr = loc(ev.highlights);
+        const status = eventStatus(ev);
+        const highlightsArr = ev.highlights ? (ev.highlights[lang] || ev.highlights.ms || ev.highlights) : null;
         const highlightsHtml = Array.isArray(highlightsArr) ? highlightsArr.map(h => '<li>' + esc(h) + '</li>').join('') : '';
 
-        body.innerHTML = '<span class="case-kicker mono">' + esc(ev.type.toUpperCase()) + ' · ' + esc(loc(ev.displayDate)) + '</span>' +
+        openModal(
+            '<span class="case-kicker mono">' + esc(String(ev.type || '').toUpperCase()) + ' · ' + esc(t('cal.status.' + status)) + '</span>' +
             '<h2 id="caseTitle" class="case-title">' + esc(loc(ev.title)) + '</h2>' +
-            caseSection(t('cal.time'), '<p>' + esc(ev.time) + '</p>') +
+            '<p class="case-tagline">' + esc(loc(ev.summary)) + '</p>' +
+            caseSection(t('cal.time'), '<p>' + esc(loc(ev.displayDate)) + ' · ' + esc(ev.time) + '</p>') +
             caseSection(t('cal.venue'), '<p>' + esc(loc(ev.venue)) + '</p>') +
             caseSection(t('cal.audience'), '<p>' + esc(loc(ev.targetAudience)) + '</p>') +
             (highlightsHtml ? caseSection(t('cal.highlights'), '<ul>' + highlightsHtml + '</ul>') : '') +
-            (ev.registrationUrl ? '<div class="case-links"><a class="btn btn-solid" href="' + esc(ev.registrationUrl) + '" target="_blank" rel="noopener">' + t('cal.register') + ' ' + ICON_EXT + '</a></div>' : '');
-
-        modal.hidden = false;
-        document.body.classList.add('menu-open');
+            (ev.registrationUrl && status !== 'completed'
+                ? '<div class="case-links"><a class="btn btn-solid" href="' + esc(ev.registrationUrl) + '" target="_blank" rel="noopener">' + t('cal.register') + ' ' + ICON_EXT + '</a></div>'
+                : '')
+        );
     }
 
     /* ---------- blog & artikel ---------- */
     let blogCategory = 'all';
+    let blogSearchTerm = '';
 
     function renderBlogFilter() {
         const row = document.getElementById('blogFilters');
-        if (!row) return;
+        if (!row || !HAS.blog) return;
 
         const cats = [
             { id: 'all', labelKey: 'blog.filter.all' },
@@ -419,8 +558,8 @@
         ];
 
         row.innerHTML = cats.map(c => {
-            const active = blogCategory === c.id ? ' active' : '';
-            return '<button type="button" class="chip' + active + '" data-blog-cat="' + c.id + '">' + t(c.labelKey) + '</button>';
+            const on = blogCategory === c.id;
+            return '<button type="button" class="chip' + (on ? ' active' : '') + '" data-blog-cat="' + c.id + '" aria-pressed="' + on + '">' + t(c.labelKey) + '</button>';
         }).join('');
 
         row.querySelectorAll('[data-blog-cat]').forEach(btn => {
@@ -432,14 +571,12 @@
         });
     }
 
-    let blogSearchTerm = '';
-
     function renderBlog() {
         const grid = document.getElementById('blogGrid');
-        if (!grid || typeof BLOG_DATA === 'undefined') return;
+        if (!grid || !HAS.blog) return;
 
         const term = blogSearchTerm.trim().toLowerCase();
-        const filtered = BLOG_DATA.filter(b => {
+        let filtered = BLOG_DATA.filter(b => {
             const matchCat = blogCategory === 'all' || b.category === blogCategory;
             const titleStr = loc(b.title).toLowerCase();
             const excStr = loc(b.excerpt).toLowerCase();
@@ -448,28 +585,33 @@
             return matchCat && matchSearch;
         });
 
+        // halaman utama memaparkan beberapa artikel terbaru sahaja (data-limit)
+        const limit = Number(grid.dataset.limit) || 0;
+        if (limit) filtered = filtered.slice(0, limit);
+
         if (filtered.length === 0) {
-            grid.innerHTML = '<p style="grid-column:1/-1; padding:2rem; text-align:center; color:var(--ink-3);">Tiada artikel ditemui untuk carian ini.</p>';
+            grid.innerHTML = '<p class="empty-note">' + t('blog.empty') + '</p>';
             return;
         }
 
         grid.innerHTML = filtered.map(b => {
+            const catLabel = t('blog.filter.' + b.category) === 'blog.filter.' + b.category ? b.category : t('blog.filter.' + b.category);
             const coverHtml = b.coverImage
-                ? '<div class="blog-cover"><img src="' + esc(b.coverImage) + '" width="600" height="300" loading="lazy" alt="' + esc(loc(b.title)) + '"></div>'
-                : '<div class="blog-cover"><div class="blog-cover-placeholder"><span class="blog-icon">📝</span><span class="mono">' + esc(b.category.toUpperCase()) + '</span></div></div>';
+                ? '<div class="blog-cover"><img src="' + esc(b.coverImage) + '" width="600" height="300" loading="lazy" alt=""></div>'
+                : '<div class="blog-cover"><div class="blog-cover-placeholder" aria-hidden="true"><span class="cover-mark">' + esc(loc(b.title).charAt(0)) + '</span><span class="mono">' + esc(catLabel) + '</span></div></div>';
 
-            return '<article class="blog-card reveal in" itemscope itemtype="https://schema.org/BlogPosting">' +
+            return '<article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">' +
                 coverHtml +
                 '<div class="blog-body">' +
                 '<div class="blog-meta-top">' +
-                '<span class="blog-cat-tag">' + esc(b.category.toUpperCase()) + '</span>' +
+                '<span class="blog-cat-tag">' + esc(catLabel) + '</span>' +
                 '<span class="blog-read-time">' + esc(loc(b.readTime)) + '</span>' +
                 '</div>' +
                 '<h3 class="blog-title" itemprop="headline">' + esc(loc(b.title)) + '</h3>' +
                 '<p class="blog-excerpt" itemprop="description">' + esc(loc(b.excerpt)) + '</p>' +
                 '<div class="blog-footer">' +
-                '<span class="mono" style="font-size:0.75rem; color:var(--ink-3);"><time itemprop="datePublished" datetime="' + esc(b.date) + '">' + esc(b.date) + '</time></span>' +
-                '<button type="button" class="blog-read-btn" data-read-blog="' + b.id + '">' + t('blog.readMore') + '</button>' +
+                '<time class="blog-date" itemprop="datePublished" datetime="' + esc(b.date) + '">' + esc(formatDate(b.date)) + '</time>' +
+                '<button type="button" class="blog-read-btn" data-read-blog="' + esc(b.id) + '">' + t('blog.readMore') + ' ' + ICON_EXT + '</button>' +
                 '</div></div>' +
                 '</article>';
         }).join('');
@@ -491,35 +633,57 @@
     }
 
     function openBlogModal(post) {
-        const body = document.getElementById('caseBody');
-        const modal = document.getElementById('caseModal');
-        if (!body || !modal) return;
-
-        const shareUrl = encodeURIComponent('https://cikgukb.my/#' + post.slug);
+        const shareUrl = encodeURIComponent('https://cikgukb.my/blog.html#' + post.slug);
         const shareText = encodeURIComponent(loc(post.title));
+        const catLabel = t('blog.filter.' + post.category) === 'blog.filter.' + post.category ? post.category : t('blog.filter.' + post.category);
 
-        body.innerHTML = '<div class="blog-article-content">' +
+        openModal(
+            '<div class="blog-article-content">' +
             '<div class="blog-article-header">' +
-            '<span class="blog-cat-tag">' + esc(post.category.toUpperCase()) + '</span>' +
+            '<span class="blog-cat-tag">' + esc(catLabel) + '</span>' +
             '<h2 id="caseTitle">' + esc(loc(post.title)) + '</h2>' +
             '<div class="blog-article-meta">' +
-            '<span>' + t('blog.by') + ' <strong>' + esc(post.author) + '</strong></span> · ' +
-            '<span><time datetime="' + esc(post.date) + '">' + esc(post.date) + '</time></span> · ' +
+            '<span>' + t('blog.by') + ' <strong>' + esc(post.author) + '</strong></span>' +
+            '<span><time datetime="' + esc(post.date) + '">' + esc(formatDate(post.date)) + '</time></span>' +
             '<span>' + esc(loc(post.readTime)) + '</span>' +
             '</div></div>' +
             '<div class="blog-article-body">' + loc(post.content) + '</div>' +
-            '<div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">' +
-            '<a class="btn btn-solid btn-sm" href="https://api.whatsapp.com/send?text=' + shareText + '%20' + shareUrl + '" target="_blank" rel="noopener">📲 ' + t('blog.share') + ' WhatsApp</a>' +
-            '<div style="display:flex; gap:0.5rem; flex-wrap:wrap;">' + (post.tags || []).map(t => '<span class="tech-tag">' + esc(t) + '</span>').join('') + '</div>' +
-            '</div></div>';
-
-        modal.hidden = false;
-        document.body.classList.add('menu-open');
+            '<div class="blog-article-footer">' +
+            '<a class="btn btn-wa btn-sm" href="https://api.whatsapp.com/send?text=' + shareText + '%20' + shareUrl + '" target="_blank" rel="noopener">' + t('blog.share') + '</a>' +
+            '<div class="tech-row">' + (post.tags || []).map(tag => '<span class="tech-tag">' + esc(tag) + '</span>').join('') + '</div>' +
+            '</div></div>',
+            'article'
+        );
     }
 
-    /* ---------- dynamic JSON-LD injection for SEO & AI ---------- */
+    // pautan kongsi (…#slug-artikel) membuka terus artikel berkenaan
+    function openArticleFromHash() {
+        if (!HAS.blog || !window.location.hash) return;
+        const slug = decodeURIComponent(window.location.hash.slice(1));
+        const post = BLOG_DATA.find(b => b.slug === slug);
+        if (post) openBlogModal(post);
+    }
+
+    /* ---------- testimoni (hanya dipapar jika ada data sah) ---------- */
+    function renderTestimonials() {
+        const section = document.getElementById('testimoni');
+        const wall = document.getElementById('testimonialWall');
+        if (!section || !wall) return;
+        if (!HAS.testimonials) { section.hidden = true; return; }
+
+        section.hidden = false;
+        wall.innerHTML = TESTIMONIALS.map(q =>
+            '<figure class="quote-card">' +
+            '<blockquote>“' + esc(loc(q.quote)) + '”</blockquote>' +
+            '<figcaption class="quote-who"><strong>' + esc(q.name) + '</strong>' +
+            '<span>' + esc([loc(q.role), q.org].filter(Boolean).join(' · ')) + '</span></figcaption>' +
+            '</figure>'
+        ).join('');
+    }
+
+    /* ---------- JSON-LD dinamik untuk SEO & AI ---------- */
     function injectDynamicJsonLd() {
-        if (typeof EVENTS_DATA !== 'undefined' && Array.isArray(EVENTS_DATA)) {
+        if (HAS.events && document.getElementById('eventsGrid')) {
             const eventSchemas = EVENTS_DATA.map(ev => ({
                 "@context": "https://schema.org",
                 "@type": "EducationEvent",
@@ -552,7 +716,7 @@
             document.head.appendChild(eventScript);
         }
 
-        if (typeof BLOG_DATA !== 'undefined' && Array.isArray(BLOG_DATA)) {
+        if (HAS.blog && document.getElementById('blogGrid')) {
             const blogSchemas = BLOG_DATA.map(b => ({
                 "@context": "https://schema.org",
                 "@type": "BlogPosting",
@@ -569,7 +733,7 @@
                     "name": "KB Beyond Creative Sdn Bhd",
                     "url": "https://cikgukb.my/"
                 },
-                "mainEntityOfPage": "https://cikgukb.my/#" + b.slug
+                "mainEntityOfPage": "https://cikgukb.my/blog.html#" + b.slug
             }));
 
             const blogScript = document.createElement('script');
@@ -593,13 +757,13 @@
                     io.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+        }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
         items.forEach(el => io.observe(el));
     }
 
     /* ---------- kiraan naik statistik ---------- */
     function initCounters() {
-        const nums = document.querySelectorAll('.cred-num[data-count]');
+        const nums = document.querySelectorAll('[data-count]');
         if (REDUCED || !('IntersectionObserver' in window)) return;
         const io = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -613,7 +777,7 @@
                 const tick = now => {
                     const p = Math.min((now - start) / dur, 1);
                     const eased = 1 - Math.pow(1 - p, 3);
-                    el.textContent = Math.round(target * eased) + suffix;
+                    el.textContent = Math.round(target * eased).toLocaleString('en-US') + suffix;
                     if (p < 1) requestAnimationFrame(tick);
                 };
                 requestAnimationFrame(tick);
@@ -627,8 +791,15 @@
         btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
     });
 
+    document.querySelectorAll('[data-print]').forEach(btn => {
+        btn.addEventListener('click', () => window.print());
+    });
+
     applyLanguage(lang);
     initReveals();
     initCounters();
     injectDynamicJsonLd();
+    onScroll();
+    openArticleFromHash();
+    window.addEventListener('hashchange', openArticleFromHash);
 })();

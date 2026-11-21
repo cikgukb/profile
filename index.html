@@ -40,12 +40,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap"
         rel="stylesheet">
 
     <script>document.documentElement.classList.add('js');</script>
-    <link rel="preload" as="image" href="assets/img/portrait-hero.webp" type="image/webp">
-    <link rel="stylesheet" href="css/main.css?v=20260829">
+    <link rel="preload" as="image" href="assets/img/portrait-hero.webp" type="image/webp" media="(min-width: 861px)">
+    <link rel="stylesheet" href="css/main.css?v=20261121">
 
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
@@ -118,7 +118,7 @@
     </script>
 </head>
 
-<body>
+<body data-page="home">
     <a class="skip-link" href="#tentang">Terus ke kandungan</a>
 
     <!-- ===================== NAV ===================== -->
@@ -129,13 +129,11 @@
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#tentang" data-i18n="nav.about">Tentang</a></li>
-                <li><a href="#rangka" data-i18n="nav.framework">Rangka Kerja</a></li>
                 <li><a href="#solusi" data-i18n="nav.solutions">Solusi</a></li>
                 <li><a href="#projek" data-i18n="nav.projects">Projek</a></li>
                 <li><a href="#latihan" data-i18n="nav.training">Latihan</a></li>
-                <li><a href="#kalendar" data-i18n="nav.calendar">Training Calendar</a></li>
                 <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
-                <li><a href="#buku" data-i18n="nav.book">Buku & Media</a></li>
+                <li><a href="profil.html" data-i18n="nav.profile">Profil</a></li>
                 <li><a href="#hubungi" class="nav-cta" data-i18n="nav.contact">Hubungi</a></li>
             </ul>
             <div class="nav-right">
@@ -151,12 +149,17 @@
     </nav>
 
     <!-- ===================== HERO ===================== -->
-    <header id="utama" class="hero">
+    <header id="utama" class="hero dark">
         <div class="blueprint-grid" aria-hidden="true"></div>
         <div class="container hero-inner">
             <div class="hero-copy">
-                <p class="hero-kicker mono" data-i18n="hero.kicker">Kamarul Bahareen · Cikgu KB</p>
-                <p class="hero-role" data-i18n="hero.role">Arkitek Marketing Solutions</p>
+                <div class="hero-id">
+                    <img class="hero-avatar" src="assets/img/portrait-hero-sm.webp" width="92" height="112" loading="lazy" alt="">
+                    <div class="hero-id-text">
+                        <p class="hero-kicker mono" data-i18n="hero.kicker">Kamarul Bahareen · Cikgu KB</p>
+                        <p class="hero-role" data-i18n="hero.role">Arkitek Marketing Solutions</p>
+                    </div>
+                </div>
                 <h1 class="hero-title" data-i18n="hero.title">Merancang strategi. Membina sistem. <em>Menggerakkan pemasaran.</em></h1>
                 <p class="hero-lead" data-i18n="hero.lead">Saya membantu organisasi dan usahawan merancang strategi pemasaran,
                     membina sistem digital dan menggunakan AI dengan cara yang tersusun — daripada pelan di atas kertas
@@ -164,7 +167,7 @@
                 <div class="hero-actions">
                     <a href="#hubungi" class="btn btn-solid" data-i18n="hero.cta1">Bincangkan Projek</a>
                     <a href="#projek" class="btn btn-line" data-i18n="hero.cta2">Lihat Hasil Kerja</a>
-                    <a href="coaching.html" class="btn btn-line">Personal Coaching</a>
+                    <a href="coaching.html" class="text-link" data-i18n="hero.cta3">Personal Coaching</a>
                 </div>
             </div>
             <figure class="hero-figure">
@@ -190,8 +193,8 @@
                 <span class="cred-label" data-i18n="cred.years">Tahun pengalaman profesional</span>
             </div>
             <div class="cred-item" role="listitem">
-                <span class="cred-num" data-count="12" data-suffix="+">12+</span>
-                <span class="cred-label" data-i18n="cred.training">Tahun latihan & konsultasi</span>
+                <span class="cred-num" data-count="2640">2,640</span>
+                <span class="cred-label" data-i18n="cred.trained">Peserta eUsahawan dilatih (MDEC, 2016–2021)</span>
             </div>
             <div class="cred-item" role="listitem">
                 <span class="cred-num" data-count="40" data-suffix="+">40+</span>
@@ -232,8 +235,7 @@
                             <li data-i18n="about.fact3">Diploma Sains Komputer, Universiti Teknologi Malaysia</li>
                             <li data-i18n="about.fact4">LRN Level 3 — Digital Entrepreneurship</li>
                         </ul>
-                        <a class="text-link" href="assets/resume/kamarul-bahareen-trainer-profile-2025.pdf" target="_blank"
-                            rel="noopener" data-i18n="about.resume">Lihat Profil Penuh (PDF)</a>
+                        <a class="text-link" href="profil.html" data-i18n="about.resume">Lihat Profil Penuh</a>
                     </div>
                     <div class="about-path reveal">
                         <h3 class="mini-title mono" data-i18n="about.pathTitle">Laluan kerjaya</h3>
@@ -261,7 +263,7 @@
         </section>
 
         <!-- ===================== 02 RANGKA KERJA ===================== -->
-        <section id="rangka" class="section framework">
+        <section id="rangka" class="section framework dark" data-nav="solusi">
             <div class="blueprint-grid" aria-hidden="true"></div>
             <div class="container">
                 <div class="section-head reveal">
@@ -303,28 +305,28 @@
                     <h2 class="section-title" data-i18n="sol.title">Disusun ikut masalah bisnes, bukan senarai perkhidmatan.</h2>
                     <p class="section-lead" data-i18n="sol.lead">Setiap solusi boleh berdiri sendiri atau digabungkan — bergantung pada apa yang bisnes anda perlukan dahulu.</p>
                 </div>
-                <div class="sol-grid">
-                    <article class="sol-card reveal">
+                <div class="sol-list">
+                    <article class="sol-row reveal">
                         <span class="sol-num mono">3.1</span>
                         <h3 data-i18n="sol.1.title">Strategi Pemasaran & Pertumbuhan</h3>
                         <p data-i18n="sol.1.p">Positioning, perancangan kempen, perjalanan pelanggan dan struktur tawaran — asas sebelum sebarang iklan dibelanjakan.</p>
                     </article>
-                    <article class="sol-card reveal">
+                    <article class="sol-row reveal">
                         <span class="sol-num mono">3.2</span>
                         <h3 data-i18n="sol.2.title">AI & Automasi</h3>
                         <p data-i18n="sol.2.p">Aliran kerja berbantu AI, sistem kandungan, komunikasi pelanggan dan automasi proses yang masih manual.</p>
                     </article>
-                    <article class="sol-card reveal">
+                    <article class="sol-row reveal">
                         <span class="sol-num mono">3.3</span>
                         <h3 data-i18n="sol.3.title">Produk Digital & Web</h3>
                         <p data-i18n="sol.3.p">Landing page, portal, alat bisnes dan aplikasi ringan — dibina sendiri, bukan diserahkan kepada pihak ketiga.</p>
                     </article>
-                    <article class="sol-card reveal">
+                    <article class="sol-row reveal">
                         <span class="sol-num mono">3.4</span>
                         <h3 data-i18n="sol.4.title">Latihan & Pembangunan Keupayaan</h3>
                         <p data-i18n="sol.4.p">Latihan praktikal AI, pemasaran digital dan penghasilan kandungan untuk agensi kerajaan, korporat dan SME.</p>
                     </article>
-                    <article class="sol-card reveal">
+                    <article class="sol-row reveal">
                         <span class="sol-num mono">3.5</span>
                         <h3 data-i18n="sol.5.title">Sistem Kempen Kreatif</h3>
                         <p data-i18n="sol.5.p">Konsep iklan, sistem kandungan, video dan fotografi produk — aset kreatif yang disusun sebagai sistem, bukan one-off.</p>
@@ -344,19 +346,16 @@
                 </div>
                 <div id="featuredGrid" class="featured-grid"></div>
 
-                <div class="archive-head reveal">
-                    <h3 class="sub-title" data-i18n="proj.archiveTitle">Arkib Projek</h3>
-                    <p class="section-lead" data-i18n="proj.archiveLead">Koleksi penuh alat, laman dan eksperimen yang dibina sepanjang perjalanan — ditapis mengikut kategori.</p>
-                    <div class="archive-toolbar">
-                        <label class="search-box">
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                            <input id="archiveSearch" type="search" placeholder="Cari projek…" data-i18n-ph="proj.search" aria-label="Cari projek">
-                        </label>
-                        <div id="archiveFilters" class="filter-row" role="group" aria-label="Kategori projek"></div>
+                <p class="rail-hint mono" data-i18n="proj.railHint">Leret ke kiri untuk projek seterusnya →</p>
+
+                <div class="archive-teaser reveal">
+                    <div>
+                        <h3 class="sub-title" data-i18n="proj.archiveTitle">Arkib Projek</h3>
+                        <p data-i18n="proj.teaserLead">Selain projek pilihan di atas, ada lagi alat, laman dan eksperimen dalam arkib. Pilih kategori untuk terus ke bahagian yang anda mahu.</p>
+                        <a href="projek.html" class="btn btn-solid" data-i18n="proj.viewAll">Lihat Semua Projek</a>
                     </div>
-                    <p id="archiveCount" class="archive-count mono" aria-live="polite"></p>
+                    <div id="archiveCats" class="cat-links"></div>
                 </div>
-                <div id="archiveGrid" class="archive-grid"></div>
                 <noscript>
                     <p data-i18n="proj.noscript">Senarai projek memerlukan JavaScript. Sila hubungi saya untuk senarai penuh hasil kerja.</p>
                 </noscript>
@@ -364,7 +363,7 @@
         </section>
 
         <!-- ===================== 05 LATIHAN ===================== -->
-        <section id="latihan" class="section training">
+        <section id="latihan" class="section training dark">
             <div class="blueprint-grid" aria-hidden="true"></div>
             <div class="container">
                 <div class="section-head reveal">
@@ -402,36 +401,69 @@
                         <a href="#hubungi" class="btn btn-solid btn-training" data-enquiry="training" data-i18n="train.cta">Minta Proposal Latihan</a>
                     </div>
                 </div>
+
+                <div class="proof reveal">
+                    <div class="proof-stats">
+                        <div>
+                            <span class="proof-num">2,640</span>
+                            <span class="proof-label" data-i18n="proof.trained">peserta eUsahawan dilatih, 2016–2021</span>
+                        </div>
+                        <div>
+                            <span class="proof-num">RM7.54<small data-i18n="proof.million">juta</small></span>
+                            <span class="proof-label" data-i18n="proof.sales">jumlah jualan yang dilaporkan peserta, 2016–2021</span>
+                        </div>
+                        <p class="proof-src mono" data-i18n="proof.src">Sumber: MDEC eUsahawan Trainer Report, edisi 2021</p>
+                        <p><a class="text-link" href="profil.html" data-i18n="proof.more">Lihat profil & galeri latihan</a></p>
+                    </div>
+                    <div class="proof-photos">
+                        <img src="assets/img/profil/latihan-makmal.webp" width="1191" height="488" loading="lazy" alt="Peserta bengkel hands-on di makmal komputer">
+                        <img src="assets/img/profil/majlis-sijil.webp" width="960" height="393" loading="lazy" alt="Peserta menerima sijil selepas program latihan">
+                        <img src="assets/img/profil/tiktok-pejabat.webp" width="1229" height="554" loading="lazy" alt="Cikgu KB bersama pasukan TikTok">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== TESTIMONI (dipapar hanya jika js/testimonials-data.js ada isi) ===================== -->
+        <section id="testimoni" class="section testimonials" data-nav="latihan" hidden>
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="kicker mono" data-i18n="testi.kicker">Testimoni</p>
+                    <h2 class="section-title" data-i18n="testi.title">Apa kata peserta dan penganjur.</h2>
+                </div>
+                <div id="testimonialWall" class="quote-wall"></div>
             </div>
         </section>
 
         <!-- ===================== 06 KALENDAR ACARA ===================== -->
-        <section id="kalendar" class="section calendar">
+        <section id="kalendar" class="section calendar" data-nav="latihan">
             <div class="container">
                 <div class="section-head reveal">
                     <p class="kicker mono" data-i18n="cal.kicker">06 — Kalendar Acara</p>
                     <h2 class="section-title" data-i18n="cal.title">Jadual latihan, bengkel & program bersemuka atau atas talian.</h2>
                     <p class="section-lead" data-i18n="cal.lead">Sertai program praktikal yang dirancang untuk membina keupayaan AI, strategi pemasaran dan automasi bisnes.</p>
-                    <div id="eventFilters" class="filter-row" style="margin-top:1.5rem;" role="group" aria-label="Penapis acara"></div>
                 </div>
-                <div id="eventsGrid" class="events-grid"></div>
+                <div id="eventFilters" class="filter-row" role="group" aria-label="Penapis acara"></div>
+                <div id="eventsEmpty" class="events-empty" hidden>
+                    <p data-i18n="cal.emptyText"><strong>Tiada program terbuka dijadualkan buat masa ini.</strong> Kebanyakan sesi dijalankan secara dalaman untuk organisasi — tarikh dan modul disusun ikut keperluan pasukan anda.</p>
+                    <a href="#hubungi" class="btn btn-solid btn-sm" data-enquiry="training" data-i18n="cal.emptyCta">Minta Sesi Dalaman</a>
+                </div>
+                <div id="eventsGrid" class="events-list"></div>
             </div>
         </section>
 
         <!-- ===================== 07 BLOG & ARTIKEL ===================== -->
         <section id="blog" class="section blog">
-            <div class="blueprint-grid" aria-hidden="true"></div>
             <div class="container">
-                <div class="section-head reveal" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1rem;">
+                <div class="section-head section-head--split reveal">
                     <div>
                         <p class="kicker mono" data-i18n="blog.kicker">07 — Blog & Artikel</p>
                         <h2 class="section-title" data-i18n="blog.title">Pemikiran, panduan & analisis praktikal AI dan pemasaran.</h2>
                         <p class="section-lead" data-i18n="blog.lead">Koleksi penulisan mengenai aplikasi AI, automasi perniagaan, dan strategi pertumbuhan untuk usahawan serta organisasi.</p>
                     </div>
-                    <a href="blog.html" class="btn btn-solid">Lihat Semua Artikel di Blog ↗</a>
+                    <a href="blog.html" class="btn btn-line" data-i18n="blog.viewAll">Semua Artikel</a>
                 </div>
-                <div id="blogFilters" class="filter-row" style="margin-top:1.5rem;" role="group" aria-label="Kategori blog"></div>
-                <div id="blogGrid" class="blog-grid"></div>
+                <div id="blogGrid" class="blog-grid blog-grid--home" data-limit="3"></div>
             </div>
         </section>
 
@@ -499,23 +531,24 @@
         </section>
 
         <!-- ===================== 09 HUBUNGI ===================== -->
-        <section id="hubungi" class="section contact">
+        <section id="hubungi" class="section contact dark">
             <div class="blueprint-grid" aria-hidden="true"></div>
             <div class="container">
                 <div class="section-head reveal">
                     <p class="kicker mono" data-i18n="contact.kicker">09 — Hubungi</p>
                     <h2 class="section-title" data-i18n="contact.title">Ada proses pemasaran yang masih bergerak secara manual?</h2>
-                    <p style="margin:1rem 0"><a href="coaching.html" class="btn btn-solid">Personal Coaching →</a></p>
                     <p class="section-lead" data-i18n="contact.lead">Mari kita reka penyelesaian yang lebih tersusun. Lengkapkan
                         ringkasan di bawah — ia akan menyediakan mesej WhatsApp atau emel yang siap disusun, tiada borang
                         tersimpan di pelayan.</p>
+                    <a href="coaching.html" class="text-link contact-coaching" data-i18n="contact.coaching">Mahu bimbingan satu-ke-satu? Lihat Personal Coaching</a>
                 </div>
                 <div class="contact-grid">
                     <form id="enquiryForm" class="enquiry-form reveal" novalidate>
                         <div class="form-row">
                             <label>
                                 <span data-i18n="contact.name">Nama</span>
-                                <input type="text" name="nama" autocomplete="name" required>
+                                <input type="text" name="nama" autocomplete="name" required aria-describedby="namaError">
+                                <small class="field-error" id="namaError" role="alert"></small>
                             </label>
                             <label>
                                 <span data-i18n="contact.org">Organisasi</span>
@@ -582,11 +615,20 @@
                 <h3 class="mini-title mono" data-i18n="footer.nav">Navigasi</h3>
                 <ul>
                     <li><a href="#tentang" data-i18n="nav.about">Tentang</a></li>
+                    <li><a href="#rangka" data-i18n="nav.framework">Rangka Kerja</a></li>
                     <li><a href="#solusi" data-i18n="nav.solutions">Solusi</a></li>
-                    <li><a href="#projek" data-i18n="nav.projects">Projek</a></li>
                     <li><a href="#latihan" data-i18n="nav.training">Latihan</a></li>
                     <li><a href="#kalendar" data-i18n="nav.calendar">Kalendar</a></li>
-                    <li><a href="#blog" data-i18n="nav.blog">Blog</a></li>
+                    <li><a href="#buku" data-i18n="nav.book">Buku & Media</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Halaman lain">
+                <h3 class="mini-title mono" data-i18n="footer.more">Halaman</h3>
+                <ul>
+                    <li><a href="profil.html" data-i18n="nav.profile">Profil</a></li>
+                    <li><a href="projek.html" data-i18n="projpage.kicker">Projek & Arkib</a></li>
+                    <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+                    <li><a href="coaching.html">Personal Coaching</a></li>
                 </ul>
             </nav>
             <div class="footer-col">
@@ -599,8 +641,18 @@
         </div>
         <div class="container copyright">
             <p class="mono" data-i18n="footer.copy">© 2026 Kamarul Bahareen. Hak cipta terpelihara.</p>
+            <a class="mono" href="#utama" data-i18n="footer.top">Kembali ke atas ↑</a>
         </div>
     </footer>
+
+    <!-- ===================== DOK TINDAKAN (mudah alih) ===================== -->
+    <div class="cta-dock" id="ctaDock" role="group" aria-label="Tindakan pantas" data-i18n-label="dock.label">
+        <a class="btn btn-wa" href="https://wa.me/60133815817" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.2 1.1-1.7 1.2-.5 0-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c0 .2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.1.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4 0 .1 0 .7-.2 1.3Z"/></svg>
+            <span data-i18n="dock.wa">WhatsApp</span>
+        </a>
+        <a class="btn btn-solid" href="coaching.html" data-i18n="dock.coaching">Personal Coaching</a>
+    </div>
 
     <!-- ===================== MODAL KAJIAN KES ===================== -->
     <div id="caseModal" class="case-modal" hidden role="dialog" aria-modal="true" aria-labelledby="caseTitle">
@@ -613,11 +665,12 @@
         </div>
     </div>
 
-    <script src="js/i18n.js?v=20260720"></script>
+    <script src="js/i18n.js?v=20261121"></script>
     <script src="js/projects-data.js?v=20260720"></script>
     <script src="js/events-data.js?v=20260720"></script>
     <script src="js/blog-data.js?v=20261001-1108"></script>
-    <script src="js/main.js?v=20260829"></script>
+    <script src="js/testimonials-data.js?v=20261121"></script>
+    <script src="js/main.js?v=20261121"></script>
 </body>
 
 </html>
